@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a8046515-ec69-450c-9d0f-363a6d280188" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1d1sGUySUtuaDJlyNmQlIBbZ2g9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../12_异常" />
+  </component>
+  <component name="RunManager" selected="Python.qsq_09_单例初始化一次">
+    <configuration name="qsq_05_类静态方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="11_类属性_类方法_类静态方法" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_05_类静态方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_06_游戏演练和小结" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="11_类属性_类方法_类静态方法" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_06_游戏演练和小结.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_07_单例设计模式和_new_方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="11_类属性_类方法_类静态方法" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_07_单例设计模式和_new_方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_08_单例_实例" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="11_类属性_类方法_类静态方法" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_08_单例_实例.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_09_单例初始化一次" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="11_类属性_类方法_类静态方法" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_09_单例初始化一次.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.qsq_09_单例初始化一次" />
+        <item itemvalue="Python.qsq_08_单例_实例" />
+        <item itemvalue="Python.qsq_07_单例设计模式和_new_方法" />
+        <item itemvalue="Python.qsq_06_游戏演练和小结" />
+        <item itemvalue="Python.qsq_05_类静态方法" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8046515-ec69-450c-9d0f-363a6d280188" name="Default Changelist" comment="" />
+      <created>1591603837253</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591603837253</updated>
+      <workItem from="1591603838472" duration="227000" />
+      <workItem from="1591604148368" duration="3853000" />
+      <workItem from="1591663608722" duration="6683000" />
+      <workItem from="1591678045742" duration="2562000" />
+      <workItem from="1591682821232" duration="1642000" />
+      <workItem from="1591708022928" duration="866000" />
+      <workItem from="1591791924893" duration="2775000" />
+      <workItem from="1592132107179" duration="3121000" />
+      <workItem from="1592708085347" duration="494000" />
+      <workItem from="1592708632098" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1696" y="399" key="FileChooserDialogImpl" timestamp="1592708657507">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1696" y="399" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1592708657507" />
+    <state width="1636" height="315" key="GridCell.Tab.0.bottom" timestamp="1592708578708">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1636" height="315" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592708578708" />
+    <state width="1750" height="281" key="GridCell.Tab.0.bottom/0.23.1792.1032@0.23.1792.1032" timestamp="1591668075959" />
+    <state width="1750" height="281" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1591605498781" />
+    <state width="1750" height="281" key="GridCell.Tab.0.bottom/0.23.1792.1035@0.23.1792.1035" timestamp="1591610832018" />
+    <state width="1750" height="346" key="GridCell.Tab.0.bottom/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102977" />
+    <state width="1636" height="315" key="GridCell.Tab.0.center" timestamp="1592708578708">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1636" height="315" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592708578708" />
+    <state width="1750" height="281" key="GridCell.Tab.0.center/0.23.1792.1032@0.23.1792.1032" timestamp="1591668075958" />
+    <state width="1750" height="281" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1591605498780" />
+    <state width="1750" height="281" key="GridCell.Tab.0.center/0.23.1792.1035@0.23.1792.1035" timestamp="1591610832017" />
+    <state width="1750" height="346" key="GridCell.Tab.0.center/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102976" />
+    <state width="1636" height="315" key="GridCell.Tab.0.left" timestamp="1592708578708">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1636" height="315" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592708578708" />
+    <state width="1750" height="281" key="GridCell.Tab.0.left/0.23.1792.1032@0.23.1792.1032" timestamp="1591668075958" />
+    <state width="1750" height="281" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1591605498780" />
+    <state width="1750" height="281" key="GridCell.Tab.0.left/0.23.1792.1035@0.23.1792.1035" timestamp="1591610832017" />
+    <state width="1750" height="346" key="GridCell.Tab.0.left/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102976" />
+    <state width="1636" height="315" key="GridCell.Tab.0.right" timestamp="1592708578708">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1636" height="315" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592708578708" />
+    <state width="1750" height="281" key="GridCell.Tab.0.right/0.23.1792.1032@0.23.1792.1032" timestamp="1591668075959" />
+    <state width="1750" height="281" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1591605498781" />
+    <state width="1750" height="281" key="GridCell.Tab.0.right/0.23.1792.1035@0.23.1792.1035" timestamp="1591610832017" />
+    <state width="1750" height="346" key="GridCell.Tab.0.right/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102976" />
+    <state width="1750" height="346" key="GridCell.Tab.1.bottom" timestamp="1591688102977">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="1750" height="347" key="GridCell.Tab.1.bottom/0.23.1792.1032@0.23.1792.1032" timestamp="1591665893180" />
+    <state width="1750" height="346" key="GridCell.Tab.1.bottom/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102977" />
+    <state width="1750" height="346" key="GridCell.Tab.1.center" timestamp="1591688102977">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="1750" height="347" key="GridCell.Tab.1.center/0.23.1792.1032@0.23.1792.1032" timestamp="1591665893179" />
+    <state width="1750" height="346" key="GridCell.Tab.1.center/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102977" />
+    <state width="1750" height="346" key="GridCell.Tab.1.left" timestamp="1591688102977">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="1750" height="347" key="GridCell.Tab.1.left/0.23.1792.1032@0.23.1792.1032" timestamp="1591665893179" />
+    <state width="1750" height="346" key="GridCell.Tab.1.left/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102977" />
+    <state width="1750" height="346" key="GridCell.Tab.1.right" timestamp="1591688102977">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="1750" height="347" key="GridCell.Tab.1.right/0.23.1792.1032@0.23.1792.1032" timestamp="1591665893179" />
+    <state width="1750" height="346" key="GridCell.Tab.1.right/0.23.1792.1041@0.23.1792.1041" timestamp="1591688102977" />
+    <state x="1056" y="475" key="com.intellij.ide.util.TipDialog" timestamp="1592708634433">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1056" y="475" key="com.intellij.ide.util.TipDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1592708634433" />
+    <state x="550" y="373" key="com.intellij.ide.util.TipDialog/0.23.1792.1032@0.23.1792.1032" timestamp="1591604300469" />
+    <state x="334" y="233" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591665304417">
+      <screen x="0" y="23" width="1792" height="1032" />
+    </state>
+    <state x="334" y="233" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1792.1032@0.23.1792.1032" timestamp="1591665304417" />
+    <state x="1077" y="309" width="1287" height="916" key="search.everywhere.popup" timestamp="1592135785930">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1077" y="309" width="1287" height="916" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1592135785930" />
+    <state x="561" y="252" width="670" height="676" key="search.everywhere.popup/0.23.1792.1035@0.23.1792.1035" timestamp="1591610567224" />
+    <state x="561" y="252" width="670" height="678" key="search.everywhere.popup/0.23.1792.1037@0.23.1792.1037" timestamp="1591673769255" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/11___$qsq_05_.coverage" NAME="qsq_05_类静态方法 Coverage Results" MODIFIED="1591668075952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/11___$qsq_03_.coverage" NAME="qsq_03_使用对象调用类属性存在的问题 Coverage Results" MODIFIED="1591665893151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/11___$qsq_.coverage" NAME="qsq_类方法 Coverage Results" MODIFIED="1591665933371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/11___$qsq_06_.coverage" NAME="qsq_06_游戏演练 Coverage Results" MODIFIED="1591683660454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/11___$qsq_08__.coverage" NAME="qsq_08_单例_实例 Coverage Results" MODIFIED="1592133199227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/11___$qsq_09_.coverage" NAME="qsq_09_单例初始化一次 Coverage Results" MODIFIED="1592708231455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/11___$qsq_07__new_.coverage" NAME="qsq_07_单例设计模式和_new_方法 Coverage Results" MODIFIED="1591794472637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/11___$qsq_01_.coverage" NAME="qsq_01_类属性 Coverage Results" MODIFIED="1591610388617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

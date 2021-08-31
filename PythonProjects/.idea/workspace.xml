@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1543e87e-22ea-45fb-82af-542b8cc75f23" name="默认变更列表" comment="0" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/OmronOfficeSystem" />
+  </component>
+  <component name="ProjectId" id="1xUCklHAgdcpwYxCehCOMPHrjIR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="1543e87e-22ea-45fb-82af-542b8cc75f23" name="默认变更列表" comment="" />
+      <created>1630400427562</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1630400427562</updated>
+      <workItem from="1630400429493" duration="8000" />
+      <workItem from="1630402193304" duration="134000" />
+      <workItem from="1630402340454" duration="542000" />
+      <workItem from="1630403862255" duration="492000" />
+      <workItem from="1630404816965" duration="800000" />
+      <workItem from="1630406444626" duration="569000" />
+      <workItem from="1630407131034" duration="48000" />
+      <workItem from="1630407208327" duration="165000" />
+    </task>
+    <task id="LOCAL-00001" summary="10">
+      <created>1630402232779</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1630402232779</updated>
+    </task>
+    <task id="LOCAL-00002" summary="11">
+      <created>1630402411401</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1630402411401</updated>
+    </task>
+    <task id="LOCAL-00003" summary="12">
+      <created>1630402466307</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1630402466308</updated>
+    </task>
+    <task id="LOCAL-00004" summary="12">
+      <created>1630402570399</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1630402570399</updated>
+    </task>
+    <task id="LOCAL-00005" summary="11">
+      <created>1630405532668</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1630405532668</updated>
+    </task>
+    <task id="LOCAL-00006" summary="11">
+      <created>1630406565137</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1630406565137</updated>
+    </task>
+    <task id="LOCAL-00007" summary="0">
+      <created>1630406647894</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1630406647894</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/" />
+      <path value="$PROJECT_DIR$/OmronOfficeSystem" />
+    </ignored-roots>
+    <MESSAGE value="10" />
+    <MESSAGE value="12" />
+    <MESSAGE value="11" />
+    <MESSAGE value="0" />
+    <option name="LAST_COMMIT_MESSAGE" value="0" />
+  </component>
+</project>

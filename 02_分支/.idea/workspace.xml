@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1b6bff87-d87a-427b-9119-079a10cf03e2" name="默认更改列表" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZAAMaIwLVXUh9ZPZoBcC0Uli0D" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunManager" selected="Python.qsq_19_字符串_拆分和连接方法">
+    <configuration name="qsq_17_字符串_查找和替换方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_17_字符串_查找和替换方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_19_字符串_拆分和连接方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_19_字符串_拆分和连接方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_字符串_查找和替换方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_字符串_查找和替换方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_字符串_大小写转换方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_字符串_大小写转换方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_字符串_文本对齐方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_字符串_文本对齐方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_字符串_去除空白字符方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_字符串_去除空白字符方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_字符串_拆分和连接方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_字符串_拆分和连接方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_字符串_大小写转换方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="qsq_05_高级数据类型" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_字符串_大小写转换方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.qsq_19_字符串_拆分和连接方法" />
+        <item itemvalue="Python.qsq_17_字符串_查找和替换方法" />
+        <item itemvalue="Python.qsq_字符串_查找和替换方法" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b6bff87-d87a-427b-9119-079a10cf03e2" name="默认更改列表" comment="" />
+      <created>1584271477036</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584271477036</updated>
+      <workItem from="1584271478215" duration="7797000" />
+      <workItem from="1585539349318" duration="797000" />
+      <workItem from="1585617060615" duration="4531000" />
+      <workItem from="1585623064649" duration="7354000" />
+      <workItem from="1585708737275" duration="10049000" />
+      <workItem from="1585789679985" duration="12000" />
+      <workItem from="1585800575438" duration="172000" />
+      <workItem from="1585800775904" duration="36000" />
+      <workItem from="1585800822346" duration="18000" />
+      <workItem from="1585800849524" duration="33000" />
+      <workItem from="1585874033867" duration="2161000" />
+      <workItem from="1586403044310" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="339" y="218" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585539453092">
+      <screen x="0" y="23" width="1792" height="1024" />
+    </state>
+    <state x="339" y="218" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1024@0.23.1792.1024" timestamp="1585539453092" />
+    <state width="1245" height="280" key="GridCell.Tab.0.bottom" timestamp="1586223961101">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state width="1738" height="357" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1584279539656" />
+    <state width="1156" height="280" key="GridCell.Tab.0.bottom/0.23.1792.1030@0.23.1792.1030" timestamp="1585711339452" />
+    <state width="1245" height="280" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1586223961101" />
+    <state width="1253" height="280" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1585724072885" />
+    <state width="1141" height="266" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1585627916377" />
+    <state width="1750" height="266" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1585625157573" />
+    <state width="1750" height="266" key="GridCell.Tab.0.bottom/0.23.1792.1037@0.23.1792.1037" timestamp="1585625347834" />
+    <state width="1245" height="280" key="GridCell.Tab.0.center" timestamp="1586223961100">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state width="1738" height="357" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1584279539656" />
+    <state width="1156" height="280" key="GridCell.Tab.0.center/0.23.1792.1030@0.23.1792.1030" timestamp="1585711339451" />
+    <state width="1245" height="280" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1586223961100" />
+    <state width="1253" height="280" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1585724072884" />
+    <state width="1141" height="266" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1585627916376" />
+    <state width="1750" height="266" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1585625157572" />
+    <state width="1750" height="266" key="GridCell.Tab.0.center/0.23.1792.1037@0.23.1792.1037" timestamp="1585625347833" />
+    <state width="1245" height="280" key="GridCell.Tab.0.left" timestamp="1586223961100">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state width="1738" height="357" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1584279539656" />
+    <state width="1156" height="280" key="GridCell.Tab.0.left/0.23.1792.1030@0.23.1792.1030" timestamp="1585711339450" />
+    <state width="1245" height="280" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1586223961100" />
+    <state width="1253" height="280" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1585724072884" />
+    <state width="1141" height="266" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1585627916376" />
+    <state width="1750" height="266" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1585625157572" />
+    <state width="1750" height="266" key="GridCell.Tab.0.left/0.23.1792.1037@0.23.1792.1037" timestamp="1585625347832" />
+    <state width="1245" height="280" key="GridCell.Tab.0.right" timestamp="1586223961100">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state width="1738" height="357" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1584279539656" />
+    <state width="1156" height="280" key="GridCell.Tab.0.right/0.23.1792.1030@0.23.1792.1030" timestamp="1585711339451" />
+    <state width="1245" height="280" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1586223961100" />
+    <state width="1253" height="280" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1585724072885" />
+    <state width="1141" height="266" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1585627916376" />
+    <state width="1750" height="266" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1585625157572" />
+    <state width="1750" height="266" key="GridCell.Tab.0.right/0.23.1792.1037@0.23.1792.1037" timestamp="1585625347833" />
+    <state x="537" y="229" key="SettingsEditor" timestamp="1585713915875">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state x="167" y="262" key="SettingsEditor/0.23.1792.1024@0.23.1792.1024" timestamp="1585539637037" />
+    <state x="537" y="229" key="SettingsEditor/0.23.1792.1030@0.23.1792.1030" timestamp="1585617439029" />
+    <state x="537" y="229" key="SettingsEditor/0.23.1792.1031@0.23.1792.1031" timestamp="1585713915875" />
+    <state x="96" y="216" key="SettingsEditor/0.23.1792.1034@0.23.1792.1034" timestamp="1585623799896" />
+    <state x="529" y="394" key="com.intellij.ide.util.TipDialog" timestamp="1586403045722">
+      <screen x="0" y="23" width="1792" height="1037" />
+    </state>
+    <state x="529" y="389" key="com.intellij.ide.util.TipDialog/0.23.1792.1024@0.23.1792.1024" timestamp="1585539355971" />
+    <state x="529" y="391" key="com.intellij.ide.util.TipDialog/0.23.1792.1030@0.23.1792.1030" timestamp="1585874036059" />
+    <state x="529" y="392" key="com.intellij.ide.util.TipDialog/0.23.1792.1033@0.23.1792.1033" timestamp="1585789680248" />
+    <state x="529" y="392" key="com.intellij.ide.util.TipDialog/0.23.1792.1034@0.23.1792.1034" timestamp="1585623065110" />
+    <state x="529" y="394" key="com.intellij.ide.util.TipDialog/0.23.1792.1037@0.23.1792.1037" timestamp="1586403045722" />
+    <state x="132" y="128" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585643277853">
+      <screen x="0" y="23" width="1792" height="1033" />
+    </state>
+    <state x="132" y="128" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1792.1033@0.23.1792.1033" timestamp="1585643277853" />
+    <state x="1162" y="239" width="670" height="159" key="search.everywhere.popup" timestamp="1585712311930">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state x="2230" y="294" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1584278613837" />
+    <state x="1162" y="239" width="670" height="158" key="search.everywhere.popup/0.23.1792.1030@0.23.1792.1030" timestamp="1585709953420" />
+    <state x="1162" y="239" width="670" height="159" key="search.everywhere.popup/0.23.1792.1031@0.23.1792.1031" timestamp="1585712311930" />
+    <state x="1162" y="240" width="670" height="158" key="search.everywhere.popup/0.23.1792.1034@0.23.1792.1034" timestamp="1585621281479" />
+    <state x="605" y="480" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1585617386048">
+      <screen x="0" y="23" width="1792" height="1030" />
+    </state>
+    <state x="605" y="477" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1792.1024@0.23.1792.1024" timestamp="1585539643720" />
+    <state x="605" y="480" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1792.1030@0.23.1792.1030" timestamp="1585617386048" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/qsq_05_$qsq_06_.coverage" NAME="qsq_06_循环遍历 Coverage Results" MODIFIED="1584279514382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/qsq_05_$qsq_03_.coverage" NAME="qsq_03_列表的数据统计 Coverage Results" MODIFIED="1584277058875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/05_$qsq_19__.coverage" NAME="qsq_19_字符串_拆分和连接方法 Coverage Results" MODIFIED="1585885004141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/qsq_05_$qsq_04_.coverage" NAME="qsq_04_列表的排序 Coverage Results" MODIFIED="1584277484168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/05_$qsq_17__.coverage" NAME="qsq_17_字符串_查找和替换方法 Coverage Results" MODIFIED="1585874276381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/05_$qsq__.coverage" NAME="qsq_字符串_拆分和连接方法 Coverage Results" MODIFIED="1585730144482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/qsq_05_$qsq_02_del_.coverage" NAME="qsq_02_del 关键字 Coverage Results" MODIFIED="1584276398457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/qsq_05_$qsq_01_.coverage" NAME="qsq_01_列表基本使用 Coverage Results" MODIFIED="1584275431724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/05_$qsq_16_.coverage" NAME="qsq_16_字符串常用方法总览和分类 Coverage Results" MODIFIED="1585622939816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

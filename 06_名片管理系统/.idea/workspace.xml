@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e575970f-640c-4d89-9a0e-364485d96393" name="默认更改列表" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aa7YSJ2nHleMGrFnGTH7pmsV8L" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager" selected="Python.qsq_12_伪私有属性和方法">
+    <configuration name="qsq_08_小爱跑步对象封装案例" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="08_面向对象" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_08_小爱跑步对象封装案例.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_09_房子对象封装案例_改进" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="08_面向对象" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_09_房子对象封装案例_改进.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_10_士兵突击封装案例" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="08_面向对象" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_10_士兵突击封装案例.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_11_私有属性和方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="08_面向对象" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_11_私有属性和方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="qsq_12_伪私有属性和方法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="08_面向对象" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/qsq_12_伪私有属性和方法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.qsq_12_伪私有属性和方法" />
+        <item itemvalue="Python.qsq_11_私有属性和方法" />
+        <item itemvalue="Python.qsq_10_士兵突击封装案例" />
+        <item itemvalue="Python.qsq_09_房子对象封装案例_改进" />
+        <item itemvalue="Python.qsq_08_小爱跑步对象封装案例" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e575970f-640c-4d89-9a0e-364485d96393" name="默认更改列表" comment="" />
+      <created>1586961898026</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586961898026</updated>
+      <workItem from="1586961899861" duration="2267000" />
+      <workItem from="1587296556447" duration="2780000" />
+      <workItem from="1587389493726" duration="67000" />
+      <workItem from="1587389760234" duration="4917000" />
+      <workItem from="1587475921600" duration="4589000" />
+      <workItem from="1587560824527" duration="2644000" />
+      <workItem from="1587729863765" duration="2388000" />
+      <workItem from="1587818770346" duration="4525000" />
+      <workItem from="1587907008442" duration="2119000" />
+      <workItem from="1591519170130" duration="712000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1725" height="289" key="GridCell.Tab.0.bottom" timestamp="1587909128821">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="289" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1587909128821" />
+    <state width="1725" height="289" key="GridCell.Tab.0.center" timestamp="1587909128821">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="289" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1587909128821" />
+    <state width="1725" height="289" key="GridCell.Tab.0.left" timestamp="1587909128821">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="289" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1587909128821" />
+    <state width="1725" height="289" key="GridCell.Tab.0.right" timestamp="1587909128821">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="289" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1587909128821" />
+    <state width="1725" height="346" key="GridCell.Tab.1.bottom" timestamp="1587823299283">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="346" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1587823299283" />
+    <state width="1725" height="346" key="GridCell.Tab.1.center" timestamp="1587823299283">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="346" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1587823299283" />
+    <state width="1725" height="346" key="GridCell.Tab.1.left" timestamp="1587823299283">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="346" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1587823299283" />
+    <state width="1725" height="346" key="GridCell.Tab.1.right" timestamp="1587823299283">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1725" height="346" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1587823299283" />
+    <state x="615" y="469" key="com.intellij.ide.util.TipDialog" timestamp="1591519230934">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="615" y="469" key="com.intellij.ide.util.TipDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591519230934" />
+    <state x="2476" y="280" width="672" height="678" key="search.everywhere.popup" timestamp="1587907521774">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="2476" y="280" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1587907521774" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/qsq_10_士兵突击封装案例.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/qsq_10_士兵突击封装案例.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/08_$qsq_08_.coverage" NAME="qsq_08_小爱跑步对象封装案例 Coverage Results" MODIFIED="1587478120531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_04_.coverage" NAME="qsq_04_对象初始化方法 Coverage Results" MODIFIED="1586962997590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_12_.coverage" NAME="qsq_12_伪私有属性和方法 Coverage Results" MODIFIED="1587908703417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_05_.coverage" NAME="qsq_05_利用参数设置属性的初始值 Coverage Results" MODIFIED="1587296820103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_11_.coverage" NAME="qsq_11_私有属性和方法 Coverage Results" MODIFIED="1587907479362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_09__.coverage" NAME="qsq_09_房子对象封装案例_改进 Coverage Results" MODIFIED="1587562763508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_06__del_.coverage" NAME="qsq_06__del_方法 Coverage Results" MODIFIED="1587297865531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_10_.coverage" NAME="qsq_10_士兵突击封装案例 Coverage Results" MODIFIED="1587823269179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_07__str_.coverage" NAME="qsq_07__str_方法 Coverage Results" MODIFIED="1587299317565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/08_$qsq_09_.coverage" NAME="qsq_09_房子对象封装案例 Coverage Results" MODIFIED="1587394065228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
