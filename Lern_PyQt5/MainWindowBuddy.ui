@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>3</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>80</y>
+      <width>321</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>58</x>
+       <y>23</y>
+       <width>60</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>姓名(&amp;A)：</string>
+     </property>
+     <property name="buddy">
+      <cstring>lineEdit</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>20</y>
+       <width>113</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>58</x>
+       <y>50</y>
+       <width>60</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>年龄(&amp;B)：</string>
+     </property>
+     <property name="buddy">
+      <cstring>lineEdit_2</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>47</y>
+       <width>113</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>59</x>
+       <y>78</y>
+       <width>60</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>职位(&amp;C)：</string>
+     </property>
+     <property name="buddy">
+      <cstring>lineEdit_3</cstring>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>131</x>
+       <y>75</y>
+       <width>113</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>230</y>
+      <width>381</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;设置伙伴关系方法：在控件后面写(热键)，例如设置姓名和后面的输入框作为伙伴时，在“姓名”后面写上(&amp;amp;A)表示使用Alt+A作为热键，菜单栏Edit--编辑伙伴，拖动“姓名”控件箭头指向后面的输入框即可，按下Alt+A时光标会自动到文本输入框内。注：MAC不支持热键，Windows支持。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
