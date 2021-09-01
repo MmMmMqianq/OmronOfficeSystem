@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainWindoeAbsoluteLayout.ui'
+# Form implementation generated from reading ui file 'MainWindowAbsoluteLayout.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
