@@ -32,32 +32,38 @@ class C(B, object):  #C 是B的子类，C继承A和B的所有属性，！！！�
 
 在定义类时不管是哪个版本的Python建议都写上父类object
 """
+
+
 class Animal(object):
-    def __init__(self,name):
-        self.name = name
-    def sleep(self):
-        print("{0}在睡觉".format(self.name))
+	def __init__(self, name):
+		self.name = name
 
-    def drink(self):
-        print("喝水")
+	def sleep(self):
+		print("{0}在睡觉".format(self.name))
 
-    def eat(self):
-        print("吃饭")
+	def drink(self):
+		print("喝水")
 
-class dog(Animal, object):
-    def bark(self):
-        print("狗叫")
+	def eat(self):
+		print("吃饭")
+
+
+class Dog(Animal, object):
+	def bark(self):
+		print("狗叫")
+
 
 class cat(Animal, object):
-    def miaomiao(self):
-        print("miaomiao叫")
+	def miaomiao(self):
+		print("miaomiao叫")
+
 
 class person(Animal, object):
-    def study(self):
-        print("学习")
+	def study(self):
+		print("学习")
 
 
-wangcai = dog("wangcai")
+wangcai = Dog("wangcai")
 miaomiao = cat("miaomiao")
 xiaoming = person("xiaoming")
 

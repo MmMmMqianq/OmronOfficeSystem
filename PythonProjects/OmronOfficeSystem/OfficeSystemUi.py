@@ -1,11 +1,11 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication
-from PySide6.QtWidgets import QTableWidgetItem, QTableWidget
+from PySide6.QtWidgets import QTableWidgetItem, QTableWidget, QMainWindow
 import threading
 import HandleTaxiData
 
 
-class OfficeSystem:
+class OfficeSystem(QMainWindow):
 
     def __init__(self):
         self.taxi_data = list()
