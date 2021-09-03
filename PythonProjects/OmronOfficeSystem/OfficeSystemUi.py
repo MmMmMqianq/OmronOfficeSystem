@@ -5,7 +5,7 @@ import threading
 import HandleTaxiData
 
 
-class OfficeSystem(QMainWindow):
+class OfficeSystem:
 
     def __init__(self):
         self.taxi_data = list()
