@@ -36,7 +36,7 @@ class QLableDemo(QMainWindow):
 		self.lable1.setText("<font color=black>按钮1</font>")
 		self.lable1.setAutoFillBackground(True)
 		self.palette = QPalette()
-		self.palette.setColor(QPalette.Window, Qt.blue)
+		self.palette.setColor(QPalette.Window, Qt.blue)  # 设置的是背景色
 		self.lable1.setPalette(self.palette)
 		self.lable1.setAlignment(Qt.AlignCenter)
 
@@ -48,7 +48,7 @@ class QLableDemo(QMainWindow):
 		# self.lable3.move(0, 30)
 		self.lable3.setToolTip("这是一个图片标签")
 		self.lable3.setAlignment(Qt.AlignHCenter)
-		self.lable3.setPixmap(QPixmap("./images/1.ico"))
+		self.lable3.setPixmap(QPixmap("./images/1.ico"))  # lable设置为图像
 
 		self.lable4 = QLabel(self.widget)
 		# self.lable4.setOpenExternalLinks(True)  # 打开网页和linkActivated()是互斥的
