@@ -1,5 +1,13 @@
 """
-QLable 与伙伴关系
+QLabel 与伙伴关系
+
+QLabel对象.setText("显示文本（热键）")
+QLabel对象.setBuddy(控件对象)
+例：
+self.name_lable = QLabel(self.widget)
+self.name_lable.setText("name(&q)")  # Alt+q
+self.name_line_edit = QLineEdit(self.widget)
+self.name_lable.setBuddy(self.name_line_edit)
 """
 import sys
 from PyQt5.QtWidgets import QMainWindow, QLabel, QLineEdit, QApplication, QWidget, QGridLayout
@@ -16,14 +24,13 @@ class QlableBuddy(QMainWindow):
 		self.central_widget = QWidget(self)
 		self.widget = QWidget(self.central_widget)
 
-		self.name_lable = QLabel("&name", self.widget)
-		# self.name_lable.setText("name")
+		self.name_lable = QLabel(self.widget)
+		self.name_lable.setText("name(&q)")  # 设置热键Alt+q，如果写"&name",那么热键就是Alt+n
 		self.name_line_edit = QLineEdit(self.widget)
 		self.name_lable.setBuddy(self.name_line_edit)
 
-
-		self.password_lable = QLabel("&password", self.widget)
-		# self.password_lable.setText("name")
+		self.password_lable = QLabel(self.widget)
+		self.password_lable.setText("password(&w)")  # 设置热键Alt+w
 		self.password_line_dit = QLineEdit(self.widget)
 		self.password_lable.setBuddy(self.password_line_dit)
 
