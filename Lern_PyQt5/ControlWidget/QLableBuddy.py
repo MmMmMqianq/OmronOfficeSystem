@@ -7,7 +7,7 @@ QLabel对象.setBuddy(控件对象)
 self.name_lable = QLabel(self.widget)
 self.name_lable.setText("name(&q)")  # Alt+q
 self.name_line_edit = QLineEdit(self.widget)
-self.name_lable.setBuddy(self.name_line_edit)
+self.name_lable.setBuddy(self.name_line_edit
 """
 import sys
 from PyQt5.QtWidgets import QMainWindow, QLabel, QLineEdit, QApplication, QWidget, QGridLayout
