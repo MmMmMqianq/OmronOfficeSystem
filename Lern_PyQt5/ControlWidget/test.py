@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIntValidator
 
 
 class Ui_MainWindow(object):
@@ -54,3 +55,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "TextLabel"))
         self.label_3.setText(_translate("MainWindow", "TextLabel"))
         self.label_4.setText(_translate("MainWindow", "TextLabel"))
+
+
+v = QIntValidator(1, 99)
+print(v)

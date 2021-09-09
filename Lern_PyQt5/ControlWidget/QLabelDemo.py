@@ -55,6 +55,7 @@ class QLableDemo(QMainWindow):
 		self.lable4.setText("<a href='http://www.baidu.com'>打开百度连接</a>")
 		self.lable4.setAlignment(Qt.AlignRight)
 		self.lable4.setToolTip("这是一个超文本连接哦")
+		self.lable4.alignment()
 
 		self.layout = QVBoxLayout(self.widget)
 		self.layout.addWidget(self.lable1)
