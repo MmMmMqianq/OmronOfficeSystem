@@ -1,0 +1,15 @@
+父类为QAbstractButton
+
+Functions:
+def autoDefault ()
+def initStyleOption (option)
+def isDefault ()
+def isFlat ()
+def menu ()
+def setAutoDefault (arg__1)
+def setDefault (arg__1)
+def setFlat (arg__1)
+def setMenu (menu)
+
+Slots:
+def showMenu ()

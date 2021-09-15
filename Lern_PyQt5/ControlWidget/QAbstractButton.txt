@@ -1,0 +1,43 @@
+QAbstractButton是一个抽象的按钮，是下面这些按钮的父类；
+Inherited by: QCheckBox, QCommandLinkButton, QPushButton, QRadioButton, QToolButton
+
+Functions:
+def autoExclusive ()
+def autoRepeat ()
+def autoRepeatDelay ()
+def autoRepeatInterval ()
+def group ()                            # 获取按钮属于那个按钮
+def icon ()                             # 获取图标
+def iconSize ()                         # 获取按钮大小
+def isCheckable ()                      # 获取按钮是否被选中，按下去没有弹起来按钮处于选中状态
+def isChecked ()
+def isDown ()                           # 获取按钮是否被按下
+def setAutoExclusive (arg__1)
+def setAutoRepeat (arg__1)
+def setAutoRepeatDelay (arg__1)
+def setAutoRepeatInterval (arg__1)
+def setCheckable (bool)                 # True时，按下按钮不会自动弹起来处于选中状态；False时，按钮按下区自动弹起来处于未选中状态；
+def setDown (arg__1)                    # 将按钮设置为按下状态
+def setIcon (QGui.QIcon("图标路径"))     # 设置按钮图标
+def setShortcut (key)                   # 设置按钮快捷键
+def setText (text)                      # 设置按钮文本
+def shortcut ()                         # 获取按钮的快捷键
+def text ()                             # 获取按钮文本
+
+Virtual functions:
+def checkStateSet ()
+def hitButton (pos)
+def nextCheckState ()
+
+Slots:
+def animateClick ([msec=100])
+def click ()
+def setChecked (arg__1)                 # 将按钮设置为选中状态，只有当isCheckable() = True时改方法才有效
+def setIconSize (size)
+def toggle ()                           # 切换可检查按钮的状态
+
+Signals:
+def clicked ([checked=false])
+def pressed ()
+def released ()
+def toggled (checked)                   # 按钮有变化时，ON→OFF或者OFF→ON产生一个信号
