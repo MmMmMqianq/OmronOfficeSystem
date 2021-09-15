@@ -17,7 +17,7 @@ from PyQt5.QtWidgets import QMainWindow, QLabel, QLineEdit, QApplication, QWidge
 from PyQt5.QtCore import QRect
 
 
-class QlabelBuddy(QMainWindow):
+class QLabelBuddy(QMainWindow):
 	def __init__(self):
 		super().__init__()
 
@@ -56,6 +56,6 @@ class QlabelBuddy(QMainWindow):
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
-	main_window = QlabelBuddy()
+	main_window = QLabelBuddy()
 	main_window.show()
 	sys.exit(app.exec_())

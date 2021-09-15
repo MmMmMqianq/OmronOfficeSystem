@@ -1,0 +1,135 @@
+def LineWrapMode()                      # 获取换行模式，QTextEdit.NoWrap 无换行模式
+                                                      QTextEdit.WidgetWidth 文本编辑框宽度
+                                                      QTextEdit.FixedPixelWidth 固定像素宽度
+                                                      QTextEdit.FixedColumnWidth 固定列宽度
+def AutoFormattingFlag()                # 自动格式化标志 ？？？
+
+def acceptRichText()                    # 获取是否接受富文本
+def setAcceptRichText()                 # 设置是否接受富文本
+
+def alignment()                         # 获取对齐方式
+def setAlignment()                      # 设置对齐方式
+
+def anchorAt()                          # 返回位置 pos 处的锚的引用，如果该点不存在锚，则返回空字符串 ???
+
+def currentCharFormat()                 # 获取当前的文本格式
+def setCurrentCharFormat()              # 设置文本格式
+def currentCharFormatChanged(format)    # 当前的文本格式发生变化时产生一个信号，format为QTextCharFormat
+def blockFormat()
+
+def autoFormatting()                    # 获取自动格式
+def setAutoFormatting()                 # 设置自动格式
+
+def canInsertFromMimeData(source)       # ???
+def createMimeDataFromSelection()           # ???
+
+def canPaste()                          # 获取文本是否能粘贴文本
+
+
+def copyAvailable(bool)                 # 设置文本是否可以本复制
+
+def currentFont ()                      # 返回当前的
+def cursorForPosition (pos)
+def cursorRect ()
+def cursorRect (cursor)
+def cursorWidth ()
+def document ()
+def documentTitle ()
+def ensureCursorVisible ()
+def extraSelections ()
+def find (exp[, options=QTextDocument.FindFlags()])
+def find (exp[, options=QTextDocument.FindFlags()])
+def fontFamily ()
+def fontItalic ()
+def fontPointSize ()
+def fontUnderline ()
+def fontWeight ()
+def inputMethodQuery (query, argument)
+def isReadOnly ()
+def isUndoRedoEnabled ()
+def lineWrapColumnOrWidth ()
+def lineWrapMode ()
+def mergeCurrentCharFormat (modifier)
+def moveCursor (operation[, mode=QTextCursor.MoveAnchor])
+def overwriteMode ()
+def placeholderText ()
+def print_ (printer)
+def setAcceptRichText (accept)
+def setAutoFormatting (features)
+def setCurrentCharFormat (format)
+def setCursorWidth (width)
+def setDocument (document)
+def setDocumentTitle (title)
+def setExtraSelections (selections)
+def setLineWrapColumnOrWidth (w)
+def setLineWrapMode (mode)
+def setOverwriteMode (overwrite)
+def setPlaceholderText (placeholderText)
+def setReadOnly (ro)
+def setTabChangesFocus (b)
+def setTabStopDistance (distance)
+def setTabStopWidth (width)
+def setTextCursor (cursor)
+def setTextInteractionFlags (flags)
+def setUndoRedoEnabled (enable)
+def setWordWrapMode (policy)
+def tabChangesFocus ()
+def tabStopDistance ()
+def tabStopWidth ()
+def textBackgroundColor ()
+def textColor ()
+def textCursor ()
+def textInteractionFlags ()
+def toHtml ()                           # 获取Html文本
+def toPlainText ()                      # 获取无格式文本
+def wordWrapMode ()
+def zoomInF (range)
+
+
+Virtual functions:
+def createStandardContextMenu()         # 此函数创建标准上下文菜单，当用户用鼠标右键单击文本编辑时会显示该菜单。
+                                        # 它是从默认的 contextMenuEvent() 处理程序调用的。弹出菜单的所有权转移给调用者。
+def createStandardContextMenu(position) # ？？？
+def doSetTextCursor (cursor)
+def insertFromMimeData (source)
+def loadResource (type, name)
+
+
+Slots:
+def append(text)                        # 在文本编辑器末尾插入文本内容，插入的文本格式和原来的格式相同
+def clear()                             # 删除文本编辑器里的所有文本
+def cut()                               # 剪切文本
+def copy()                              # 复制选中的文本
+def insertHtml (text)
+def insertPlainText (text)
+def paste ()
+def redo ()
+def scrollToAnchor (name)
+def selectAll ()
+def setAlignment (a)
+def setCurrentFont (f)
+def setFontFamily (fontFamily)
+def setFontItalic (b)
+def setFontPointSize (s)
+def setFontUnderline (b)
+def setFontWeight (w)
+def setHtml (text)
+def setPlainText (text)                  # 设置普通的文本
+def setText (text)
+def setTextBackgroundColor (c)
+def setTextColor (c)
+def undo ()
+def zoomIn ([range=1])
+def zoomOut ([range=1])
+
+
+signals:
+def copyAvailable (b)
+def currentCharFormatChanged (format)
+def cursorPositionChanged ()
+def redoAvailable (b)
+def selectionChanged ()
+def textChanged ()
+def undoAvailable (b)
+
+
