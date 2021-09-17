@@ -19,9 +19,9 @@ def setAutoRepeatInterval (arg__1)
 def setCheckable (bool)                 # True时，按下按钮不会自动弹起来处于选中状态；False时，按钮按下区自动弹起来处于未选中状态；
 def setDown (arg__1)                    # 将按钮设置为按下状态
 def setIcon (QGui.QIcon("图标路径"))     # 设置按钮图标
-def setShortcut (key)                   # 设置按钮快捷键
+def setShortcut (QKeySequence)          # 设置按钮快捷键 QKeySequence(Qt.CTRL+Qt.Q)
 def setText (text)                      # 设置按钮文本
-def shortcut ()                         # 获取按钮的快捷键
+def shortcut ()                         # 获取按钮的快捷键 QKeySequence.toString()转换为快捷键字符串
 def text ()                             # 获取按钮文本
 
 Virtual functions:
@@ -37,7 +37,7 @@ def setIconSize (size)
 def toggle ()                           # 切换可检查按钮的状态
 
 Signals:
-def clicked ([checked=false])
-def pressed ()
-def released ()
+def clicked ([checked=false])           # 按下去松开为clicked
+def pressed ()                          # 按下去为pressed
+def released ()                         # 松开按钮为released
 def toggled (checked)                   # 按钮有变化时，ON→OFF或者OFF→ON产生一个信号
