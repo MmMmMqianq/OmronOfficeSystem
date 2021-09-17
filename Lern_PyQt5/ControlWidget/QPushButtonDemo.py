@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QWidget, QApplication, QPushButton, QVBoxLayout
-from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QSize
+from PyQt5.QtGui import QIcon, QKeySequence
+from PyQt5.QtCore import QSize, Qt
 
 
 class QPushButtonDemo(QWidget):
@@ -23,6 +23,8 @@ class QPushButtonDemo(QWidget):
 		print(self.push_button.isCheckable())
 		self.push_button.setChecked(True)  # 将按钮设置为选中状态，只有当isCheckable() = True时改方法才有效
 		print(self.push_button.isChecked())
+
+		self.push_button.setShortcut(QKeySequence(Qt.CTRL+Qt.Key_Q))
 
 
 if __name__ == "__main__":
