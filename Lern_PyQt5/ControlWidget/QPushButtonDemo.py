@@ -9,6 +9,7 @@ class QPushButtonDemo(QWidget):
 		super(QPushButtonDemo, self).__init__()
 		self.setWindowTitle("这是一个QPushButton案例")
 		self.setWindowIcon(QIcon("./images/1.ico"))
+		self.resize(500,500)
 
 		self.push_button = QPushButton(self)
 		self.push_button.setText("按钮1")
