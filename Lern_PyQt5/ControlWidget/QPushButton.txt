@@ -9,7 +9,7 @@ def menu ()
 def setAutoDefault (arg__1)
 def setDefault (arg__1)
 def setFlat (arg__1)
-def setMenu (menu)
+def setMenu (menu)                  # 设置按钮的菜单
 
 Slots:
-def showMenu ()
+def showMenu ()                     # 自动弹出按钮的菜单
