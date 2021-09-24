@@ -1,0 +1,11 @@
+Functions:
+
+def initStyleOption (option)
+
+def checkState ()               # 获取复选框的状态，0为未选择，2为选择，1既不是选择也不是未选择
+
+def isTristate ()               # 获取是否设置了第三态
+
+def setCheckState (PyQt5.QtCore.Qt.checkState)       # 设置复选的状态，Qt.checkState是个枚举体，Qt.Unchecked，Qt.PartiallyChecked，Qt.checked对应0、1、2
+
+def setTristate ([y=true])      # 设置是否启用第三态
