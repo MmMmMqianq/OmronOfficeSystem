@@ -1,0 +1,82 @@
+Functions:
+def addItem (icon, text[, userData=None])               # 添加图片+文本Item
+def addItem (text[, userData=None])                     # 添加文本Item
+def addItems (list of strings)                          # 将列表中的文本依次次加到ComboBox中
+def autoCompletion ()
+def autoCompletionCaseSensitivity ()
+def completer ()
+def count ()                                            # 获取ComboBox里的项目数量，返回int
+def currentData ([role=Qt.UserRole])                    # ???
+def currentIndex ()                                     # 获取当前Item的索引值，返回int
+def currentText ()                                      # 获取当前Item的文本，返回unicode
+def duplicatesEnabled ()                                # 获取ComboBox是否设置为允许重复Item
+def findData (data[, role=Qt.UserRole[, flags=static_cast<Qt.MatchFlags>(Qt.MatchExactly|Qt.MatchCaseSensitive)]])
+def findText (text[, flags=static_cast<Qt.MatchFlags>(Qt.MatchExactly|Qt.MatchCaseSensitive)])
+def hasFrame ()                                         # ???
+def iconSize ()                                         # 获取Icon的大小，返回Qsize
+def initStyleOption (option)                            #
+def inputMethodQuery (query, argument)
+def insertItem (index, icon, text[, userData=None])     # 插入图片+文本的Item(在指定索引的上方插入)
+def insertItem (index, text[, userData=None])           # 插入文本Item
+def insertItems (index, texts)                          # 从index处将列表中的文本依次次加到ComboBox中
+def insertPolicy ()                                     # 获取插入的策略
+def insertSeparator (index)                             # 在index处插入分隔线（在上方插入）
+def isEditable ()                                       # 获取ComboBox是否可编辑，True时ComboBox可编辑，Flase时ComboBox是灰色的，不可编辑
+def itemData (index[, role=Qt.UserRole])                # ？？？
+def itemDelegate ()                                     #
+def itemIcon (index)                                    # 返回指定索引处的图标
+def itemText (index)                                    # 返回指定索引处的文本
+def lineEdit ()                                         # 返回ComboBox是否为LineEdit
+def maxCount ()                                         # 返回最大Item数
+def maxVisibleItems ()                                  # 返回最大可见的项目数
+def minimumContentsLength ()                            # 返回最小的文本长度
+def model ()                                            # ？？？
+def modelColumn ()
+def removeItem (index)                                  # 移除指定索引处的Item
+def rootModelIndex ()                                   # ？？？
+def setAutoCompletion (enable)
+def setAutoCompletionCaseSensitivity (sensitivity)
+def setCompleter (c)
+def setDuplicatesEnabled (enable)                       # 设置是否可以存在重复的Item
+def setEditable (editable)                              # 设置ComboBox是否可编辑，True时ComboBox可编辑，Flase时ComboBox是灰色的，不可编辑
+def setFrame (arg__1)
+def setIconSize (size)                                  # 设置图标大小
+def setInsertPolicy (policy)                            # 设置插入的策略
+def setItemData (index, value[, role=Qt.UserRole])
+def setItemDelegate (delegate)
+def setItemIcon (index, icon)                           # 设置Item图标
+def setItemText (index, text)                           # 设置Item文本
+def setLineEdit (QLineEdit)                             # 设置编辑框，将ConboBox设置为可编辑的，编辑后的CurrentText会发生变化，index不会发生变化，为编辑前的Item索引。
+def setMaxCount (max)                                   # 设置最大的Item数
+def setMaxVisibleItems (maxItems)                       # 设置最大可见Item数
+def setMinimumContentsLength (characters)               # 设置最小文本长度
+def setModel (model)
+def setModelColumn (visibleColumn)
+def setRootModelIndex (index)
+def setSizeAdjustPolicy (policy)
+def setValidator (v)
+def setView (itemView)
+def sizeAdjustPolicy ()
+def validator ()
+def view ()
+
+Virtual functions:
+def hidePopup ()                                        #
+def showPopup ()
+
+slots:
+def clear ()                                            # 清除ComboBox里的所有Items
+def clearEditText ()                                    # 清除编辑框内的文本内容，必须设置了QLineEdit时才有用
+def setCurrentIndex (index)                             # 设置当前的索引
+def setCurrentText (text)                               # 设置当前的文本
+def setEditText (text)                                  # 设置编辑的文本
+
+Signals:
+def activated (arg__1)
+def activated (index)
+def currentIndexChanged (unicode)                        # 当前索引发生变化时产生一个信号
+def currentIndexChanged (index)                          # 当前索引发生变化时产生一个信号
+def currentTextChanged (arg__1)                          # 当前文本发生变化时产生一个信号
+def editTextChanged (arg__1)                             # 编辑文本发生变化时产生一个信号
+def highlighted (arg__1)                                 #
+def highlighted (index)
