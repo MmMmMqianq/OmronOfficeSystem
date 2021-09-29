@@ -13,11 +13,11 @@
 #
 # 3. 列表常用操作
 #
-# 在 ipython3中定义一个列表，例如：name_list = []输入name_list.按下TAB键，ipython会提示列表能够使用的方法如下：
-# In [1]: name_list.
-# name_list.append   name_list.count    name_list.insert   name_list.reverse
-# name_list.clear    name_list.extend   name_list.pop      name_list.sort
-# name_list.copy     name_list.index    name_list.remove
+# 在 ipython3中定义一个列表，例如：old_name_list = []输入name_list.按下TAB键，ipython会提示列表能够使用的方法如下：
+# In [1]: old_name_list.
+# old_name_list.append   old_name_list.count    old_name_list.insert   old_name_list.reverse
+# old_name_list.clear    old_name_list.extend   old_name_list.pop      old_name_list.sort
+# old_name_list.copy     old_name_list.index    old_name_list.remove
 #
 # 序号 	分类 	关键字 / 函数 / 方法 	    说明
 # 1 	增加 	 列表.insert(索引, 数据) 	在指定位置插入数据
@@ -47,7 +47,7 @@ print(name_list.index("李四"))
 # 2. 修改
 name_list[1] = "孙六"
 print(name_list[1])
-# name_list[3] = "王小二" - 这样会报错：list assignment（指定） index out of range
+# old_name_list[3] = "王小二" - 这样会报错：list assignment（指定） index out of range
 
 # 3. 增加
 name_list.append("李七")  # appand 方法可以向列表的末尾追加数据

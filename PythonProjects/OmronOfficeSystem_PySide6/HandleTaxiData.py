@@ -19,25 +19,25 @@ import numpy
 #     if name != "":
 #         taxi_dict.update({name: 0})
 #     taxi_data = []
-#     name_list = []
+#     old_name_list = []
 #     money_list = []
 #     for key in taxi_dict:
 #         money = random.randint(350, 399)
 #         taxi_temp = [key, money]
 #         taxi_data.append(taxi_temp)
-#         name_list.append(key)
+#         old_name_list.append(key)
 #         money_list.append(money)
 #     print(taxi_data)
 #     taxi_df = DataFrame(taxi_data, columns=["姓名", "金额"])
 #     taxi_df.to_excel("Taxi.xlsx", index=False, header=True, sheet_name="sheet1")
-#     return name_list, money_list
+#     return old_name_list, money_list
     # print(taxi_excel.index)
     # print(taxi_excel.index.stop)
     # print(taxi_excel.values[0][1])
     # print(taxi_excel['名字'].values)
     # print(taxi_excel['金额'].values)
     # money_list = []
-    # name_list = taxi_excel['姓名'].values
+    # old_name_list = taxi_excel['姓名'].values
     # i = 0
     # for key in taxi_dict:
     #     money = random.randint(350, 399)
@@ -46,7 +46,7 @@ import numpy
     #     i += 1
     # # print(taxi_excel['金额'].values)
     # DataFrame(taxi_excel).to_excel('taxi.xlsx', sheet_name='sheet1', index=False, header=True)
-    # return name_list, taxi_excel['金额'].values
+    # return old_name_list, taxi_excel['金额'].values
 
 
 def read_excel():

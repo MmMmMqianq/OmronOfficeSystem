@@ -1,0 +1,4 @@
+QRadioButton继承QAbstractButton;
+
+Function:
+def initStyleOption (button)
