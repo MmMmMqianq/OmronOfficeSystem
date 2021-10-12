@@ -23,12 +23,12 @@ class QSpinBoxDemo(QWidget):
 		self.g_layout.addWidget(self.clean_button, 1, 1, 1, 1)
 
 		self.clean_button.clicked.connect(self.clean_spin_box)
-		self.spin_box.valueChanged.connect(lambda: print("QSpinBox值发生了变化啦！"))
+		self.spin_box.valueChanged.connect(lambda: print("3. QSpinBox值发生了变化啦！"))
 
 	def clean_spin_box(self):
 		sender = self.widget.sender()
-		print(sender.text(), " 按钮被触发了")
-		print(self.spin_box.cleanText())
+		print("1. ", sender.text(), " 按钮被触发了")
+		print("2. ", self.spin_box.cleanText())
 
 
 if __name__ == "__main__":

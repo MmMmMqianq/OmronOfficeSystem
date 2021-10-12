@@ -1,0 +1,31 @@
+对话框：QDialog
+    对话窗口是一个顶级窗口，主要用于短期任务和与用户的简短交流。 QDialogs 可以是模态的或非模态的（setWindowModality(Qt.ApplicationModal)）。
+QDialogs 可以提供返回值，并且它们可以具有默认按钮。 QDialogs 也可以在它们的右下角有一个 QSizeGrip，
+使用 setSizeGripEnabled() 。
+
+Functions:
+def adjustPosition (arg__1)
+def extension ()
+def isSizeGripEnabled ()
+def orientation ()
+def result ()
+def setExtension (extension)
+def setModal (modal)
+def setOrientation (orientation)
+def setResult (r)                   # 获取返回值
+def setSizeGripEnabled (arg__1)
+
+Virtual functions:
+def accept ()                       # 可以将按钮的clicked信号绑定到accept()
+def done (int)                      # 可以将按钮的clicked信号绑定到done(int)
+def exec_ ()                        #
+def open ()                         #
+def reject ()                       # 可以将按钮的clicked信号绑定到reject()
+
+Slots:
+def showExtension (arg__1)
+
+Signals:
+def accepted ()                     # 执行accept()时产生一个信号
+def finished (result)               # 执行accept()、reject()、done()时都会产生一个信号
+def rejected ()                     # 执行reject()时产生一个信号

@@ -7,8 +7,7 @@ import sys
 class QSliderDemo(QWidget):
 	def __init__(self):
 		super(QSliderDemo, self).__init__()
-		self.widget = QWidget()
-		self.widget.setWindowTitle("这是一个QSlider实例")
+		self.setWindowTitle("这是一个QSlider实例")
 
 		self.slider = QSlider()
 		self.slider.setMaximum(200)
