@@ -78,5 +78,5 @@ def currentIndexChanged (unicode)                        # 当前索引发生变
 def currentIndexChanged (index)                          # 当前索引发生变化时产生一个信号
 def currentTextChanged (arg__1)                          # 当前文本发生变化时产生一个信号
 def editTextChanged (arg__1)                             # 编辑文本发生变化时产生一个信号
-def highlighted (arg__1)                                 #
+def highlighted (arg__1)                                 # Item高亮时产生一个信号
 def highlighted (index)

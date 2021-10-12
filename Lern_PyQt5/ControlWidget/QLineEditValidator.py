@@ -36,7 +36,7 @@ class QLineEditValidator(QWidget):
 		self.form.addRow("QDoubleValidator", self.line_edit_Double)
 		self.form.addRow("QRegValidator", self.line_edit_reg)
 
-		# InValidator的使用
+		# IntValidator的使用
 		self.int_validator = QIntValidator(self)  # 如果不设置范围，那么默认的上下限为：-2147483648到2147483647
 		# 通过setBottom(int)和setTop(int)设置上限值
 		self.int_validator.setBottom(100)

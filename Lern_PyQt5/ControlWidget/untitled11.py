@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'untitled.ui'
+# Form implementation generated from reading ui file 'untitled11.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -15,30 +15,22 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.horizontalSlider = QtWidgets.QSlider(self.centralwidget)
+        self.horizontalSlider.setGeometry(QtCore.QRect(90, 280, 160, 22))
+        self.horizontalSlider.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setObjectName("horizontalSlider")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 24))
         self.menubar.setObjectName("menubar")
-        self.menuqwe = QtWidgets.QMenu(self.menubar)
-        self.menuqwe.setObjectName("menuqwe")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        self.action1111 = QtWidgets.QAction(MainWindow)
-        self.action1111.setObjectName("action1111")
-        self.action2222 = QtWidgets.QAction(MainWindow)
-        self.action2222.setObjectName("action2222")
-        self.action333 = QtWidgets.QAction(MainWindow)
-        self.action333.setObjectName("action333")
-        self.menuqwe.addAction(self.action1111)
-        self.menuqwe.addSeparator()
-        self.menuqwe.addAction(self.action2222)
-        self.menuqwe.addSeparator()
-        self.menuqwe.addAction(self.action333)
-        self.menubar.addAction(self.menuqwe.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -46,7 +38,3 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.menuqwe.setTitle(_translate("MainWindow", "qwe"))
-        self.action1111.setText(_translate("MainWindow", "1111"))
-        self.action2222.setText(_translate("MainWindow", "2222"))
-        self.action333.setText(_translate("MainWindow", "333"))
