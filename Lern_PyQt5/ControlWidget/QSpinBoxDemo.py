@@ -13,6 +13,7 @@ class QSpinBoxDemo(QWidget):
 		self.spin_box.setSingleStep(1)
 		self.spin_box.setPrefix("您输入的是")
 		self.spin_box.setSuffix("cm")
+		self.spin_box.setValue(50)
 
 		self.clean_button = QPushButton()
 		self.clean_button.setText("获取值")
