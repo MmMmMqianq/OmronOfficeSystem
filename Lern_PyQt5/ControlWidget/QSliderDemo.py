@@ -16,6 +16,10 @@ class QSliderDemo(QWidget):
 		self.slider.setOrientation(Qt.Horizontal)
 		self.slider.setTickPosition(QSlider.TicksBelow)
 		self.slider.setTracking(True)
+		self.slider.setSingleStep(10)
+		self.slider.setPageStep(20)
+		self.slider.setValue(100)
+		print("1. ", self.slider.sliderPosition())
 
 		self.line_edit = QLineEdit()
 		self.line_edit.setText(str(self.slider.value()))
