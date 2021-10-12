@@ -12,8 +12,8 @@ def pageStep ()                             # 获取用户按下 PageUp 或 Page
 def repeatAction ()
 def setInvertedAppearance (arg__1)
 def setInvertedControls (arg__1)
-def setMaximum (arg__1)                     # 设置滑块最大值
-def setMinimum (arg__1)                     # 设置滑块最小值
+def setMaximum (arg__1)                     # 设置滑块范围最大值
+def setMinimum (arg__1)                     # 设置滑块范围最小值
 def setPageStep (arg__1)                    # 设置用户按下 PageUp 或 PageDown时的步数
 def setRepeatAction (action[, thresholdTime=500[, repeatTime=50]])
 def setSingleStep (arg__1)                  # 设置用户按下箭头键时的步数
