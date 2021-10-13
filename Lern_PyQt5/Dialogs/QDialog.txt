@@ -10,7 +10,7 @@ def isSizeGripEnabled ()
 def orientation ()
 def result ()
 def setExtension (extension)
-def setModal (modal)
+def setModal (modal)                # 设置应用程序的模态，True时，弹出对话框后主窗口四无法操作的
 def setOrientation (orientation)
 def setResult (r)                   # 获取返回值
 def setSizeGripEnabled (arg__1)
