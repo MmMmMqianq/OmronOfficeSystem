@@ -18,7 +18,7 @@ def setSizeGripEnabled (arg__1)
 Virtual functions:
 def accept ()                       # 可以将按钮的clicked信号绑定到accept()
 def done (int)                      # 可以将按钮的clicked信号绑定到done(int)
-def exec_ ()                        #
+def exec_ ()                        # 将对话框显示为模态对话框，在用户关闭它之前一直处于阻塞状态。该函数返回一个 DialogCode 结果。
 def open ()                         #
 def reject ()                       # 可以将按钮的clicked信号绑定到reject()
 

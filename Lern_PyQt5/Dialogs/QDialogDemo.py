@@ -44,7 +44,8 @@ class QDialogDemo(QMainWindow):
 		hLayout.addWidget(doneButton)
 
 		dialog.show()
-		dialog.exec_()
+		self.ret = dialog.exec_()
+		print("4. ", self.ret)
 
 
 if __name__ == "__main__":
