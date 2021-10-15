@@ -15,9 +15,10 @@ class QFileDialogDemo(QMainWindow):
 		self.button.clicked.connect(self.showQFileDialog)
 
 	def showQFileDialog(self):
-		fileDialog = QFileDialog()
-		fileDialog.getOpenFileName(self, "open image", "/Users/qianshaoqing/Documents/Python/Lern_PyQt5/Dialogs",
-		                           "Image Files (*.png *.jpg *.bmp)")
+		fileDialog = QFileDialog(None, "QFileDialog对话框的标题", "/Users/qianshaoqing/Documents/Python/Lern_PyQt5/Dialogs",
+		                         "image files(*.png *.jpg *.ico)")
+		# fileDialog.setFileMode(QFileDialog.AnyFile)  # 如果在创建QFileDialog时没有指定filter，可以通过setFileMode()方法来设置
+		fileDialog.setViewMode(QFileDialog.List)
 		fileDialog.exec_()
 
 
@@ -26,4 +27,3 @@ if __name__ == "__main__":
 	mainWindow = QFileDialogDemo()
 	mainWindow.show()
 	sys.exit(app.exec_())
-

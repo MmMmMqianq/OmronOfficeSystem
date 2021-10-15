@@ -73,7 +73,10 @@ def urlsSelected (urls)
 Static functions:
 def getExistingDirectory ([parent=None[, caption=”“[, dir=”“[, options=QFileDialog.ShowDirsOnly]]]])
 def getExistingDirectoryUrl ([parent=None[, caption=”“[, dir=QUrl()[, options=QFileDialog.ShowDirsOnly[, supportedSchemes=list()]]]]])
+
 def getOpenFileName ([parent=None[, caption=”“[, dir=”“[, filter=”“[, selectedFilter=”“[, options=QFileDialog.Options()]]]]]])
+# def getOpenFileName( 父类， "QFileDialog对话框标题名字"， "对话框打开后默认打开的文件夹路径"， "Images (*.png *.xpm *.jpg);;Text files (*.txt);;XML files (*.xml)"）
+
 def getOpenFileNames ([parent=None[, caption=”“[, dir=”“[, filter=”“[, selectedFilter=”“[, options=QFileDialog.Options()]]]]]])
 def getOpenFileUrl ([parent=None[, caption=”“[, dir=QUrl()[, filter=”“[, selectedFilter=”“[, options=QFileDialog.Options()[, supportedSchemes=list()]]]]]]])
 def getOpenFileUrls ([parent=None[, caption=”“[, dir=QUrl()[, filter=”“[, selectedFilter=”“[, options=QFileDialog.Options()[, supportedSchemes=list()]]]]]]])
