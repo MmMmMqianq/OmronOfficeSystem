@@ -17,17 +17,17 @@ def informativeText ()
 def open (receiver, member)
 def removeButton (button)
 def setButtonText (button, text)
-def setCheckBox (cb)
+def setCheckBox (QCheckBox)             # 添加一个QCheckBox到QMessage上
 def setDefaultButton (button)
 def setDefaultButton (button)
 def setDetailedText (text)              # 添加Show Details...按钮和显示框
+def setEscapeButton (button)            # 设置一个按钮在ESC键按下时被触发
 def setEscapeButton (button)
-def setEscapeButton (button)
-def setIcon (arg__1)
-def setIconPixmap (pixmap)
-def setInformativeText (text)
+def setIcon (QMessageBox.Icon)          # 设置QMessageBox自带的图标
+def setIconPixmap (QPixmap)              # 为QMessageBox自定义的像素图
+def setInformativeText (text)           # 设置QMessageBox的问题内容
 def setStandardButtons (buttons)
-def setText (text)
+def setText (text)                      # 设置QMessageBox的提示信息
 def setTextFormat (format)
 def setTextInteractionFlags (flags)
 def standardButton (button)
@@ -37,7 +37,7 @@ def textFormat ()
 def textInteractionFlags ()
 
 Signals:
-def buttonClicked (button)
+def buttonClicked (button)              # 按钮被按下时产生一个信号
 
 Static functions:
 def about (parent, title, text)

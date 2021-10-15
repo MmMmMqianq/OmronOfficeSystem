@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QMessageBox, QPushButton, QMainWindow, QApplication, QCheckBox
+from PyQt5.QtGui import QPixmap
 import sys
 
 
@@ -18,21 +19,33 @@ class QMessageBoxDemo(QMainWindow):
 	def showQMessageBox(self):
 		messageBox = QMessageBox()
 		messageBox.setText("The document has been modified.")
+		print("5. messageBox的提示信息内容为：",messageBox.text())
 		messageBox.setInformativeText("Do you want to save your changes?")
 		messageBox.setStandardButtons(QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
 		messageBox.setDetailedText("1.\n2.\n3.")
 
-		addButton = QPushButton("添加的按钮，角色为YesRole")
-		messageBox.addButton(addButton, QMessageBox.YesRole)
-		print("3. ", messageBox.buttonRole(addButton))
+		messageBox.setIcon(QMessageBox.Question)  # 设置QMessageBox自带的图标
+		print("6, messageBox设置的图标为：", messageBox.icon())
+
+		# messageBox.setIconPixmap(QPixmap(r"./images/1.ico"))  # 为QMessageBox自定义的像素图
+		# print("7, messageBox设置的图标为：", messageBox.iconPixmap())
+
+		addButtonYesRole = QPushButton("添加的按钮，角色为YesRole")
+		messageBox.addButton(addButtonYesRole, QMessageBox.YesRole)
+		print("3. addButtonYesRole按钮的角色为：", messageBox.buttonRole(addButtonYesRole))
+
+		addButtonEscape = QPushButton("ECC键按下时按钮被触发")
+		messageBox.addButton(addButtonEscape, QMessageBox.NoRole)
+		messageBox.setEscapeButton(addButtonEscape)  # 按下ESC键时addButtonEscape按钮也会被激活
 
 		addCheckBoxYes = QCheckBox("是")
 		messageBox.setCheckBox(addCheckBoxYes)
-		messageBox.buttonClicked.connect(lambda: print(addCheckBoxYes.checkState()))
+		print(messageBox.checkBox())
+		messageBox.buttonClicked.connect(lambda: print("4. Yes复选框状态为：",  addCheckBoxYes.checkState()))
 
 		self.ret = messageBox.exec_()
-		print("1. ", self.ret, type(self.ret))
-		print("2. ", messageBox.result())
+		print("1. messageBox返回值和类型为：", self.ret, type(self.ret))
+		print("2. messageBox.result()返回的结果为：", messageBox.result())
 
 
 if __name__ == "__main__":
