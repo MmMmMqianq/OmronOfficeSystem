@@ -1,4 +1,8 @@
 对话框：QDialog
+子类对话框：QAbstractPrintDialog, QPageSetupDialog, QPrintDialog,
+          QPrintPreviewDialog, QColorDialog, QErrorMessage, QFileDialog,
+          QFontDialog, QInputDialog, QMessageBox, QProgressDialog, QWizard
+
     对话窗口是一个顶级窗口，主要用于短期任务和与用户的简短交流。 QDialogs 可以是模态的或非模态的（setWindowModality(Qt.ApplicationModal)）。
 QDialogs 可以提供返回值，并且它们可以具有默认按钮。 QDialogs 也可以在它们的右下角有一个 QSizeGrip，
 使用 setSizeGripEnabled() 。
