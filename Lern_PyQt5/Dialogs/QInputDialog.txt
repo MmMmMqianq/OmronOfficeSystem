@@ -1,0 +1,56 @@
+Functions:
+def cancelButtonText ()                     # 获取Cancel按钮的文本
+def comboBoxItems ()
+def doubleDecimals ()                       # 设置几位小数
+def doubleMaximum ()                        # 获取double输入框的上限值
+def doubleMinimum ()                        # 获取double输入框的下限值
+def doubleStep ()                           # 获取double输入框的步长
+def doubleValue ()                          # 获取double输入框的值
+def inputMode ()                            # 获取输入模式
+def intMaximum ()                           # 获取int输入框的上限值
+def intMinimum ()                           # 获取int输入框的下限值
+def intStep ()                              # 获取int输入框的步长
+def intValue ()                             # 获取int输入框的值
+def isComboBoxEditable ()
+def labelText ()                            # 获取对话框的Label
+def okButtonText ()                         # 获取OK按钮的文本
+def open (receiver, member)
+def setCancelButtonText (text)              # 设置Cancel按钮的文本
+def setComboBoxEditable (editable)
+def setComboBoxItems (items)
+def setDoubleDecimals (decimals)
+def setDoubleMaximum (max)                  # 设置double输入框上限值
+def setDoubleMinimum (min)                  # 设置double输入框上限值
+def setDoubleRange (min, max)               # 设置double输入框时的范围
+def setDoubleStep (step)                    # 设置double输入框上下按钮的步长
+def setDoubleValue (value)                  # 设置double输入框的值
+def setInputMode (QInputDialog.InputMode)   # 设置对话框的输入模式
+def setIntMaximum (max)                     # 设置int输入框上限值
+def setIntMinimum (min)                     # 设置int输入框下限值
+def setIntRange (min, max)                  # 设置int输入框时的范围
+def setIntStep (step)                       # 设置int输入框上下按钮的步长
+def setIntValue (value)                     # 设置int输入框的值
+def setLabelText (text)                     # 设置Label的文本
+def setOkButtonText (text)                  # 设置OK按钮的文本
+def setOption (option[, on=true])
+def setTextEchoMode (mode)                  # 设置回显模式QLineEdit.Normal\NoEcho\Password\PasswordEchoOnEdit
+def setTextValue (text)                     # 设置text输入框的值
+def testOption (option)
+def textEchoMode ()                         # 获取text输入框的回显模式
+def textValue ()                            # 获取text输入框的值
+
+Signals:
+def doubleValueChanged (value)
+def doubleValueSelected (value)
+def intValueChanged (value)
+def intValueSelected (value)
+def textValueChanged (text)
+def textValueSelected (text)
+
+Static functions:
+def getDouble (parent, title, label, value, minValue, maxValue, decimals, flags, step)
+def getDouble (parent, title, label[, value=0[, minValue=-2147483647[, maxValue=2147483647[, decimals=1[, flags=Qt.WindowFlags()]]]]])
+def getInt (parent, title, label[, value=0[, minValue=-2147483647[, maxValue=2147483647[, step=1[, flags=Qt.WindowFlags()]]]]])
+def getItem (parent, title, label, items[, current=0[, editable=true[, flags=Qt.WindowFlags()[, inputMethodHints=Qt.ImhNone]]]])
+def getMultiLineText (parent, title, label[, text=”“[, flags=Qt.WindowFlags()[, inputMethodHints=Qt.ImhNone]]])
+def getText (parent, title, label[, echo=QLineEdit.Normal[, text=”“[, flags=Qt.WindowFlags()[, inputMethodHints=Qt.ImhNone]]]])
