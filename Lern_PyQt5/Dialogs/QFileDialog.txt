@@ -34,7 +34,7 @@ def setDefaultSuffix (suffix)
 def setDirectory (directory)
 def setDirectory (directory)
 def setDirectoryUrl (directory)
-def setFileMode (FileMode)                      # 设置文件的模式，如果需要选择多个文件时FileMode为QFileDialog.ExistingFiles
+def setFileMode (FileMode)               # 设置文件的模式，如果需要选择多个文件时FileMode为QFileDialog.ExistingFiles
 def setFilter (filters)
 def setHistory (paths)
 def setIconProvider (provider)
@@ -44,7 +44,7 @@ def setMimeTypeFilters (filters)
 def setNameFilter (filter)
 def setNameFilterDetailsVisible (enabled)
 def setNameFilters (filters)
-def setOption (option[, on=true])
+def setOption (option[, on=true])        # 当为设置为Ture,QFileDialog.
 def setOptions (options)
 def setProxyModel (model)
 def setReadOnly (enabled)

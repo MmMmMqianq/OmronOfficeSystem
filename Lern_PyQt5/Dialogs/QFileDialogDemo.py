@@ -40,9 +40,8 @@ class QFileDialogDemo(QMainWindow):
 		OpenFileDialog = QFileDialog(None, "OpenFileDialog对话框的标题", "/Users/qianshaoqing/Documents/Python/Lern_PyQt5/Dialogs",
 		                             "image files(*.png *.jpg *.ico)")
 		OpenFileDialog.setAcceptMode(QFileDialog.AcceptOpen)  # 设置为打开文件模式
-		OpenFileDialog.setOption(True)  # 设置为只能选择文件
+		OpenFileDialog.setOption(True)  # 设置为只能选中文件
 		OpenFileDialog.setFileMode(QFileDialog.ExistingFiles)  # 可选中多个文件
-		OpenFileDialog.setLabelText(QFileDialog.LookIn, "adasda")
 
 		if OpenFileDialog.exec_():  # 点击QFileDialog中cancel时返回0，点击QFileDialog中open时返回1
 			print("1, 获取文件所在目录路径：", OpenFileDialog.directory().path())  # 获取选中文件的目录路径
