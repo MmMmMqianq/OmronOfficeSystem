@@ -1,0 +1,19 @@
+Functions:
+def currentFont ()                  # 获取当前的字体
+def open (receiver, member)
+def options ()
+def selectedFont ()                 # 获取被选择的字体，返回QFont
+def setCurrentFont (font)           # 设置当前的字体
+def setOption (option[, on=true])
+def setOptions (options)
+def testOption (option)
+
+
+Signals:
+def currentFontChanged (font)
+def fontSelected (font)
+
+
+Static functions：
+def getFont (, initial[, parent=None[, title=”“[, options=QFontDialog.FontDialogOptions()]]])
+def getFont ([, parent=None])
