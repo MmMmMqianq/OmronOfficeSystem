@@ -1,0 +1,6 @@
+Slots:
+def showMessage (message)           # 设置错误提示内容
+def showMessage (message, type)
+
+Static functions:
+def qtHandler ()
