@@ -32,7 +32,7 @@ class QProgressDialogDemo(QMainWindow):
 		progressDialog.setCancelButtonText("取消")
 
 		for i in range(0, 10000):
-			progressDialog.setLabelText("加载中...当前文件为:%04d" % i)
+			# progressDialog.setLabelText("加载中...当前文件为:%04d" % i)  # Windows系统上可以显示名字，Mac上会出现进度条不显示的情况
 			for ii in range(0, 50000):
 				if ii == 49999:
 					progressDialog.setValue(i)
