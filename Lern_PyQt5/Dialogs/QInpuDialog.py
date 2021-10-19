@@ -70,7 +70,6 @@ class QInputDialogDemo(QMainWindow):
 		textInputDialog.setInputMode(QInputDialog.TextInput)
 		textInputDialog.setTextEchoMode(QLineEdit.Normal)
 		textInputDialog.setTextValue("哈哈哈hahaha")
-
 		if textInputDialog.exec_():
 			print("3. text输入框内容为：", textInputDialog.textValue())
 
