@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QProgressDialog, QLineEdit, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QProgressDialog, QLineEdit, QPushButton, QLabel
 from PyQt5.QtCore import Qt
 
 
@@ -24,12 +24,13 @@ class QProgressDialogDemo(QMainWindow):
 
 	def showProgressDialog(self):
 		progressDialog = QProgressDialog()
-		progressDialog.setWindowModality(Qt.WindowModal)
+		progressDialog.setWindowModality(Qt.WindowModal)  # 默认是Qt.Application，这种情况主窗口是不能操作的
 		progressDialog.setRange(0, 10000)
 		progressDialog.setMinimumDuration(1)
 		progressDialog.setWindowTitle("ProgressDialog")
 		progressDialog.setLabelText("加载中...")
 		progressDialog.setCancelButtonText("取消")
+		# progressDialog.setLabel(self.label)
 
 		for i in range(0, 10000):
 			# progressDialog.setLabelText("加载中...当前文件为:%04d" % i)  # Windows系统上可以显示名字，Mac上会出现进度条不显示的情况
@@ -38,7 +39,7 @@ class QProgressDialogDemo(QMainWindow):
 					progressDialog.setValue(i)
 			self.cancelButton.clicked.connect(progressDialog.cancel)  # 按下自定义的取消按钮关闭进度条对话框
 			if progressDialog.wasCanceled():  # 按下Cancel按钮时关闭进度条对话框
-				print("1. ", progressDialog.wasCanceled())
+				print("1. ", progressDialog.wasCanceled(),)
 				break
 		progressDialog.setValue(10000)
 

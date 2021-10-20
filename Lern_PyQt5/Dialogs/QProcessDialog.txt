@@ -10,7 +10,7 @@ def setAutoClose (close)
 def setAutoReset (reset)
 def setBar (bar)
 def setCancelButton (button)
-def setLabel (label)                #
+def setLabel (QLabel)               # 设置一个QLabel在QProgressDialog上用于显示一个标签
 def value ()
 def wasCanceled ()                  # 按下Cancel按钮时返回1
 
