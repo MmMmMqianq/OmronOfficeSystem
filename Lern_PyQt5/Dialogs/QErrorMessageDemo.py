@@ -8,19 +8,22 @@ class QErrorMessageDemo(QMainWindow):
 		self.setWindowTitle("这是一个QErrorMessage实例")
 		self.resize(300, 150)
 
-		self.button = QPushButton(self)
-		self.button.setText("弹出 error 对话框")
-		self.button.resize(180, 25)
-		self.button.move(70, 10)
+		self.showErrorButton = QPushButton(self)
+		self.showErrorButton.setText("错误1")
+		self.showErrorButton.resize(180, 25)
+		self.showErrorButton.move(70, 10)
+
+		self.errorButton = QPushButton(self)
+		self.errorButton.setText("错误2")
+		self.errorButton.resize(180, 25)
+		self.errorButton.move(70, 40)
 
 		self.errorMessageDialog = QErrorMessage()
-		self.button.clicked.connect(self.showErrorMessageDialog)
+		self.errorMessageDialog.setWindowTitle("错误提示框标题")
+		self.errorMessageDialog.showMessage("1. 错误提示信息1")
 
-	def showErrorMessageDialog(self):
-		errorMessageDialog = QErrorMessage()
-		errorMessageDialog.setWindowTitle("错误提示框标题")
-		errorMessageDialog.showMessage("1. 错误提示信息1")
-		print(errorMessageDialog.exec_())
+		self.showErrorButton.clicked.connect(lambda: self.errorMessageDialog.showMessage("错误1"))
+		self.errorButton.clicked.connect(lambda: self.errorMessageDialog.showMessage("错误2"))
 
 
 if __name__ == "__main__":
