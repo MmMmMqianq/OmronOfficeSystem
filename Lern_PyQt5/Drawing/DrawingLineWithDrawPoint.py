@@ -1,12 +1,15 @@
 import sys
 import math
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPainter
+from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtWidgets import QWidget, QApplication
 import CoordinateSystemClass
 
 
 class DrawingStraightLine(QWidget):
+	"""
+	使用QPainter.point()方法画出一条直线
+	"""
 	def __init__(self):
 		super(DrawingStraightLine, self).__init__()
 
