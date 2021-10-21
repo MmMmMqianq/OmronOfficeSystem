@@ -19,8 +19,8 @@ def setDashPattern (pattern)    # 当QPen.setStyle(Qt.CustomDashLine)时，可�
 def setJoinStyle (pcs)          # 设置两条线之间的连接样式，线的宽度大于1是才有用
 def setMiterLimit (limit)       # 设置画笔的斜接限制，当setJoinStyle(Qt.MiterJoin)时有效
 def setStyle (arg__1)           # 设置线的样式
-def setWidth (width)            # 设置线的宽度
-def setWidthF (width)
+def setWidth (width)            # 设置线的宽度,width为int类型
+def setWidthF (width)           # 设置线的宽度,width为float类型
 def style ()
 def swap (other)                # 交换两只QPen
 def width ()
