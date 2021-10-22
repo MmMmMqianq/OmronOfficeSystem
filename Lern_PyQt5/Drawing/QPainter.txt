@@ -1,0 +1,13 @@
+QPainter:
+
+可以绘制：
+1. 文本
+2. 各种图形（直线、点、椭圆、弧、扇形、多边形等）
+3. 图像
+
+步骤：
+必须在paintEvent事件方法中绘制各种元素，只要窗口大小发生变化就会自动调用paintEvent事件重新绘制
+painter = QPainter()
+painter.begin()  # 初始化画板
+
+painter.end()

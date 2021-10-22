@@ -1,0 +1,35 @@
+对话框：QDialog
+子类对话框：QAbstractPrintDialog, QPageSetupDialog, QPrintDialog,
+          QPrintPreviewDialog, QColorDialog, QErrorMessage, QFileDialog,
+          QFontDialog, QInputDialog, QMessageBox, QProgressDialog, QWizard
+
+    对话窗口是一个顶级窗口，主要用于短期任务和与用户的简短交流。 QDialogs 可以是模态的或非模态的（setWindowModality(Qt.ApplicationModal)）。
+QDialogs 可以提供返回值，并且它们可以具有默认按钮。 QDialogs 也可以在它们的右下角有一个 QSizeGrip，
+使用 setSizeGripEnabled() 。
+
+Functions:
+def adjustPosition (arg__1)
+def extension ()
+def isSizeGripEnabled ()
+def orientation ()
+def result ()
+def setExtension (extension)
+def setModal (modal)                # 设置应用程序的模态，True时，弹出对话框后主窗口四无法操作的
+def setOrientation (orientation)
+def setResult (r)                   # 获取返回值
+def setSizeGripEnabled (arg__1)
+
+Virtual functions:
+def accept ()                       # 可以将按钮的clicked信号绑定到accept()
+def done (int)                      # 可以将按钮的clicked信号绑定到done(int)
+def exec_ ()                        # 将对话框显示为模态对话框，在用户关闭它之前一直处于阻塞状态。该函数返回一个 DialogCode 结果。
+def open ()                         #
+def reject ()                       # 可以将按钮的clicked信号绑定到reject()
+
+Slots:
+def showExtension (arg__1)
+
+Signals:
+def accepted ()                     # 执行accept()时产生一个信号
+def finished (result)               # 执行accept()、reject()、done()时都会产生一个信号
+def rejected ()                     # 执行reject()时产生一个信号

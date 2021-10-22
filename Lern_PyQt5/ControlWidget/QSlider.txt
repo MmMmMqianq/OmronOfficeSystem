@@ -1,0 +1,17 @@
+Functions:
+def initStyleOption (option)
+def setTickInterval (ti)
+def setTickPosition (position)  # 设置刻度线位置
+def tickInterval ()
+def tickPosition ()
+
+PySide2.QtWidgets.QSlider.TickPosition：
+This enum specifies where the tick marks are to be drawn relative to the slider’s groove and the handle the user moves.
+
+Constant                                               Description
+QSlider.NoTicks                                        Do not draw any tick marks.
+QSlider.TicksBothSides                                 Draw tick marks on both sides of the groove.
+QSlider.TicksAbove                                     Draw tick marks above the (horizontal) slider
+QSlider.TicksBelow                                     Draw tick marks below the (horizontal) slider
+QSlider.TicksLeft                                      Draw tick marks to the left of the (vertical) slider
+QSlider.TicksRight                                     Draw tick marks to the right of the (vertical) slider

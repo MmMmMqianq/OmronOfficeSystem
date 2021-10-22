@@ -1,0 +1,30 @@
+Functions:
+def autoClose ()
+def autoReset ()
+def labelText ()
+def maximum ()                      # 获取开始值
+def minimum ()                      # 获取结束值
+def minimumDuration ()              # 获取几秒后开始显示进度条，默认4秒
+def open (receiver, member)
+def setAutoClose (close)
+def setAutoReset (reset)
+def setBar (bar)
+def setCancelButton (button)
+def setLabel (QLabel)               # 设置一个QLabel在QProgressDialog上用于显示一个标签
+def value ()
+def wasCanceled ()                  # 按下Cancel按钮时返回1
+
+Slots:
+def cancel ()                       # 关闭进度条对话框
+def forceShow ()
+def reset ()
+def setCancelButtonText (text)      # 设置Cancel按钮的文本
+def setLabelText (text)             # 设置提示信息的文本内容
+def setMaximum (maximum)            # 设置进度条的开始
+def setMinimum (minimum)            # 设置进度条的结束，当使用 setMaximum() 设置的值作为参数调用setValue()时，进度对话框显示操作已完成
+def setMinimumDuration (ms)         # 设置几秒后开始显示进度条，默认4秒
+def setRange (minimum, maximum)     # 设置开始到结束的范围
+def setValue (progress)             # 当使用 setMaximum() 设置的值作为参数调用setValue()时，进度对话框显示操作已完成，进度条对话框关闭
+
+Signals:
+def canceled ()

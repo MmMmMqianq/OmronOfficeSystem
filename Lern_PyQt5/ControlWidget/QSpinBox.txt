@@ -1,0 +1,28 @@
+Functions:
+def cleanText ()                    # 检索QSpinBox里的输入值，不包含前缀和后缀
+def displayIntegerBase ()
+def maximum ()                      # 获取QSpinBox上限值
+def minimum ()                      # 获取QSpinBox下限值
+def prefix ()                       # 获取QSpinBox前缀
+def setDisplayIntegerBase (base)
+def setMaximum (max)                # 设置QSpinBox上限值
+def setMinimum (min)                # 设置QSpinBox下限值
+def setPrefix (prefix)              #
+def setRange (min, max)             # 设置QSpinBox上下限值
+def setSingleStep (val)             # 设置上下箭头每按一次步长
+def setStepType (stepType)          #
+def setSuffix (suffix)              #
+def singleStep ()                   # 获取上下箭头每按一次的步长
+def stepType ()                     #
+def suffix ()                       # 获取QSpinBox后缀
+def value ()                        # 获取QSpinBox当前值
+
+Virtual functions:
+def textFromValue (val)
+def valueFromText (text)
+
+Slots:
+def setValue (val)                  # 设置QSpinBox当前值
+
+Signals:
+def valueChanged (arg__1)           # QSpinBox当前值放生改变时产生一个信号

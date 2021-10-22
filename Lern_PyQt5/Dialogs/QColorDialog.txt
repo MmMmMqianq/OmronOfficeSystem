@@ -1,0 +1,21 @@
+Functions:
+def currentColor ()
+def open (receiver, member)
+def options ()
+def selectedColor ()
+def setCurrentColor (color)
+def setOption (option[, on=true])
+def setOptions (options)
+def testOption (option)
+
+Signals:
+def colorSelected (color)
+def currentColorChanged (color)
+
+Static functions:
+def customColor (index)
+def customCount ()
+def getColor ([initial=Qt.white[, parent=None[, title=”“[, options=QColorDialog.ColorDialogOptions()]]]])
+def setCustomColor (index, color)
+def setStandardColor (index, color)
+def standardColor (index)

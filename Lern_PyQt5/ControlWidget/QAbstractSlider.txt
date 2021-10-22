@@ -1,0 +1,62 @@
+QAbstractSlider该类被设计为 QScrollBar 、 QSlider 和 QDial 等小部件的通用超类。
+
+Functions:
+def hasTracking ()                          # 时候启用了滑块跟踪
+def invertedAppearance ()
+def invertedControls ()
+def isSliderDown ()
+def maximum ()                              # 获取滑块最大值
+def minimum ()                              # 获取滑块最小值
+def orientation ()                          # 获取滑块控件是水平的还是垂直的
+def pageStep ()                             # 获取用户按下 PageUp 或 PageDown时的步数
+def repeatAction ()
+def setInvertedAppearance (arg__1)
+def setInvertedControls (arg__1)
+def setMaximum (arg__1)                     # 设置滑块范围最大值
+def setMinimum (arg__1)                     # 设置滑块范围最小值
+def setPageStep (arg__1)                    # 设置用户按下 PageUp 或 PageDown时的步数
+def setRepeatAction (action[, thresholdTime=500[, repeatTime=50]])
+def setSingleStep (arg__1)                  # 设置用户按下箭头键时的步数
+def setSliderDown (arg__1)                  #
+def setSliderPosition (arg__1)              # 设置滑块的位置
+def setTracking (enable)                    # 设置滑块跟踪
+def singleStep ()                           # 获取用户按下箭头键时的步数
+def sliderPosition ()                       # 获取滑块的位置值，如果启用了跟踪（默认），则这与 value 相同
+def triggerAction (action)
+def value ()                                # 获取滑块的当前值
+
+
+Virtual functions:
+def sliderChange (change)
+
+
+Slots:
+def setOrientation (arg__1)                 # 设置滑块控件为水平还是垂直的
+def setRange (min, max)                     # 设置滑块的最大值和最小值的方法
+def setValue (arg__1)                       # 设置滑块的当前值
+
+
+Signals:
+def actionTriggered (action)
+def rangeChanged (min, max)                 # 最大值和最小值发生变化时产生一个信号
+def sliderMoved (position)                  # 滑块移动是产生一个信号
+def sliderPressed ()                        # 滑块按下时产生一个信号
+def sliderReleased ()                       # 滑块松开时产生一个信号
+def valueChanged (value)                    # 滑块当前值发生变化时产生一个信号
+
+
+PySide2.QtWidgets.QAbstractSlider.SliderAction：
+QAbstractSlider.SliderNoAction
+QAbstractSlider.SliderSingleStepAdd
+QAbstractSlider.SliderSingleStepSub
+QAbstractSlider.SliderPageStepAdd
+QAbstractSlider.SliderPageStepSub
+QAbstractSlider.SliderToMinimum
+QAbstractSlider.SliderToMaximum
+QAbstractSlider.SliderMove
+
+PySide2.QtWidgets.QAbstractSlider.SliderChange：
+QAbstractSlider.SliderRangeChange
+QAbstractSlider.SliderOrientationChange
+QAbstractSlider.SliderStepsChange
+QAbstractSlider.SliderValueChange

@@ -1,0 +1,19 @@
+Functions:
+def __eq__ (b)
+def __ne__ (b)
+def color ()
+def gradient ()                 # 返回描述此画笔的渐变
+def isOpaque ()                 # 如果画笔完全不透明，则返回 true，否则返回 false
+def matrix ()
+def setColor (QColor)            # 设置QBrush的颜色
+def setColor (color)
+def setMatrix (mat)             #
+def setStyle (arg__1)           # 设置QBrush的风格
+def setTexture (QPixmap)        # 设置像素图作为纹理
+def setTextureImage (QImage)    # 设置图片作为纹理
+def setTransform (arg__1)
+def style ()
+def swap (QBrush)               # 当前的QBrush和另外一个QBrush交换
+def texture ()                  # 返回自定义画笔图案QPixmap，如果未设置自定义画笔图案，则返回空像素图。
+def textureImage ()             # 返回自定义画笔图案QImage，如果未设置自定义画笔图案，则返回空图像。 如果纹理被设置为 QPixmap ，它将被转换为 QImage
+def transform ()

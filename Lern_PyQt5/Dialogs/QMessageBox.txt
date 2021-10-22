@@ -1,0 +1,53 @@
+Functions:
+def addButton (button)
+def addButton (button, role)            # 添加按钮，并且指定按钮的角色
+def addButton (text, role)
+def button (which)                      #
+def buttonRole (button)                 # 获取指定按钮的角色
+def buttonText (button)                 # 获取按钮的显示文本????提示没有这个方法
+def buttons ()
+def checkBox ()
+def clickedButton ()
+def defaultButton ()
+def detailedText ()
+def escapeButton ()
+def icon ()
+def iconPixmap ()
+def informativeText ()
+def open (receiver, member)
+def removeButton (button)
+def setButtonText (button, text)
+def setCheckBox (QCheckBox)             # 添加一个QCheckBox到QMessage上
+def setDefaultButton (button)
+def setDefaultButton (button)
+def setDetailedText (text)              # 添加Show Details...按钮和显示框
+def setEscapeButton (button)            # 设置一个按钮在ESC键按下时被触发
+def setEscapeButton (button)
+def setIcon (QMessageBox.Icon)          # 设置QMessageBox自带的图标
+def setIconPixmap (QPixmap)              # 为QMessageBox自定义的像素图
+def setInformativeText (text)           # 设置QMessageBox的问题内容
+def setStandardButtons (buttons)
+def setText (text)                      # 设置QMessageBox的提示信息
+def setTextFormat (format)
+def setTextInteractionFlags (flags)
+def standardButton (button)
+def standardButtons ()
+def text ()
+def textFormat ()
+def textInteractionFlags ()
+
+Signals:
+def buttonClicked (button)              # 按钮被按下时产生一个信号
+
+Static functions:
+def about (parent, title, text)
+def aboutQt (parent[, title=”“])
+def critical (parent, title, text, button0, button1)
+def critical (parent, title, text[, buttons=QMessageBox.Ok[, defaultButton=NoButton]])
+def information (parent, title, text, button0[, button1=NoButton])
+def information (parent, title, text[, buttons=QMessageBox.Ok[, defaultButton=NoButton]])
+def question (parent, title, text, button0, button1)
+def question (parent, title, text[, buttons=QMessageBox.StandardButtons(Yes | No)[, defaultButton=NoButton]])
+def standardIcon (icon)
+def warning (parent, title, text, button0, button1)
+def warning (parent, title, text[, buttons=QMessageBox.Ok[, defaultButton=NoButton]])

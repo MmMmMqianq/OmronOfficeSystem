@@ -1,0 +1,27 @@
+Functions:
+def __eq__ (Qpen)               # 如果pen等于给定的pen,则返回true ；否则为假。如果两支钢笔具有相同的样式、宽度和颜色，则它们是相同的
+def __ne__ (p)                  # 如果pen与给定的pen不同，则返回True；否则为假。如果两支笔的样式、宽度或颜色不同，则它们是不同的
+def brush ()
+def capStyle ()
+def color ()
+def dashOffset ()
+def dashPattern ()
+def isCosmetic ()
+def isSolid ()                  # 判断是否为实线
+def joinStyle ()
+def miterLimit ()
+def setBrush (brush)            # 给QPen设置一个QBrush
+def setCapStyle (pcs)           # 设置画笔末端的样式，可设置为圆角等
+def setColor (color)            # 设置QPen的颜色
+def setCosmetic (cosmetic)
+def setDashOffset (doffset)     #
+def setDashPattern (pattern)    # 当QPen.setStyle(Qt.CustomDashLine)时，可以通过setDashPattern(pattern)方法自定义画出线的样式，pattern是个列表
+def setJoinStyle (pcs)          # 设置两条线之间的连接样式，线的宽度大于1是才有用
+def setMiterLimit (limit)       # 设置画笔的斜接限制，当setJoinStyle(Qt.MiterJoin)时有效
+def setStyle (arg__1)           # 设置线的样式
+def setWidth (width)            # 设置线的宽度,width为int类型
+def setWidthF (width)           # 设置线的宽度,width为float类型
+def style ()
+def swap (other)                # 交换两只QPen
+def width ()
+def widthF ()
