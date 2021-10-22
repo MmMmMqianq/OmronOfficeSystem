@@ -25,20 +25,20 @@ class QRadioButtonDemo(QWidget):
 		self.h_layout.addWidget(self.label_male)
 		self.h_layout.addWidget(self.radio_button_male)
 
-		# self.label_male.setParent(self.group_box_1)
-		# self.radio_button_male.setParent(self.group_box_1)
-		# self.h_layout.setParent(self.group_box_1)
+		self.label_male.setParent(self.group_box_1)
+		self.radio_button_male.setParent(self.group_box_1)
+		self.h_layout.setParent(self.group_box_1)
 
-		# self.g_layout = QGridLayout(self)
-		# self.g_layout.addWidget(self.label_male, 0, 0, 1, 1)
-		# self.g_layout.addWidget(self.radio_button_male, 0, 1, 1, 1)
-		# self.g_layout.addWidget(self.label_female, 0, 2, 1, 1)
-		# self.g_layout.addWidget(self.radio_button_female, 0, 3, 1, 1)
-		#
-		# self.g_layout.addWidget(self.label_male1, 1, 0, 1, 1)
-		# self.g_layout.addWidget(self.radio_button_male1, 1, 1, 1, 1)
-		# self.g_layout.addWidget(self.label_female1, 1, 2, 1, 1)
-		# self.g_layout.addWidget(self.radio_button_female1, 1, 3, 1, 1)
+		self.g_layout = QGridLayout(self)
+		self.g_layout.addWidget(self.label_male, 0, 0, 1, 1)
+		self.g_layout.addWidget(self.radio_button_male, 0, 1, 1, 1)
+		self.g_layout.addWidget(self.label_female, 0, 2, 1, 1)
+		self.g_layout.addWidget(self.radio_button_female, 0, 3, 1, 1)
+
+		self.g_layout.addWidget(self.label_male1, 1, 0, 1, 1)
+		self.g_layout.addWidget(self.radio_button_male1, 1, 1, 1, 1)
+		self.g_layout.addWidget(self.label_female1, 1, 2, 1, 1)
+		self.g_layout.addWidget(self.radio_button_female1, 1, 3, 1, 1)
 
 
 if __name__ == "__main__":
