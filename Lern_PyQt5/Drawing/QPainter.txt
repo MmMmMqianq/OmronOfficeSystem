@@ -6,11 +6,19 @@ QPainter:
 3. 图像
 
 步骤：
-必须在paintEvent事件方法中绘制各种元素，只要窗口大小发生变化就会自动调用paintEvent事件重新绘制
 painter = QPainter()
 painter.begin()  # 初始化画板
 
 painter.end()
+
+当发生一下情况时会产生绘制事件并调用paintEvent()函数:
+1.在窗口部件第一次显示时，系统会自动产生一个绘图事件，从而强制绘制这个窗口部件。
+2.当重新调整窗口部件的大小时，系统也会产生一个绘制事件。
+3.当窗口部件被其他窗口部件遮挡，然后又再次显示出来的时候，就会对那些隐藏的区域产生一个绘制事件。
+同时可以调用QWidget::update()或者QWidget::repaint()来强制产生一个绘制事件。二者的区别是:
+repaint()函数会强制产生一个即时的重绘事件,而update()函数只是在Qt下一次处理事件时才调用一次绘制事件。
+如果多次调用update(),Qt会把连续多次的绘制事件压缩成一个单一的绘制事件，这样可避免闪烁现象。
+
 
 Functions¶
 def background ()
@@ -99,7 +107,7 @@ def drawPolyline (arg__1)                               # 画交叉线
 def drawPolyline (arg__1)
 def drawPolyline (polygon)
 def drawPolyline (polyline)
-def drawRect (rect)                                     # 画矩形
+def drawRect (QRect)                                     # 画矩形
 def drawRect (rect)
 def drawRect (x1, y1, w, h)
 def drawRects (rectangles)                              # 画长方形
@@ -117,17 +125,11 @@ def drawText (p, s)                                     # 画文本
 def drawText (p, s)
 def drawText (r, flags, text)
 def drawText (r, flags, text)
-
 def drawText (r, text[, o=QTextOption()])
-
 def drawText (x, y, s)
-
 def drawText (x, y, w, h, flags, text)
-
 def drawTextItem (p, ti)
-
 def drawTextItem (p, ti)
-
 def drawTextItem (x, y, ti)
 
 def drawTiledPixmap (arg__1, arg__2[, pos=QPoint()])
@@ -188,7 +190,7 @@ def hasClipping ()
 
 def initFrom (device)
 
-def isActive ()
+def isActive ()                         # 执行QPainter.begin()后为True，QPainter.end()后为False
 
 def layoutDirection ()
 
