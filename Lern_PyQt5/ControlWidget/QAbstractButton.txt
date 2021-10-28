@@ -9,8 +9,8 @@ def autoRepeatInterval ()
 def group ()                            # 获取按钮属于那个按钮
 def icon ()                             # 获取图标
 def iconSize ()                         # 获取按钮大小
-def isCheckable ()                      # 获取按钮是否被选中，按下去没有弹起来按钮处于选中状态
-def isChecked ()
+def isCheckable ()                      #
+def isChecked ()                        # 当isChecked=True时，获取按钮是否被选中，按下去没有弹起来按钮处于选中状态
 def isDown ()                           # 获取按钮是否被按下
 def setAutoExclusive (arg__1)
 def setAutoRepeat (arg__1)
@@ -38,6 +38,6 @@ def toggle ()                           # 切换可检查按钮的状态
 
 Signals:
 def clicked ([checked=false])           # 按下去松开为clicked
-def pressed ()                          # 按下去为pressed
-def released ()                         # 松开按钮为released
-def toggled (checked)                   # 按钮有变化时，ON→OFF或者OFF→ON产生一个信号
+def pressed ()                          # 按下去过程为pressed
+def released ()                         # 松开按钮过程为released
+def toggled (checked)                   # 按钮有变化时，ON→OFF或者OFF→ON产生一个信号(一般QPushButton=True时用)

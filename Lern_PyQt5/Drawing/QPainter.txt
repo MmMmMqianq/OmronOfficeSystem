@@ -6,8 +6,313 @@ QPainter:
 3. 图像
 
 步骤：
-必须在paintEvent事件方法中绘制各种元素，只要窗口大小发生变化就会自动调用paintEvent事件重新绘制
 painter = QPainter()
 painter.begin()  # 初始化画板
 
 painter.end()
+
+当发生一下情况时会产生绘制事件并调用paintEvent()函数:
+1.在窗口部件第一次显示时，系统会自动产生一个绘图事件，从而强制绘制这个窗口部件。
+2.当重新调整窗口部件的大小时，系统也会产生一个绘制事件。
+3.当窗口部件被其他窗口部件遮挡，然后又再次显示出来的时候，就会对那些隐藏的区域产生一个绘制事件。
+同时可以调用QWidget::update()或者QWidget::repaint()来强制产生一个绘制事件。二者的区别是:
+repaint()函数会强制产生一个即时的重绘事件,而update()函数只是在Qt下一次处理事件时才调用一次绘制事件。
+如果多次调用update(),Qt会把连续多次的绘制事件压缩成一个单一的绘制事件，这样可避免闪烁现象。
+
+
+Functions¶
+def background ()
+def backgroundMode ()
+def begin (arg__1)
+def beginNativePainting ()
+def boundingRect (rect, flags, text)
+def boundingRect (rect, flags, text)
+def boundingRect (rect, text[, o=QTextOption()])
+def boundingRect (x, y, w, h, flags, text)
+def brush ()
+def brushOrigin ()
+def clipBoundingRect ()
+def clipPath ()
+def clipRegion ()
+def combinedMatrix ()
+def combinedTransform ()
+def compositionMode ()
+def device ()                                           # 获取当前使用的设备
+def deviceMatrix ()
+def deviceTransform ()
+def drawArc (QRect, a, alen)                           # 画弧线, a为起始的角度，alen为弧线的角度的最小单位（1/16度）
+def drawArc (rect, a, alen)
+def drawArc (x, y, w, h, a, alen)
+def drawChord (arg__1, a, alen)                         # 画弦
+def drawChord (rect, a, alen)
+def drawChord (x, y, w, h, a, alen)
+def drawConvexPolygon (arg__1)                          # 画凸多边形
+def drawConvexPolygon (arg__1)
+def drawConvexPolygon (polygon)
+def drawConvexPolygon (polygon)
+def drawEllipse (center, rx, ry)                        # 画椭圆
+def drawEllipse (center, rx, ry)
+def drawEllipse (r)
+def drawEllipse (r)
+def drawEllipse (x, y, w, h)
+def drawImage (p, image)                                # 画图片
+def drawImage (p, image)
+def drawImage (p, image, sr[, flags=Qt.AutoColor])
+def drawImage (p, image, sr[, flags=Qt.AutoColor])
+def drawImage (r, image)
+def drawImage (r, image)
+def drawImage (targetRect, image, sourceRect[, flags=Qt.AutoColor])
+def drawImage (targetRect, image, sourceRect[, flags=Qt.AutoColor])
+def drawImage (x, y, image[, sx=0[, sy=0[, sw=-1[, sh=-1[, flags=Qt.AutoColor]]]]])
+def drawLine (line)                                     # 画直线
+def drawLine (line)
+def drawLine (p1, p2)
+def drawLine (p1, p2)
+def drawLine (x1, y1, x2, y2)
+def drawLines (lines)
+def drawLines (lines)
+def drawLines (pointPairs)
+def drawLines (pointPairs)
+def drawPath (path)                                     # 画路径
+def drawPicture (p, picture)
+def drawPicture (p, picture)
+def drawPicture (x, y, picture)
+def drawPie (arg__1, a, alen)                           # 画pie
+def drawPie (rect, a, alen)
+def drawPie (x, y, w, h, a, alen)
+def drawPixmap (p, pm)                                  # 画像素图
+def drawPixmap (p, pm)
+def drawPixmap (p, pm, sr)
+def drawPixmap (p, pm, sr)
+def drawPixmap (r, pm)
+def drawPixmap (targetRect, pixmap, sourceRect)
+def drawPixmap (targetRect, pixmap, sourceRect)
+def drawPixmap (x, y, pm)
+def drawPixmap (x, y, pm, sx, sy, sw, sh)
+def drawPixmap (x, y, w, h, pm)
+def drawPixmap (x, y, w, h, pm, sx, sy, sw, sh)
+def drawPixmapFragments (fragments, fragmentCount, pixmap[, hints=QPainter.PixmapFragmentHints()])
+def drawPoint (p)                                       # 画点
+def drawPoint (pt)
+def drawPoint (x, y)
+def drawPoints (arg__1)                                 # 画多个点
+def drawPoints (arg__1)
+def drawPoints (points)
+def drawPoints (points)
+def drawPolygon (arg__1, arg__2)                        # 画多边形
+def drawPolygon (arg__1, arg__2)
+def drawPolygon (polygon[, fillRule=Qt.OddEvenFill])
+def drawPolygon (polygon[, fillRule=Qt.OddEvenFill])
+def drawPolyline (arg__1)                               # 画交叉线
+def drawPolyline (arg__1)
+def drawPolyline (polygon)
+def drawPolyline (polyline)
+def drawRect (QRect)                                     # 画矩形
+def drawRect (rect)
+def drawRect (x1, y1, w, h)
+def drawRects (rectangles)                              # 画长方形
+def drawRects (rectangles)
+def drawRoundRect (r[, xround=25[, yround=25]])         # 画圆角矩形
+def drawRoundRect (r[, xround=25[, yround=25]])
+def drawRoundRect (x, y, w, h[, xRound=25[, yRound=25]])
+def drawRoundedRect (rect, xRadius, yRadius[, mode=Qt.AbsoluteSize])
+def drawRoundedRect (rect, xRadius, yRadius[, mode=Qt.AbsoluteSize])
+def drawRoundedRect (x, y, w, h, xRadius, yRadius[, mode=Qt.AbsoluteSize])
+def drawStaticText (left, top, staticText)              # 画静态文本
+def drawStaticText (topLeftPosition, staticText)
+def drawStaticText (topLeftPosition, staticText)
+def drawText (p, s)                                     # 画文本
+def drawText (p, s)
+def drawText (r, flags, text)
+def drawText (r, flags, text)
+def drawText (r, text[, o=QTextOption()])
+def drawText (x, y, s)
+def drawText (x, y, w, h, flags, text)
+def drawTextItem (p, ti)
+def drawTextItem (p, ti)
+def drawTextItem (x, y, ti)
+
+def drawTiledPixmap (arg__1, arg__2[, pos=QPoint()])
+
+def drawTiledPixmap (rect, pm[, offset=QPointF()])
+
+def drawTiledPixmap (x, y, w, h, arg__5[, sx=0[, sy=0]])
+
+def end ()
+
+def endNativePainting ()
+
+def eraseRect (arg__1)
+
+def eraseRect (arg__1)
+
+def eraseRect (x, y, w, h)
+
+def fillPath (path, brush)                                # 填充路径
+
+def fillRect (arg__1, arg__2)                             # 填充矩形
+
+def fillRect (arg__1, arg__2)
+
+def fillRect (arg__1, color)
+
+def fillRect (arg__1, color)
+
+def fillRect (r, c)
+
+def fillRect (r, c)
+
+def fillRect (r, preset)
+
+def fillRect (r, preset)
+
+def fillRect (r, style)
+
+def fillRect (r, style)
+
+def fillRect (x, y, w, h, arg__5)
+
+def fillRect (x, y, w, h, c)
+
+def fillRect (x, y, w, h, color)
+
+def fillRect (x, y, w, h, preset)
+
+def fillRect (x, y, w, h, style)
+
+def font ()
+
+def fontInfo ()
+
+def fontMetrics ()
+
+def hasClipping ()
+
+def initFrom (device)
+
+def isActive ()                         # 执行QPainter.begin()后为True，QPainter.end()后为False
+
+def layoutDirection ()
+
+def matrix ()
+
+def matrixEnabled ()
+
+def opacity ()
+
+def paintEngine ()
+
+def pen ()
+
+def renderHints ()
+
+def resetMatrix ()
+
+def resetTransform ()
+
+def restore ()
+
+def rotate (a)
+
+def save ()
+
+def scale (sx, sy)
+
+def setBackground (bg)
+
+def setBackgroundMode (mode)
+
+def setBrush (brush)                                    # 设置画刷
+
+def setBrush (style)
+
+def setBrushOrigin (arg__1)
+
+def setBrushOrigin (arg__1)
+
+def setBrushOrigin (x, y)
+
+def setClipPath (path[, op=Qt.ReplaceClip])
+
+def setClipRect (arg__1[, op=Qt.ReplaceClip])
+
+def setClipRect (arg__1[, op=Qt.ReplaceClip])
+
+def setClipRect (x, y, w, h[, op=Qt.ReplaceClip])
+
+def setClipRegion (arg__1[, op=Qt.ReplaceClip])
+
+def setClipping (enable)
+
+def setCompositionMode (mode)
+
+def setFont (f)                                         # 设置字体
+
+def setLayoutDirection (direction)
+
+def setMatrix (matrix[, combine=false])
+
+def setMatrixEnabled (enabled)
+
+def setOpacity (opacity)
+
+def setPen (color)                                      # 设置画笔
+
+def setPen (pen)
+
+def setPen (style)
+
+def setRenderHint (hint[, on=true])
+
+def setRenderHints (hints[, on=true])
+
+def setTransform (transform[, combine=false])
+
+def setViewTransformEnabled (enable)
+
+def setViewport (viewport)
+
+def setViewport (x, y, w, h)
+
+def setWindow (window)
+
+def setWindow (x, y, w, h)
+
+def setWorldMatrix (matrix[, combine=false])
+
+def setWorldMatrixEnabled (enabled)
+
+def setWorldTransform (matrix[, combine=false])
+
+def shear (sh, sv)
+
+def strokePath (path, pen)
+
+def testRenderHint (hint)
+
+def transform ()
+
+def translate (dx, dy)
+
+def translate (offset)
+
+def translate (offset)
+
+def viewTransformEnabled ()
+
+def viewport ()
+
+def window ()
+
+def worldMatrix ()
+
+def worldMatrixEnabled ()
+
+def worldTransform ()
+
+Static functions¶
+def redirected (device[, offset=None])
+
+def restoreRedirected (device)
+
+def setRedirected (device, replacement[, offset=QPoint()])
