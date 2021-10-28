@@ -1,0 +1,59 @@
+Functions:
+def calendarPopup ()
+def calendarWidget ()
+def clearMaximumDate ()
+def clearMaximumDateTime ()
+def clearMaximumTime ()
+def clearMinimumDate ()
+def clearMinimumDateTime ()
+def clearMinimumTime ()
+def currentSection ()
+def currentSectionIndex ()
+def date ()                                 # 获取日期
+def dateTime ()                             # 获取日期和时间
+def displayFormat ()
+def displayedSections ()
+def maximumDate ()
+def maximumDateTime ()
+def maximumTime ()
+def minimumDate ()
+def minimumDateTime ()
+def minimumTime ()
+def sectionAt (index)                       #
+def sectionCount ()
+def sectionText (QDateTime.Section)         # 获取指定Section的值
+def setCalendarPopup (enable)               # 设置弹出日历
+def setCalendarWidget (calendarWidget)
+def setCurrentSection (section)             # 设置当前Section的值
+def setCurrentSectionIndex (index)
+def setDateRange (min, max)                 # 设置日期的范围
+def setDateTimeRange (QDateTime, QDateTime) # 设置日期和时间的范围
+def setDisplayFormat (format)               # 设置时间的显示格式，y表示年，M表示月，d表示天，h表示12时制的时，H表示24时制的时，m表示分，s表示秒
+def setMaximumDate (max)                    # 设置日期的最大值
+def setMaximumDateTime (dt)                 # 设置日期和时间的最大值
+def setMaximumTime (max)                    # 设置时间的最大值
+def setMinimumDate (min)                    # 设置日期的最小值
+def setMinimumDateTime (dt)                 # 设置日期和时间的最小值
+def setMinimumTime (min)                    # 设置时间的最小值
+def setSelectedSection (section)
+def setTimeRange (min, max)                 # 设置时间的范围
+def setTimeSpec (spec)                      # 设置为UTC时间还是LocalTime(Qt.UTC/LocalTime)
+def time ()                                 # 获取时间
+def timeSpec ()
+
+
+Virtual functions:
+def dateTimeFromText (text)
+def textFromDateTime (dt)
+
+
+Slots:
+def setDate (date)                          # 设置日期
+def setDateTime (dateTime)                  # 设置日期和时间
+def setTime (time)                          # 设置时间
+
+
+Signals:
+def dateChanged (date)                      # 日期发生变化时产生一个信号
+def dateTimeChanged (dateTime)              # 日期和时间发生变化时产生一个型号
+def timeChanged (time)                      # 时间发生变化时产生一个信号
