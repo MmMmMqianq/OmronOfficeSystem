@@ -1,0 +1,55 @@
+QDate(y,m,d)                                         # y为年，m为月，d为日
+
+Functions:
+def dateEditAcceptDelay ()                           #
+def dateTextFormat ()
+def dateTextFormat (date)
+def firstDayOfWeek ()
+def headerTextFormat ()
+def horizontalHeaderFormat ()
+def isDateEditEnabled ()
+def isGridVisible ()
+def isNavigationBarVisible ()
+def maximumDate ()
+def minimumDate ()
+def monthShown ()
+def selectedDate ()                                 # 返回被选中的日期
+def selectionMode ()                                # 返回日历中的日期是否可以被选中
+def setDateEditAcceptDelay (delay)
+def setDateEditEnabled (enable)
+def setDateTextFormat (date, format)
+def setFirstDayOfWeek (Qt.DayOfWeek)                # 设置每周的第一天是星期几
+def setHeaderTextFormat (format)
+def setHorizontalHeaderFormat (format)              # 设置水平抬头的格式，即星期名字显示格式（首字母、缩写、全名、无水平抬头）
+def setMaximumDate (QDate)                          # 设置日历的最大日期
+def setMinimumDate (QDate)                          # 设置日历的最小日期
+def setSelectionMode (bool)                         # 设置日历中的日期是否可被选中
+def setVerticalHeaderFormat (format)                # 设置纵向抬头的格式，时候显示一年中的第几周
+def setWeekdayTextFormat (dayOfWeek, format)
+def updateCell (date)
+def updateCells ()
+def verticalHeaderFormat ()
+def weekdayTextFormat (dayOfWeek)
+def yearShown ()
+
+Virtual functions:
+def paintCell (painter, rect, date)
+
+Slots:
+def setCurrentPage (year, month)
+def setDateRange (min, max)                         # 设置日期的范围,min和max为QDate
+def setGridVisible (show)                           # 设置是否显示网格
+def setNavigationBarVisible (visible)               # 设置日历顶部的导航栏是否显示（选择月份和年份的那一栏）
+def setSelectedDate (date)                          # 设置选中的日期
+def showNextMonth ()                                # 日历中显示的是当前日期的下一个月所在页，不会改变被选中的日期
+def showNextYear ()                                 # 日历中显示的是当前日期的下一个年所在页
+def showPreviousMonth ()                            # 日历中显示的是当前日期的上一个月所在页
+def showPreviousYear ()                             # 日历中显示的是当前日期的上一个年所在页
+def showSelectedDate ()                             # 日历中显示被选择的日期所在页
+def showToday ()                                    # 日历中显示的是当天的日期所在页
+
+Signals:
+def activated (date)
+def clicked (date)                                  # 单击日期是产生一个信号
+def currentPageChanged (year, month)                # 当前页面变化时产生一个信号
+def selectionChanged ()                             # 日期被选中是产生一个信号

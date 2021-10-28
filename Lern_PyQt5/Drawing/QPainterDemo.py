@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
-from PyQt5.QtGui import QPainter, QPen, QBrush, QPolygonF, QImage, QPixmap, QStaticText, QFont
+from PyQt5.QtGui import QPaintEvent, QPainter, QPen, QBrush, QPolygonF, QImage, QPixmap, QStaticText, QFont
 from PyQt5.QtCore import Qt, QRectF, QPointF, QSizeF, QRect
 
 
@@ -19,7 +19,7 @@ class QPainterDemo(QWidget):
 		# self.eraseButton.toggled.connect(self.update)  # QWidget.update()/repaint()会自动调用paintEvent事件
 		self.eraseButton.toggled.connect(self.repaint)
 
-	def paintEvent(self, event):
+	def paintEvent(self, event: QPaintEvent):
 		painter = QPainter()
 
 		pen1 = QPen()

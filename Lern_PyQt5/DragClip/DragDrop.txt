@@ -1,0 +1,8 @@
+本次实例中被拖拽对象为QLineEdit，被放入的对象为QComboBox
+
+1. 创建被放置的对象（QComboBox）
+2. 该对象设置为可放置，QComboBox.setAcceptDrops(True)
+3. 定义拖入后执行的动作，满足条件的执行event.accept(),不满足条件的拖入动作event.ignore()
+4. 定义放下后执行的动作：def dropEvent(self, e: QDropEvent):
+
+5. 被拖拽对象设置为可拖拽 QLineEdit.setDragEnabled(True)
