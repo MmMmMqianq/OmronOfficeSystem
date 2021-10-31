@@ -23,6 +23,6 @@ with open(r'C:\Users\sqqian.GC\Desktop\1.txt', 'w+', buffering=-1) as file1:  # 
                                                                              # buffering>1时，固定缓存区大小，缓存区满了才会将数据写到磁盘；
                                                                              # buffering=-1.txt(default)，使用默认的缓存区大小，缓存区满了才会将数据写到磁盘
     file1.write(input('输入：')+'\n')
-    # file1.flush()  # 立即刷新，缓存里的数据会立刻写到磁盘；
+    # file1Action.flush()  # 立即刷新，缓存里的数据会立刻写到磁盘；
     input('请输入：')
 
