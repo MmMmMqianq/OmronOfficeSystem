@@ -21,7 +21,7 @@ class QComboBoxDemo(QWidget):
         self.combo_box.move(50, 50)
         # 设置最大的Item数
         self.combo_box.setMaxCount(20)
-        # 将ConboBox设置为可编辑的，编辑后的CurrentText会发生变化，index不会发生变化，为编辑前的Item索引。
+        # 将ComboBox设置为可编辑的，编辑后的CurrentText会发生变化，index不会发生变化，为编辑前的Item索引。
         line_edit = QLineEdit()
         self.combo_box.setLineEdit(line_edit)
         # 设置最小的文本长度，可以用于设定ComboBox的长度
