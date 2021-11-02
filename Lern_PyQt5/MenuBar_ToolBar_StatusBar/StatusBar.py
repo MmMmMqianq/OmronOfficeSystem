@@ -29,7 +29,7 @@ class StatusBarDemo(QMainWindow):
 
 	def showButtonInfo(self):
 		sender = self.sender()
-		print(sender)
+		print(sender )
 		buttonName = sender.text()
 		buttonHeight = sender.size().height()
 		buttonWidth = sender.size().width()
