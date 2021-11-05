@@ -28,8 +28,10 @@ class StatusBarDemo(QMainWindow):
 		vLayout.addWidget(self.button3)
 		self.setCentralWidget(self.centralWidget)
 
+		# 创建状态栏
 		self.statusBar = QStatusBar()
 		self.statusBar.setWindowTitle("状态栏")
+		# 将状态栏设置到窗口
 		self.setStatusBar(self.statusBar)
 
 		self.button1.clicked.connect(self.showButtonInfo)

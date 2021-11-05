@@ -1,0 +1,171 @@
+Functions:
+def accessibleDescription ()
+
+def accessibleText ()
+
+def appendColumn (items)
+
+def appendRow (item)
+
+def appendRow (items)
+
+def appendRows (items)
+
+def background ()
+
+def checkState ()
+
+def child (row[, column=0])
+
+def clearData ()
+
+def column ()
+
+def columnCount ()
+
+def emitDataChanged ()
+
+def flags ()
+
+def font ()
+
+def foreground ()
+
+def hasChildren ()
+
+def icon ()
+
+def index ()
+
+def insertColumn (column, items)
+
+def insertColumns (column, count)
+
+def insertRow (row, item)
+
+def insertRow (row, items)
+
+def insertRows (row, count)
+
+def insertRows (row, items)
+
+def isAutoTristate ()
+
+def isCheckable ()
+
+def isDragEnabled ()
+
+def isDropEnabled ()
+
+def isEditable ()
+
+def isEnabled ()
+
+def isSelectable ()
+
+def isTristate ()
+
+def isUserTristate ()
+
+def model ()
+
+def parent ()
+
+def removeColumn (column)
+
+def removeColumns (column, count)
+
+def removeRow (row)
+
+def removeRows (row, count)
+
+def row ()
+
+def rowCount ()
+
+def setAccessibleDescription (accessibleDescription)
+
+def setAccessibleText (accessibleText)
+
+def setAutoTristate (tristate)
+
+def setBackground (brush)
+
+def setCheckState (checkState)
+
+def setCheckable (checkable)
+
+def setChild (row, column, item)
+
+def setChild (row, item)
+
+def setColumnCount (columns)
+
+def setDragEnabled (dragEnabled)
+
+def setDropEnabled (dropEnabled)
+
+def setEditable (editable)
+
+def setEnabled (enabled)
+
+def setFlags (flags)
+
+def setFont (font)
+
+def setForeground (brush)
+
+def setIcon (icon)
+
+def setRowCount (rows)
+
+def setSelectable (selectable)
+
+def setSizeHint (sizeHint)
+
+def setStatusTip (statusTip)
+
+def setText (text)
+
+def setTextAlignment (textAlignment)
+
+def setToolTip (toolTip)
+
+def setTristate (tristate)
+
+def setUserTristate (tristate)
+
+def setWhatsThis (whatsThis)
+
+def sizeHint ()
+
+def sortChildren (column[, order=Qt.AscendingOrder])
+
+def statusTip ()
+
+def takeChild (row[, column=0])
+
+def takeColumn (column)
+
+def takeRow (row)
+
+def text ()
+
+def textAlignment ()
+
+def toolTip ()
+
+def whatsThis ()
+
+Virtual functions¶
+def clone ()
+
+def data ([role=Qt.UserRole + 1])
+
+def read (in)
+
+def setData (value[, role=Qt.UserRole + 1])
+
+def type ()
+
+def write (out)

@@ -43,7 +43,7 @@ class QMessageBoxDemo(QMainWindow):
 		print(messageBox.checkBox())
 		messageBox.buttonClicked.connect(lambda: print("4. Yes复选框状态为：",  addCheckBoxYes.checkState()))
 
-		self.ret = messageBox.exec_()
+		self.ret = messageBox.exec_()  # 返回按下了那个按钮
 		print("1. messageBox返回值和类型为：", self.ret, type(self.ret))
 		print("2. messageBox.result()返回的结果为：", messageBox.result())
 

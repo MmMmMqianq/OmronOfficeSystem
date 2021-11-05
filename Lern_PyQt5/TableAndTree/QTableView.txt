@@ -1,0 +1,51 @@
+Functions:
+def clearSpans ()                                   # 清楚合并的单元格
+def columnAt (x)                                    #
+def columnSpan (row, column)                        # 获取指定单元格的列跨度（合并单元格所占列数）
+def columnViewportPosition (column)                 #
+def columnWidth (column)                            # 获取指定列的宽度
+def gridStyle ()
+def horizontalHeader ()
+def isColumnHidden (column)                         # 返回指定的列是否被隐藏
+def isCornerButtonEnabled ()                        # 返回拐角处的全选按钮是否启用
+def isRowHidden (row)                               # 返回指定的行是否被隐藏
+def isSortingEnabled ()
+def rowAt (y)
+def rowHeight (row)                                 # 返回行高度
+def rowSpan (row, column)                           # 获取指定单元格的行跨度（合并单元格所占行数）
+def rowViewportPosition (row)
+def setColumnHidden (column, hide)                  # 设置隐藏指定的一列
+def setColumnWidth (column, width)                  # 设置指定列的宽度
+def setCornerButtonEnabled (enable)                 # 设置拐角处的全选按钮是否可用
+def setGridStyle (style)
+def setHorizontalHeader (header)
+def setRowHeight (row, height)                      # 设置指定行的宽度
+def setRowHidden (row, hide)                        # 隐藏指定的行
+def setSortingEnabled (enable)
+def setSpan (row, column, rowSpan, columnSpan)      # 合并单元格
+def setVerticalHeader (header)
+def setWordWrap (on)                                # 设置自动换行
+def showGrid ()                                     # 获取是否显示网格
+def sortByColumn (column, Qt.SortOrder)             # 设置指定列是升序还是降序
+def verticalHeader ()
+def wordWrap ()
+
+Slots:
+def columnCountChanged (oldCount, newCount)
+def columnMoved (column, oldIndex, newIndex)
+def columnResized (column, oldWidth, newWidth)
+def hideColumn (column)                             # 隐藏指定的列
+def hideRow (row)                                   # 隐藏指定的行
+def resizeColumnToContents (column)                 # 指定列根据item中文本的长度自动调整单元格的宽度
+def resizeColumnsToContents ()                      # 所有列根据item中文本的长度自动调整单元格的宽度
+def resizeRowToContents (row)                       # 指定行根据item中文本的长度自动调整单元格的宽度
+def resizeRowsToContents ()                         # 所有行根据item中文本的长度自动调整单元格的宽度
+def rowCountChanged (oldCount, newCount)
+def rowMoved (row, oldIndex, newIndex)
+def rowResized (row, oldHeight, newHeight)
+def selectColumn (column)                           # 选中指定列
+def selectRow (row)                                 # 选中指定行
+def setShowGrid (show)                              # 设置显示网格
+def showColumn (column)                             # 显示指定的列
+def showRow (row)                                   # 显示指定的行
+def sortByColumn (column)
