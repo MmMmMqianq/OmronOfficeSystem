@@ -1,28 +1,31 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableView, QWidget, QVBoxLayout, QMenu, QAction, QPushButton, \
-	QMessageBox
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtCore import Qt, QPoint
+	QMessageBox, QComboBox, QAbstractItemView
+from PyQt5.QtGui import QStandardItemModel, QStandardItem, QBrush, QIcon
+from PyQt5.QtCore import Qt, QPoint, QModelIndex, QSize
 
 
 class TableViewDemo(QMainWindow):
 	def __init__(self):
 		super(TableViewDemo, self).__init__()
 
-		self.resize(350, 500)
+		self.resize(600, 500)
 		self.setWindowTitle("这是一个TableView实例")
 
 		# 创建标准项目模型
-		self.model = QStandardItemModel(10, 3)
-		self.model.setHorizontalHeaderLabels(["ID", "姓名", "绰号"])  # 设置水平标题标签
+		self.model = QStandardItemModel(100, 4)
+		self.model.setHorizontalHeaderLabels(["ID", "姓名", "绰号", "性别"])  # 设置水平标题标签
 
 		# 创建标准项目
 		self.item00 = QStandardItem("124")
 		self.item00.setTextAlignment(Qt.AlignCenter)  # 设置item对齐方式为居中
-		self.item01 = QStandardItem("张三")
+		self.item00.setBackground(QBrush(Qt.cyan))  # 设置背景色
+		self.item00.setIcon(QIcon("./images/b1.ico"))  # 设置图标
+		self.item01 = QStandardItem(QIcon("./images/b5.png"), "张三")
 		self.item01.setTextAlignment(Qt.AlignCenter)
 		self.item02 = QStandardItem("法外狂徒")
 		self.item02.setTextAlignment(Qt.AlignCenter)
+		self.item03 = QStandardItem()
 
 		self.item10 = QStandardItem("123")
 		self.item10.setTextAlignment(Qt.AlignCenter)  # 设置item对齐方式为居中
@@ -35,6 +38,7 @@ class TableViewDemo(QMainWindow):
 		self.model.setItem(0, 0, self.item00)
 		self.model.setItem(0, 1, self.item01)
 		self.model.setItem(0, 2, self.item02)
+		self.model.setItem(0, 3, self.item03)
 
 		self.model.setItem(1, 0, self.item10)
 		self.model.setItem(1, 1, self.item11)
@@ -47,11 +51,21 @@ class TableViewDemo(QMainWindow):
 		self.tableView.setShowGrid(True)  # 设置是否显示网格
 		self.tableView.setCornerButtonEnabled(True)  # 设置拐角处的全选按钮是否可用
 		self.tableView.setSpan(2, 0, 2, 2)  # 合并单元格
-		print("1. 坐标(2,0)单元格行跨度为：", self.tableView.rowSpan(2, 0))
-		print("2. 坐标(2,0)单元格列跨度为：", self.tableView.columnSpan(2, 0))
+
+		comboBox = QComboBox()
+		comboBox.addItems(["-请选择-", "男", "女"])
+		self.tableView.setIndexWidget(self.item03.index(), comboBox)  # 在item中插入widget
+
+		self.tableView.setIconSize(QSize(100, 100))  # 设置图片大小
 		self.tableView.resizeColumnsToContents()  # 所有列根据item中文本的长度自动调整单元格的宽度
 		self.tableView.resizeRowsToContents()  # 所有行根据item中文本的长度自动调整单元格的宽度
 		self.tableView.setSelectionBehavior(0)  # 设置选择的行为，默认0是选择单个item，1为选择行，2位选择列
+
+		findItemsList = self.model.findItems("123", Qt.MatchExactly)  # 查找匹配项目并将背景色设置为黄色
+		self.tableView.setVerticalScrollMode(QAbstractItemView.ScrollPerItem)
+		self.tableView.verticalScrollBar().setSliderPosition(findItemsList[0])  # 将纵向滚动条移动到第一个匹配项处
+		for findItem in findItemsList:
+			findItem.setBackground(QBrush(Qt.yellow))
 
 		# 设置上下文菜单
 		self.tableView.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -76,9 +90,7 @@ class TableViewDemo(QMainWindow):
 		globalMousePos = self.tableView.mapToGlobal(mousePosition)  # 坐标转换
 		contextMenu = QMenu()
 		insertLineUpAction = QAction("向上插入一行")
-		insertLineUpAction.setShortcut("ctrl+u")
 		insertLineDownAction = QAction("向下插入一行")
-		insertLineDownAction.setShortcut("ctrl+l")
 		removeLinesAction = QAction("删除")
 		removeLinesAction.setShortcut("ctrl+d")
 		contextMenu.addActions([insertLineUpAction, insertLineDownAction, removeLinesAction])
