@@ -76,9 +76,11 @@ class TableViewDemo(QMainWindow):
 		globalMousePos = self.tableView.mapToGlobal(mousePosition)  # 坐标转换
 		contextMenu = QMenu()
 		insertLineUpAction = QAction("向上插入一行")
-		insertLineUpAction.setShortcut("ctrl+a")
+		insertLineUpAction.setShortcut("ctrl+u")
 		insertLineDownAction = QAction("向下插入一行")
+		insertLineDownAction.setShortcut("ctrl+l")
 		removeLinesAction = QAction("删除")
+		removeLinesAction.setShortcut("ctrl+d")
 		contextMenu.addActions([insertLineUpAction, insertLineDownAction, removeLinesAction])
 		contextMenu.move(globalMousePos)  # 将上下文菜单移动到鼠标位置
 
