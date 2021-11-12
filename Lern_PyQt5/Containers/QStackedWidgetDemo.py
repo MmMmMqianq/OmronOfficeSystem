@@ -33,6 +33,7 @@ class StackedWidget(QWidget):
         self.button4 = QPushButton("widget4")
         self.hLayout5.addWidget(self.button4)
 
+        # 将widget添加到容器内
         self.stack.addWidget(self.widget1)
         self.stack.addWidget(self.widget2)
         self.stack.addWidget(self.widget3)
