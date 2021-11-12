@@ -42,6 +42,9 @@ class TabWidget(QWidget):
         # self.tabContainer.insertTab(2, self.tab4, "选项卡4")  # 插入选项卡
         self.tabContainer.addTab(self.tab3, "选项卡3")
 
+        self.hLayout1 = QHBoxLayout(self)
+        self.hLayout1.addWidget(self.tabContainer)
+
         print("1. tabContainer.count() = ", self.tabContainer.count())  # 获取选项卡容器的选项卡数量
         self.tabContainer.setTabIcon(1, QIcon("./images/1.ico"))  # 设置tab图标
         self.tabContainer.setDocumentMode(False)  # 设置选项卡容器是否为文档模式
@@ -56,9 +59,6 @@ class TabWidget(QWidget):
         self.tabContainer.setTabsClosable(True)  # 设置选项卡是否可以被关闭，配合QTabWidget.tabCloseRequested信号和QTabWidget.removeTab()方法关闭选项卡
         self.tabContainer.setUsesScrollButtons(True)  # 设置是否只用滚动条
         self.tabContainer.setCornerWidget(QPushButton("corner"), Qt.TopLeftCorner)  # 设置一个角部件
-
-        self.hLayout1 = QHBoxLayout(self)
-        self.hLayout1.addWidget(self.tabContainer)
 
         self.button1.clicked.connect(self.selectTab)
         self.button3.clicked.connect(self.removeTab4)
