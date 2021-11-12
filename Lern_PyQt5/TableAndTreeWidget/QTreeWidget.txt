@@ -1,0 +1,73 @@
+Functions：
+def addTopLevelItem (item)                      # 添加单个顶层item(根节点)
+def addTopLevelItems (items)                    # 添加多个顶层item，items为列表
+def closePersistentEditor (item[, column=0])    # 关闭持久编辑器？？？
+def columnCount ()                              # 获取树的列数
+def currentColumn ()                            # 获取当前的列号
+def currentItem ()                              # 获取当前的item
+def editItem (item[, column=0])
+def findItems (text, flags[, column=0])         # 查找items
+def headerItem ()
+def indexFromItem (item[, column=0])
+def indexFromItem (item[, column=0])
+def indexOfTopLevelItem (item)
+def insertTopLevelItem (index, item)
+def insertTopLevelItems (index, items)
+def invisibleRootItem ()
+def isFirstItemColumnSpanned (item)
+def isItemExpanded (item)
+def isItemHidden (item)
+def isItemSelected (item)
+def isPersistentEditorOpen (item[, column=0])
+def itemAbove (item)
+def itemAt (p)
+def itemAt (x, y)
+def itemBelow (item)
+def itemFromIndex (index)
+def itemWidget (item, column)
+def items (data)
+def openPersistentEditor (item[, column=0])
+def removeItemWidget (item, column)
+def selectedItems ()
+def setColumnCount (columns)
+def setCurrentItem (item)
+def setCurrentItem (item, column)
+def setCurrentItem (item, column, command)
+def setFirstItemColumnSpanned (item, span)
+def setHeaderItem (item)
+def setHeaderLabel (label)
+def setHeaderLabels (labels)
+def setItemExpanded (item, expand)
+def setItemHidden (item, hide)
+def setItemSelected (item, select)
+def setItemWidget (item, column, widget)
+def sortColumn ()
+def sortItems (column, order)
+def takeTopLevelItem (index)
+def topLevelItem (index)
+def topLevelItemCount ()
+def visualItemRect (item)
+
+Virtual functions：
+def dropMimeData (parent, index, data, action)
+def mimeData (items)
+def mimeTypes ()
+def supportedDropActions ()
+
+Slots：
+def clear ()
+def collapseItem (item)
+def expandItem (item)
+def scrollToItem (item[, hint=EnsureVisible])
+
+Signals：
+def currentItemChanged (current, previous)
+def itemActivated (item, column)
+def itemChanged (item, column)
+def itemClicked (item, column)
+def itemCollapsed (item)
+def itemDoubleClicked (item, column)
+def itemEntered (item, column)
+def itemExpanded (item)
+def itemPressed (item, column)
+def itemSelectionChanged ()

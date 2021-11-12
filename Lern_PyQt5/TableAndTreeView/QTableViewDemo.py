@@ -63,7 +63,8 @@ class TableViewDemo(QMainWindow):
 
 		findItemsList = self.model.findItems("123", Qt.MatchExactly)  # 查找匹配项目并将背景色设置为黄色
 		self.tableView.setVerticalScrollMode(QAbstractItemView.ScrollPerItem)
-		self.tableView.verticalScrollBar().setSliderPosition(findItemsList[0])  # 将纵向滚动条移动到第一个匹配项处
+		print(findItemsList[0])
+		self.tableView.verticalScrollBar().setSliderPosition(findItemsList[0].row())  # 将纵向滚动条移动到第一个匹配项处
 		for findItem in findItemsList:
 			findItem.setBackground(QBrush(Qt.yellow))
 
@@ -78,7 +79,7 @@ class TableViewDemo(QMainWindow):
 		self.vLayout.addWidget(self.button)
 		self.setCentralWidget(self.centralWidget)
 
-		# self.button.clicked.connect(lambda: print(self.getLineNumber(self.tableView, self.model)))
+		# self.button.clicked.connect(lambda: print(self.getLineNumber(self.table, self.model)))
 
 	def getContextMenu(self, mousePosition: QPoint):
 		"""

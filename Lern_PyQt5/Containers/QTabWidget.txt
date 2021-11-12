@@ -1,0 +1,59 @@
+Functions:
+def addTab (widget, str)                                # 添加选项卡
+def addTab (widget, icon, label)                        #
+def clear ()                                            # 移除所有页面
+def cornerWidget (QWidget, Qt.TopRightCorner])          # 返回指定位置的角部件
+def count ()                                            # 获取QTabWidget有多少个选项卡
+def currentIndex ()                                     # 获取当前选项卡的索引
+def currentWidget ()                                    # 获取当前的QWidget
+def documentMode ()                                     # 返回是否为文档模式
+def elideMode ()                                        # 返回省略号显示的位置
+def iconSize ()                                         # 返回图标的大小
+def indexOf (widget)                                    #
+def initStyleOption (option)                            #
+def insertTab (index, widget, str)                      # 在指定索引出插入选项卡
+def insertTab (index, widget, icon, label)              #
+def isMovable ()                                        # 返回选项卡是否可移动
+def isTabEnabled (index)                                # 返回指定索引的选项卡是否可用
+def removeTab (index)                                   # 移除指定索引的选项卡
+def setCornerWidget (QWidget, Qt.Corner)                # 设置角部件
+def setDocumentMode (bool)                              # 设置QTabWidget时候为文档模式
+def setElideMode (Qt.TextElideMode)                     # 设置如果选显卡长度小于文本长度是，省略号的位置
+def setIconSize (size)                                  # 设置图标的大小
+def setMovable (movable)                                # 设置选项卡是否可以移动
+def setTabBar (QTabBar)                                 # 设置QTabBar
+def setTabBarAutoHide (enabled)                         #
+def setTabEnabled (index, bool)                         # 设置选项卡是否可用
+def setTabIcon (index, QIcon)                           # 设置选项卡图标
+def setTabPosition (arg__1)                             # 设置选项卡的位置（改变索引）
+def setTabShape (s)                                     # 设置选项卡的外形
+def setTabText (index, arg__2)                          # 设置选项卡的文本
+def setTabToolTip (index, tip)                          # 设置选项卡的tool tip
+def setTabWhatsThis (index, text)
+def setTabsClosable (bool)                              # 设置选项卡是否可以被关闭，配合QTabWidget.tabCloseRequested信号和QTabWidget.removeTab()方法关闭选项卡
+def setUsesScrollButtons (useButtons)                   # 设置是否只用滚动条
+def tabBar ()                                           # 返回QTabBar
+def tabBarAutoHide ()                                   #
+def tabIcon (index)
+def tabPosition ()
+def tabShape ()
+def tabText (index)
+def tabToolTip (index)
+def tabWhatsThis (index)
+def tabsClosable ()
+def usesScrollButtons ()
+def widget (index)
+
+Virtual functions:
+def tabInserted (index)                                 #
+def tabRemoved (index)                                  #
+
+Slots:
+def setCurrentIndex (index)                             # 设置当前选项卡（可用于切换选项卡）
+def setCurrentWidget (widget)                           # 设置当前的小部件
+
+Signals:
+def currentChanged (index)                              # 当前选项卡卡发生变化时产生一个信号
+def tabBarClicked (index)                               # 选项卡被单击时产生一个信号
+def tabBarDoubleClicked (index)                         # 选项卡被双击时产生一个信号
+def tabCloseRequested (index)                           # 点选项卡上的叉号关闭时产生一个信号
