@@ -1,0 +1,23 @@
+Functions:
+def interval ()                          # 返回定时器的设定时间
+def isActive ()                          # 返回定时器是否在激活状态
+def isSingleShot ()                      # 返回定时器是否只定时一次
+def remainingTime ()                     # 返回定时器的剩余时间
+def setInterval (msec)                   # 设置定时时间
+def setSingleShot (singleShot)           # 设置定时器只定时一次
+def setTimerType (Qt.TimerType)          # 设置定时器的类型，Qt.PreciseTimer毫秒定时器，Qt.CoarseTimer 误差为5%的毫秒定时器，Qt.VeryCoarseTimer 秒定时器
+def timerId ()                           # 如果定时器正在运行则返回定时器的ID，如果没有运行则返回-1
+def timerType ()                         # 返回定时器类型
+
+Slots:
+def start ()                             # 开始定时，定时时间有QTimer.setInterval(msec)来设定
+def start (msec)                         # 开始定时，msec为定时时间，单位为ms
+def stop ()                              # 停止定时
+
+Static functions:
+def singleShot (msec, slot)              # 只进行一次定时，在定时时间到了自后执行一次slot
+def singleShot (msec, receiver, member)
+def singleShot (msec, timerType, receiver, member)
+
+signal:
+def timeout()                             # # 在定时时间到时产生一个信号

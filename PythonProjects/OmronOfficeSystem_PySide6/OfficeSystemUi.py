@@ -104,8 +104,8 @@ class OfficeSystem:
     def random_amount(self):
         HandleTaxiData.random_invoice_amount(upper_limit=self.get_line_edit_upper_limit_int,
                                              lower_limit=self.get_line_edit_lower_limit_int)
-        # import time
-        # time.sleep(10) # 用于测试子线程
+        # import timer1
+        # timer1.sleep(10) # 用于测试子线程
         # self.display_information()
 
     def widget_taxi_visible(self):

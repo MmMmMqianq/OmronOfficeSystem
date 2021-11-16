@@ -1,17 +1,17 @@
 Functions:
-def addWidget (w)
-def count ()
-def currentIndex ()
-def currentWidget ()
-def indexOf (arg__1)
-def insertWidget (index, w)
-def removeWidget (w)
-def widget (arg__1)
+def addWidget (QWidget)             # 添加QWidget
+def count ()                        # 返回QStackedWidget中包含页面的数量
+def currentIndex ()                 # 返回当前页面的索引
+def currentWidget ()                # 返还当前的QWidget
+def indexOf (arg__1)                # 返回给定小部件的索引，如果给定小部件不是 QStackedWidget 的子部件，则返回 -1
+def insertWidget (index, w)         # 在指定索引处插入QWidget
+def removeWidget (w)                # 移除QWidget
+def widget (int)                    # 返回给定索引处的小部件，如果没有这样的小部件，则返回 0
 
 Slots:
-def setCurrentIndex (index)
-def setCurrentWidget (w)
+def setCurrentIndex (index)         # 设置当前的页面
+def setCurrentWidget (w)            # 设置当前的页面的QWidget
 
 Signals:
-def currentChanged (arg__1)
-def widgetRemoved (index)
+def currentChanged (arg__1)         # 当当前页面发生变化时产生一个信号
+def widgetRemoved (index)           # 移除衣蛾QWidget时产生一个信号

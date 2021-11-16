@@ -1,0 +1,36 @@
+Functions:
+def activationOrder ()
+def activeSubWindow ()
+def addSubWindow (widget[, flags=Qt.WindowFlags()])
+def background ()
+def currentSubWindow ()
+def documentMode ()
+def removeSubWindow (widget)                            # 移除子窗口
+def setActivationOrder (order)
+def setBackground (background)                          # 设置QMdiArea的背景颜色
+def setDocumentMode (enabled)                           # 在viewMode() = QMdiArea.TabbedViw时，将选项卡设置为文档模式
+def setOption (option[, on=true])
+def setTabPosition (position)                           # 在viewMode() = QMdiArea.TabbedViw时，设置选项卡的位置，默认QTabWidget.North
+def setTabShape (shape)                                 # 在viewMode() = QMdiArea.TabbedViw时，设置选项卡的外形
+def setTabsClosable (closable)                          # 在viewMode() = QMdiArea.TabbedViw时，设置选项卡是否可以被关闭
+def setTabsMovable (movable)                            # 在viewMode() = QMdiArea.TabbedViw时，设置选项卡是否可以被移动
+def setViewMode (mode)                                  # 设置QMdiArea的显示模式，QMdiArea.TabbedView/SubWindowView(默认)
+def subWindowList ([order=CreationOrder])               # 返回子窗口列表
+def tabPosition ()
+def tabShape ()
+def tabsClosable ()
+def tabsMovable ()
+def testOption (option)
+def viewMode ()
+
+Slots:
+def activateNextSubWindow ()                            # 将下一个窗口激活
+def activatePreviousSubWindow ()                        # 将前一个窗口激活
+def cascadeSubWindows ()                                # 以联级模式排列子窗口
+def closeActiveSubWindow ()                             # 关闭被激活的窗口
+def closeAllSubWindows ()                               # 关闭所有窗口
+def setActiveSubWindow (window)                         # 将指定的窗口激活
+def tileSubWindows ()                                   # 以标题平铺模式排列子窗口
+
+Signals:
+def subWindowActivated (arg__1)                         # 当子窗口被激活时产生一个信号

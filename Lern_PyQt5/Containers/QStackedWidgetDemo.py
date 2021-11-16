@@ -1,3 +1,7 @@
+"""
+QStackedWidget:堆栈容器
+"""
+
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QStackedWidget, QPushButton, QHBoxLayout, QVBoxLayout
 
@@ -38,6 +42,7 @@ class StackedWidget(QWidget):
         self.stack.addWidget(self.widget2)
         self.stack.addWidget(self.widget3)
         self.stack.addWidget(self.widget4)
+        self.stack.setCurrentIndex(1)  # 设置当前显示的是Widget2
 
         self.hLayout1 = QHBoxLayout()
         self.setLayout(self.hLayout1)

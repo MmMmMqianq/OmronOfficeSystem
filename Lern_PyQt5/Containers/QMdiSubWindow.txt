@@ -1,0 +1,23 @@
+Functions:
+def isShaded ()                                 #
+def keyboardPageStep ()
+def keyboardSingleStep ()
+def maximizedButtonsWidget ()
+def maximizedSystemMenuIconWidget ()            #
+def mdiArea ()                                  #
+def setKeyboardPageStep (step)                  #
+def setKeyboardSingleStep (step)
+def setOption (option[, on=true])
+def setSystemMenu (systemMenu)
+def setWidget (widget)
+def systemMenu ()
+def testOption (arg__1)
+def widget ()
+
+Slots:
+def showShaded ()
+def showSystemMenu ()
+
+Signals:
+def aboutToActivate ()
+def windowStateChanged (oldState, newState)

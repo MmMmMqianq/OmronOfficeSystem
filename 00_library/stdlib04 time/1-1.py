@@ -32,10 +32,10 @@ print(time.strftime('%y年%m月%d日 %H时%M分%S秒'))  # %y表示两位数的�
 print(time.strftime('%Y-%m-%d %H:%M:%S'))  # %H表示24小时制
 print(time.strftime('%Y-%m-%d %I:%M:%S %p'))  # %I表示12小时制，一般要配合%p显示AM/PM
 
-# time.sleep()
+# timer1.sleep()
 t1 = time.time()
 print('sleep begin...')
-# time.sleep(2)
+# timer1.sleep(2)
 print('sleep end...')
 t2 = time.time()
 print('时间差为：{:.06f}s'.format(t2 - t1))
@@ -50,11 +50,11 @@ print(time.localtime())  # 生成当前的本地时间
 print(time.localtime(time.time() - 3600))  # 生成一天前的本地时间
 
 # 结构化时间对象 -> 时间戳
-# time.mktime(st)
+# timer1.mktime(st)
 print(time.mktime(time.localtime()))  # 精度为秒
 
 # 结构化时间对象 -> 格式化时间字符串
-# time.strftime(format, struct_time)
+# timer1.strftime(format, struct_time)
 print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()))
 print(time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime()))
 

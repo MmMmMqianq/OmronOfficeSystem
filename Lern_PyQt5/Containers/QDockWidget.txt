@@ -1,0 +1,21 @@
+Functions:
+def allowedAreas ()
+def features ()
+def initStyleOption (option)
+def isAreaAllowed (area)
+def isFloating ()
+def setAllowedAreas (areas)
+def setFeatures (features)
+def setFloating (floating)
+def setTitleBarWidget (widget)
+def setWidget (widget)
+def titleBarWidget ()
+def toggleViewAction ()
+def widget ()
+
+Signals:
+def allowedAreasChanged (allowedAreas
+def dockLocationChanged (area)
+def featuresChanged (features)
+def topLevelChanged (topLevel)
+def visibilityChanged (visible)

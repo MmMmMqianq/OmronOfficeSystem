@@ -100,7 +100,7 @@ def random_invoice_amount(upper_limit=400, lower_limit=350):
 if __name__ == "__main__":
     import time
     print(read_excel())
-    # time.sleep(3)
+    # timer1.sleep(3)
     append_name("小时")
     print(read_excel())
     random_invoice_amount()

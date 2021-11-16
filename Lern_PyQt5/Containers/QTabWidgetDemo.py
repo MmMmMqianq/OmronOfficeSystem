@@ -1,3 +1,7 @@
+"""
+QTabWidget:标签页容器
+"""
+
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QTabWidget, QHBoxLayout, QPushButton
 from PyQt5.QtGui import QIcon
