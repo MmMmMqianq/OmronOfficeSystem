@@ -7,6 +7,7 @@ from PyQt5.QtGui import QPalette
 from PyQt5.QtCore import Qt
 import Dialog1
 
+
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super(MainWindow, self).__init__()
