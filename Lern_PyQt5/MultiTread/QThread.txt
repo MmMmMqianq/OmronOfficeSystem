@@ -1,0 +1,36 @@
+Functions:
+def eventDispatcher ()
+def exec_ ()
+def exit ([retcode=0])
+def isFinished ()
+def isInterruptionRequested ()
+def isRunning ()
+def loopLevel ()
+def priority ()
+def requestInterruption ()
+def setEventDispatcher (eventDispatcher)
+def setPriority (priority)
+def setStackSize (stackSize)
+def stackSize ()
+def wait ([time=ULONG_MAX])
+
+Virtual functions:
+def run ()
+
+Slots:
+def quit ()
+def start ([priority=InheritPriority])
+def terminate ()
+
+signals:
+def started()                                   # 进程开始时产生一个信号
+def finished()                                  # 进程结束时产生一个信号
+
+Static functions:
+def currentThread ()
+def idealThreadCount ()
+def msleep (arg__1)
+def setTerminationEnabled ([enabled=true])
+def sleep (arg__1)
+def usleep (arg__1)
+def yieldCurrentThread ()
