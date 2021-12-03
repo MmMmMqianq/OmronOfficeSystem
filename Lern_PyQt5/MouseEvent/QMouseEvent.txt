@@ -1,0 +1,16 @@
+Functions:
+def button ()                       # 返回点击的按钮Qt.MouseButton，1为左键，2为右键，3位滚轮键，0为没有按键返回
+def buttons ()
+def flags ()
+def globalPos ()                    # 返回相对于电脑屏幕的坐标，返回的坐标为int类型
+def globalX ()
+def globalY ()
+def localPos ()                     # 返回相对于窗口的坐标，返回的坐标为float类型，省略小数部分
+def pos ()                          # 返回相对于窗口的坐标，返回的坐标为int类型
+def screenPos ()                    # 返回相对于电脑屏幕的坐标，返会的坐标为float类型
+def setLocalPos (localPosition)
+def source ()                       # 返回有关鼠标事件源的信息Qt.MouseEventSource
+def windowPos ()                    # 返回相对于窗口的坐标，返回的坐标为float类型
+def x ()                            # 同pos ()
+def y ()                            # 同pos ()
+
