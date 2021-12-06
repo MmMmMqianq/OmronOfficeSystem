@@ -29,24 +29,13 @@ class QSSSelector(QWidget):
 		self.vLayout.addWidget(self.button3)
 		self.vLayout.addWidget(self.comboBox)
 
-		# 选择器，将所有的PushButton背景改为红色
-		qssStyle = """
-			QPushButton{
-				background-color: red;
-			}
-				
-			QPushButton[name="btn2"]{
-				background-color: cyan;
-				color: blue;
-				height: 60;
-				font-size: 30px
-			}
-			
-			QComboBox#cb::drop-down {
-				image: url(./images/2.png);
-			}
-		"""
-		self.setStyleSheet(qssStyle)
+		# 打开qss文件
+		with open(r"/Users/qianshaoqing/Documents/Python/Lern_PyQt5/WindowStyle/style sheet.qss", "r") as file:
+			qss = file.read()
+			print(qss)
+
+		# # 选择器，将所有的PushButton背景改为红色
+		self.setStyleSheet(qss)
 
 
 if __name__ == "__main__":

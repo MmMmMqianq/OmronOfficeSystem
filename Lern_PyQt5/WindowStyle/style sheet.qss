@@ -1,0 +1,14 @@
+QPushButton{
+		background-color: red;
+	}
+
+QPushButton[name="btn2"]{
+		background-color: cyan;
+		color: blue;
+		height: 60;
+		font-size: 30px
+	}
+
+QComboBox#cb::drop-down {
+		image: url(./images/2.png);
+	}
