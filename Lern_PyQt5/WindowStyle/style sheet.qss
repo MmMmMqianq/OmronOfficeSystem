@@ -3,10 +3,10 @@ QPushButton{
 	}
 
 QPushButton[name="btn2"]{
-		background-color: cyan;
+		background-color: rgb(100, 50, 50,50);
 		color: blue;
 		height: 60;
-		font-size: 30px
+		font-size: 30px;
 	}
 
 QComboBox#cb::drop-down {

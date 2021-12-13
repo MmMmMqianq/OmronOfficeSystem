@@ -1,21 +1,22 @@
 """
-QSS(Qt Style Sheet):用于设置控件的样式
+异形窗口只有Windows下是有效的
 """
 import sys
 from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QBitmap, QPaintEvent, QPainter, QPixmap
 from PyQt5.Qt import QRect
 
-class QSSSelector(QWidget):
+
+class IrregulaiWindow(QWidget):
 	def __init__(self):
-		super(QSSSelector, self).__init__()
+		super(IrregulaiWindow, self).__init__()
 
 		self.setWindowTitle("异形窗口")
 		# 创建一个异形蒙板，PNG格式
 		self.bitMap = QBitmap(r"/Users/qianshaoqing/Documents/Python/Lern_PyQt5/WindowStyle/images/11.png")
 		# 将窗口大小和蒙板图片大小设置为相同
 		self.resize(self.bitMap.size())
-		# 将蒙板应用到窗口
+		# 将蒙板应用到窗口, QWidget.setMask(QBitMap/QRegion)
 		self.setMask(self.bitMap)
 
 	def paintEvent(self, a0: QPaintEvent):
@@ -30,6 +31,6 @@ class QSSSelector(QWidget):
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
-	window = QSSSelector()
+	window = IrregulaiWindow()
 	window.show()
 	sys.exit(app.exec_())

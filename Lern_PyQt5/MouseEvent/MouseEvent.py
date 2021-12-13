@@ -20,6 +20,7 @@ class MouseEvent(QWidget):
 		print("a0.windowPos().x() = ", a0.windowPos().x(), "，a0.windowPos().y() = ", a0.windowPos().y())
 		print("a0.x() = ", a0.x(), "，a0.y() = ", a0.y())
 		print("a0.pos().x() = ", a0.pos().x(), "，a0.pos().y() = ", a0.pos().y())
+		# 如果用鼠标事件来移动小部件，请使用 globalPos() 返回的全局位置来避免晃动。
 		print("a0.globalX() = ", a0.globalX(), "，a0.globalY() = ", a0.globalY())
 		print("a0.screenPos().x() = ", a0.screenPos().x(), "，a0.screenPos().y() = ", a0.screenPos().y())
 		print("a0.localPos().x() = ", a0.localPos().x(), "，a0.localPos().y() = ", a0.localPos().y())

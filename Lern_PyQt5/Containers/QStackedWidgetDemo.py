@@ -4,6 +4,7 @@ QStackedWidget:堆栈容器
 
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QStackedWidget, QPushButton, QHBoxLayout, QVBoxLayout
+import Texi_ui
 
 
 class StackedWidget(QWidget):

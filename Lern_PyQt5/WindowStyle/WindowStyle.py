@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QWidget, QComboBox, QApplication, QHBoxLayout, QLabel, QStyleFactory
-
+import LoadingGif
 
 class WindowStyle(QWidget):
 	def __init__(self):
