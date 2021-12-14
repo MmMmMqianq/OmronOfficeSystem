@@ -9,13 +9,18 @@ class MainWin(QMainWindow):
 		super(MainWin, self).__init__()
 		self.ui = Ui.Ui_MainWindow()
 		self.ui.setupUi(self)
+		self.importWidget()
+		self.taxiWidgetFunction()
 
-		# self.widget1 = QWidget()
-		# self.p = QPushButton("asdas", self.widget1)
-		# self.ui.stackedWidget.addWidget(self.widget1)
-		# self.ui.stackedWidget.setCurrentIndex(0)
+	def taxiWidgetFunction(self):
+		pass
+
+	def importWidget(self):
+		"""
+		将功能页面添加到主界面的栈容器中
+		"""
 		self.taxiUi = taxi_ui.Ui_Taxi()
-		self.taxiUi.setupUi()
+		self.taxiUi.setupUi(self.ui.taxiPage)
 
 
 app = QApplication(sys.argv)
