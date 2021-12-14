@@ -1,10 +1,10 @@
 """
-xlrd的使用：
+xlrd的使用：读取Excel的数据
 
 1. xlrd常用函数
 2. xlrd操作Excel行
 3. xlrd操作Excel列
-4. Xled操作Excel单元格
+4. xlrd操作Excel单元格
 """
 import xlrd
 
