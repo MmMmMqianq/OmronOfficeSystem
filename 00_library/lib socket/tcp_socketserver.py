@@ -27,7 +27,7 @@ class MyTcpHandler(socketserver.BaseRequestHandler):
                 print('客户端(%s, %d)连接关闭...' % (self.client_address[0], self.client_address[1]))
                 break
 
-            # res = data.upper()
+            # res = workbook.upper()
             res = input('请输入要返回的数据：')
             self.request.sendall(res.encode())  # 发送时要将字符串用encode()方法发送
         self.request.close()  # 关闭连接；

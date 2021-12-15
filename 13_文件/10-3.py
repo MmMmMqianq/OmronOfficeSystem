@@ -14,7 +14,7 @@ with open('data_write', 'w+') as file:  # w打开的方式打开之前都会先�
     data3 = ['one two three', '1.txt, 2, 3']
     # file.writelines(data3)  # 这种方法写入的数据不会自动换行
 
-    # file.writelines([data+'\n' for data in data3])  # 这种写法最后会多出一个空行
+    # file.writelines([workbook+'\n' for workbook in data3])  # 这种写法最后会多出一个空行
     file.writelines('\n'.join(data3))  # 推荐这种写法和下面的写法
     # file.write('\n'.join(data3))
 

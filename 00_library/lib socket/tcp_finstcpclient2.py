@@ -49,10 +49,10 @@ recv_msg_hand = process_receive_massage(recv_msg_hand1)
 print('接受到服务器握手反馈的数据为：%s' % recv_msg_hand, type(recv_msg_hand))
 
 while True:
-    # data = input("请输入发送的数据：")
-    # sk.sendall(data.encode())
+    # workbook = input("请输入发送的数据：")
+    # sk.sendall(workbook.encode())
     #
-    # if data == 'exit':
+    # if workbook == 'exit':
     #     break
 
     ft = '46494e530000001a0000000200000000800002000200006b00000101820064000001'

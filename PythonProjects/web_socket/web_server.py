@@ -16,7 +16,7 @@ def handle(link, linkaddr):
     print(type(link))
     # 接收客户端请求
     request_data = link.recv(1024).decode()
-    print("request data: ", request_data)
+    print("request workbook: ", request_data)
 
     # 解析请求报文
     request_data_lines = request_data.splitlines()

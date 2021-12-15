@@ -16,7 +16,7 @@ def handle(link, linkaddr):
     print("客户端的IP: %s，端口号: %d" % (linkaddr[0], linkaddr[1]))
     # 接收客户端请求
     request_data = link.recv(1024).decode()
-    print("request data: ", request_data)
+    print("request workbook: ", request_data)
  
     # 构造响应数据
     response_start_line = "HTTP/1.1 200 OK\r\n"

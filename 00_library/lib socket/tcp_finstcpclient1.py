@@ -38,10 +38,10 @@ recv_msg_hand = binascii.b2a_hex(recv_msg_hand1)
 print('接受到服务器握手反馈的数据为：%s' % recv_msg_hand, type(recv_msg_hand))
 
 while True:
-    # data = input("请输入发送的数据：")
-    # sk.sendall(data.encode())
+    # workbook = input("请输入发送的数据：")
+    # sk.sendall(workbook.encode())
     #
-    # if data == 'exit':
+    # if workbook == 'exit':
     #     break
 
     ft = '46494e530000001a0000000200000000800002000200006b00000101820064000001'
@@ -50,8 +50,8 @@ while True:
     sk.sendall(ft)
 
     recv_msg1 = sk.recv(1024)
-    recv_msg = binascii.b2a_hex(recv_msg1)  # 返回二进制数据 data 的十六进制表示形式。 data 的每个字节都被转换为相应的2位十六进制表示形式。
-                                            # 因此返回的字节对象的长度是 data 的两倍。
+    recv_msg = binascii.b2a_hex(recv_msg1)  # 返回二进制数据 workbook 的十六进制表示形式。 workbook 的每个字节都被转换为相应的2位十六进制表示形式。
+                                            # 因此返回的字节对象的长度是 workbook 的两倍。
     print('接受到服务器的数据为：%s' % recv_msg)
 
     input('asd:')
