@@ -1,7 +1,7 @@
 import sys
 import time
 from PyQt5.QtWidgets import QWidget, QApplication, QLCDNumber, QGridLayout, QPushButton
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtCore import QThread, pyqtSignal, pyqtBoundSignal
 
 
 class LcdDisplyNumber(QWidget):
@@ -48,6 +48,7 @@ class LcdDisplyNumber(QWidget):
 
 class WorkThread(QThread):
 	number = 0
+	displayNumber: pyqtBoundSignal
 	displayNumber = pyqtSignal(int)  # 自定义个信号
 
 	def __init__(self):
