@@ -182,7 +182,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QPushButton" name="previousPageButton">
+        <widget class="QPushButton" name="previousBtn">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -232,7 +232,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="pageNumberLineEdit">
+          <widget class="QLineEdit" name="pageNumberEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -272,7 +272,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="nextPageButton">
+        <widget class="QPushButton" name="nextBtn">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -295,7 +295,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="refreshButton">
+        <widget class="QPushButton" name="refreshBtn">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>

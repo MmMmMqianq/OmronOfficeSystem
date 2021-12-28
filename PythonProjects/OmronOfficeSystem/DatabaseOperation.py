@@ -1,4 +1,6 @@
 import pymysql
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
+import logging
 
 
 def connect_db(h="qianshaoqing.mysql.rds.aliyuncs.com", u="omron", pwd="omron@2021", db="officesystem"):
@@ -21,9 +23,10 @@ def get_max_id(cursor: pymysql.cursors.DictCursor):
 	:param cursor: 游标
 	:return: 返回总行数
 	"""
-	sql_select1 = "select id from random_amount order by id desc limit 1"
-	cursor.execute(sql_select1)
-	max_id = cursor.fetchall()[0]["id"]
+	# sql_select1 = "select id from random_amount order by id desc limit 1"
+	# cursor.execute(sql_select1)
+	# max_id = cursor.fetchall()[0]["id"]
+	max_id = 1000
 	return max_id
 
 
@@ -37,7 +40,6 @@ def get_contents_of_table(cursor: pymysql.cursors.DictCursor, starting_line=1, e
 	"""
 	sql_select2 = "select * from random_amount where id between %s and %s"
 	cursor.execute(sql_select2, (str(starting_line), str(ending_line)))
-
 	data = cursor.fetchall()
 	return data
 

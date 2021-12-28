@@ -1,4 +1,5 @@
 import sys
+import time
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout, QTableWidget, \
 	QTableWidgetItem, QMessageBox, QMenu, QAction, QTableWidgetSelectionRange, QPushButton, QLineEdit, QSpacerItem, \
 	QSizePolicy

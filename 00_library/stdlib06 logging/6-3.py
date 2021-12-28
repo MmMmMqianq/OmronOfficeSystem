@@ -12,8 +12,8 @@ import logging
 # 以编程的方式实现日志的输出（不推荐）
 
 # 1. 创建一个记录器logger，记录器名字设置为appLogger，不设置默认为root
-logger = logging.getLogger("appLogger")
-logger.setLevel(logging.DEBUG)
+logger = logging.getLogger("abc.appLogger")
+logger.setLevel(logging.DEBUG)  # 如果处理器的等级比记录器底则以记录器等级输出
 
 # 2. 创建处理器Handler
 # 创建一个控制台输出的处理器
@@ -40,8 +40,8 @@ logger.addHandler(consoleHandler)
 logger.addHandler(fileHandler)
 
 # 7. 给记录器和处理器加上过滤器
-# logger.addFilter(flt)
-fileHandler.addFilter(flt)
+logger.addFilter(flt)
+# fileHandler.addFilter(flt)
 
 
 # 8. 输出日志

@@ -7,7 +7,7 @@ logging.basicConfig函数各参数:
     ·level: 设置日志级别，默认为logging.WARNING
     ·stream: 指定将日志的输出流，可以指定输出到sys.stderr,sys.stdout或者文件，默认输出到sys.stderr，当stream和filename同时指定时，stream被忽略
 
-logging模块常用format格式说明：
+logging模块常用format格式说明：详细看CSDN
     %(levelno)s: 打印日志级别的数值
     %(levelname)s: 打印日志级别名称
     %(pathname)s: 打印当前执行程序的路径，其实就是sys.argv[0]
