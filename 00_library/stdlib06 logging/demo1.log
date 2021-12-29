@@ -1,0 +1,4 @@
+2021/12/24 10:40:56|INFO    |6-3.py|49|MainThread|This is info log
+2021/12/24 10:40:56|WARNING |6-3.py|50|MainThread|This is warning log
+2021/12/24 10:40:56|ERROR   |6-3.py|51|MainThread|This is error log
+2021/12/24 10:40:56|CRITICAL|6-3.py|52|MainThread|This is critical log
