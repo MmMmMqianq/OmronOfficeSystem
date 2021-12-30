@@ -28,7 +28,6 @@ class MainWin(QMainWindow):
 		self.setupUi()
 
 	def setupUi(self):
-		# self.taxiUi.work_thread1.get_data_done.connect(lambda: self.taxiUi.work_thread1.total_time
 		pass
 
 	def importWidget(self):

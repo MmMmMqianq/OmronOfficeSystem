@@ -171,9 +171,40 @@ class TaxiWidgetUi(QWidget):
 		errorMessage.exec_()
 
 
-# class Signals(QObject):
-# 	get_data_done: pyqtBoundSignal
-# 	get_data_done = pyqtSignal
+def get_db_date():
+	# 读取数据库数据的线程
+	get_data_done: pyqtBoundSignal
+	conn_error: pyqtBoundSignal
+	get_data_done = pyqtSignal()
+	conn_error = pyqtSignal()
+
+	logger = logging.getLogger("applogger")
+	try:
+		t_stamp1 = time.time()
+		conn, cursor = DatabaseOperation.connect_db()
+		conn_time = (time.time() - t_stamp1) * 1000
+	# self.logger.debug(f"登录服务器耗时{self.conn_time}ms")
+	except pymysql.err.OperationalError as e:
+		conn_error.emit()
+		logger.exception(e)
+	except Exception as e:
+		self.logger.exception(e)
+	else:
+		try:
+			self.max_id = DatabaseOperation.get_max_id(cursor)
+			t_stamp2 = time.time()
+			self.data = DatabaseOperation.get_contents_of_table(cursor, self.start_line, self.end_line)
+			self.get_data_time = (time.time() - t_stamp2) * 1000
+		# self.logger.debug(f"从数据库获取一页数据耗时{self.get_data_time}ms")
+		except Exception as e:
+			self.logger.exception(e)
+		else:
+			self.total_time = (time.time() - t_stamp1) * 1000
+			self.get_data_done.emit()
+		finally:
+			DatabaseOperation.close(conn, cursor)
+			# self.logger.debug(f"总耗时{self.total_time}ms")
+			self.logger.debug("数据库获取数据完成！")
 
 
 if __name__ == "__main__":
