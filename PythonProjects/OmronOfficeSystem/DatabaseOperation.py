@@ -1,6 +1,7 @@
 import pymysql
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
 import logging
+import  logging.config
 
 
 def connect_db(h="qianshaoqing.mysql.rds.aliyuncs.com", u="omron", pwd="omron@2021", db="officesystem"):
@@ -23,10 +24,13 @@ def get_max_id(cursor: pymysql.cursors.DictCursor):
 	:param cursor: 游标
 	:return: 返回总行数
 	"""
-	# sql_select1 = "select id from random_amount order by id desc limit 1"
-	# cursor.execute(sql_select1)
-	# max_id = cursor.fetchall()[0]["id"]
-	max_id = 1000
+	sql_select1 = "select id from random_amount order by id desc limit 1"
+	a = cursor.execute(sql_select1)
+	data = cursor.fetchall()
+	if data != 0:
+		max_id = data[0]["id"]
+	else:
+		max_id = 0
 	return max_id
 
 
@@ -44,6 +48,19 @@ def get_contents_of_table(cursor: pymysql.cursors.DictCursor, starting_line=1, e
 	return data
 
 
+def insert_data(cursor: pymysql.cursors.DictCursor, conn: pymysql.connections.Connection, name, amount):
+	sql_insert = "insert into random_amount(name, amount) values(%s, %s)"
+	cursor.execute(sql_insert, (name, amount))
+	conn.commit()
+
+
+# def delete_data(cursor: pymysql.cursors.DictCursor, start_line, end_line):
+# 	# sql_truncate = "delete from random_amount where id between %s and %s"
+# 	sql_truncate = "truncate random_amount"
+# 	cursor.execute(sql_truncate)
+# 	# cursor.execute(sql_truncate, (start_line, end_line))
+
+
 def close(conn: pymysql.connections.Connection, cursor: pymysql.cursors.DictCursor):
 	# 关闭游标，关闭MySQL连接
 	cursor.close()
@@ -51,7 +68,12 @@ def close(conn: pymysql.connections.Connection, cursor: pymysql.cursors.DictCurs
 
 
 if __name__ == "__main__":
-	conn, cursor = connect_db()
-	get_max_id(cursor)
-	get_contents_of_table(cursor, 1, 26)
-	close(conn, cursor)
+	logging.config.fileConfig("log/logging.conf")
+	logger = logging.getLogger("applog")
+	conn, cur = connect_db()
+
+	print(get_contents_of_table(cur, 130, 260))
+	insert_data(cur, conn, "aaa", "123")
+	print(get_max_id(cur))
+
+	close(conn, cur)

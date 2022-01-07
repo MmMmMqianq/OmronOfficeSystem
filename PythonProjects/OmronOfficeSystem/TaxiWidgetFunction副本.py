@@ -9,6 +9,7 @@ import time
 import TaxiUi
 import logging
 import logging.config
+import threading
 
 
 class WorkTread(QThread):

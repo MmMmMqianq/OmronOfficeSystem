@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Taxi(object):
     def setupUi(self, Taxi):
         Taxi.setObjectName("Taxi")
-        Taxi.resize(907, 737)
+        Taxi.resize(1037, 908)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(Taxi)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -32,10 +32,10 @@ class Ui_Taxi(object):
         self.nameLineEdit.setPlaceholderText("请输入姓名：")
         self.nameLineEdit.setObjectName("nameLineEdit")
         self.horizontalLayout_2.addWidget(self.nameLineEdit)
-        self.addNameButton = QtWidgets.QPushButton(Taxi)
-        self.addNameButton.setToolTip("")
-        self.addNameButton.setObjectName("addNameButton")
-        self.horizontalLayout_2.addWidget(self.addNameButton)
+        self.addNameBtn = QtWidgets.QPushButton(Taxi)
+        self.addNameBtn.setToolTip("")
+        self.addNameBtn.setObjectName("addNameBtn")
+        self.horizontalLayout_2.addWidget(self.addNameBtn)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.tableWidget = QtWidgets.QTableWidget(Taxi)
         self.tableWidget.setObjectName("tableWidget")
@@ -216,7 +216,7 @@ class Ui_Taxi(object):
         spacerItem3 = QtWidgets.QSpacerItem(20, 188, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem3)
         self.horizontalLayout_5.addLayout(self.verticalLayout_2)
-        spacerItem4 = QtWidgets.QSpacerItem(174, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem4 = QtWidgets.QSpacerItem(239, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem4)
 
         self.retranslateUi(Taxi)
@@ -226,7 +226,7 @@ class Ui_Taxi(object):
         _translate = QtCore.QCoreApplication.translate
         Taxi.setWindowTitle(_translate("Taxi", "Form"))
         self.nameLineEdit.setToolTip(_translate("Taxi", "姓名"))
-        self.addNameButton.setText(_translate("Taxi", "添加姓名"))
+        self.addNameBtn.setText(_translate("Taxi", "添加姓名"))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("Taxi", "1"))
         item = self.tableWidget.verticalHeaderItem(1)

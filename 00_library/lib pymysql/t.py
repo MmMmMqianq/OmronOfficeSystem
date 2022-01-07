@@ -8,8 +8,8 @@ password2 = "pwd2"
 
 conn = pymysql.connect(host="qianshaoqing.mysql.rds.aliyuncs.com", user="omron", password="omron@2021", database="officesystem")
 cursor = conn.cursor()
-i=0
-while i<10000:
+i = 0
+while i < 100:
 	sql_insert = "insert into random_amount(name, amount) values(%s, %s)"
 	ret1 = cursor.execute(sql_insert, (user1, str(i)))  # 插入一条数据, ret返回值表示受影响的行数
 	i += 1
