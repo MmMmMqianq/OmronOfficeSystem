@@ -82,6 +82,27 @@ def get_id(cursor: pymysql.cursors.DictCursor):
 	return id_list
 
 
+def backup_data(cursor: pymysql.cursors.DictCursor, conn: pymysql.connections.Connection):
+	sql_truncate = "truncate table history"
+	sql_insert = "insert into history select * from random_amount"
+	cursor.execute(sql_truncate)
+	cursor.execute(sql_insert)
+	conn.commit()
+
+
+def get_little_data(cursor: pymysql.cursors.DictCursor, num1=360, num2=399):
+	sql_select3 = "select * from history where amount<=%s"
+	cursor.execute(sql_select3, (num1,))
+	data1 = cursor.fetchall()
+	sql_select4 = "select * from history where amount>%s and amount<%s"
+	cursor.execute(sql_select4, (num1, num2,))
+	data2 = cursor.fetchall()
+
+	l1 = len(data1)
+	l2 = len(data2)
+	return data1, data2, l1, l2
+
+
 def close(conn: pymysql.connections.Connection, cursor: pymysql.cursors.DictCursor):
 	# 关闭游标，关闭MySQL连接
 	cursor.close()
@@ -92,6 +113,6 @@ if __name__ == "__main__":
 	logging.config.fileConfig("log/logging.conf")
 	logger = logging.getLogger("applog")
 	conn, cur = connect_db()
-	update_data(cur, conn, [(20, 1), (21, 4), (22, 5), (23, 6), (24, 7)])
+	print(get_little_data(cur, 360, 399))
 
 	close(conn, cur)
