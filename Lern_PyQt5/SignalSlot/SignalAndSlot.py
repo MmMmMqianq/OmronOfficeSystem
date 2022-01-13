@@ -6,27 +6,27 @@ from PyQt5.QtWidgets import QWidget, QApplication, QPushButton
 class SignalAndSlot(QWidget):
 	def __init__(self):
 		super(SignalAndSlot, self).__init__()
-		self.setWindowTitle("WorkTread and slot demo")
+		self.setWindowTitle("WorkTread and defSignal demo")
 		self.resize(500, 500)
 
 		self.send = Signal()
 		self.slot = Slot()
 
 		self.meta_object1 = self.send.signal1.connect(self.slot.slot1)
-		print("5, self.send.signal1.connect(self.slot.slot1) = ", self.meta_object1)
+		print("5, self.send.signal1.connect(self.defSignal.slot1) = ", self.meta_object1)
 		self.send.connect_and_emit_signal1()
 		self.send.signal1.disconnect(self.slot.slot1)
 
 		self.meta_object2 = self.send.signal2.connect(self.slot.slot2)
-		print("6, self.send.signal2.connect(self.slot.slot2) = ", self.meta_object2)
+		print("6, self.send.signal2.connect(self.defSignal.slot2) = ", self.meta_object2)
 		self.send.connect_and_emit_signal2()
 
 		self.meta_object3_1 = self.send.signal3[int, str].connect(self.slot.slot3_1)
-		print("7, self.send.signal3[int, str].connect(self.slot.slot3_1) = ", self.meta_object3_1)
+		print("7, self.send.signal3[int, str].connect(self.defSignal.slot3_1) = ", self.meta_object3_1)
 		self.send.connect_and_emit_signal3_1()
 
 		self.meta_object3_2 = self.send.signal3[str, int].connect(self.slot.slot3_2)
-		print("8, self.send.signal3[str, int].connect(self.slot.slot3_2) = ", self.meta_object3_2)
+		print("8, self.send.signal3[str, int].connect(self.defSignal.slot3_2) = ", self.meta_object3_2)
 		self.send.connect_and_emit_signal3_2()
 
 

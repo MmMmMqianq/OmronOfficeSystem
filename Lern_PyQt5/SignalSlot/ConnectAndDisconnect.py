@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QPushButton
 class ConnectAndDisconnect(QWidget):
 	def __init__(self):
 		super(ConnectAndDisconnect, self).__init__()
-		self.setWindowTitle("WorkTread and slot demo")
+		self.setWindowTitle("WorkTread and defSignal demo")
 		self.resize(500, 500)
 
 		# 信号和槽的连接和断开

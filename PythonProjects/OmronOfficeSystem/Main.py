@@ -29,8 +29,8 @@ class MainWin(QMainWindow):
 
 	def setupUi(self):
 		self.ui.taxiButton.clicked.connect(lambda: self.taxiUi.startWorkThread(1, 22))
-		# self.taxiUi.slot.get_data_done.connect(lambda: self.ui.statusbar.showMessage("获取数据耗时："+str(self.taxiUi.get_total_time)))
-		# self.taxiUi.slot.insert_data_done.connect(lambda: self.ui.statusbar.showMessage("插入数据耗时："+str(self.taxiUi.insert_total_time)))
+		# self.taxiUi.defSignal.get_data_done.connect(lambda: self.ui.statusbar.showMessage("获取数据耗时："+str(self.taxiUi.get_total_time)))
+		# self.taxiUi.defSignal.insert_data_done.connect(lambda: self.ui.statusbar.showMessage("插入数据耗时："+str(self.taxiUi.insert_total_time)))
 
 	def importWidget(self):
 		# 将taxi功能页面添加到主界面的栈容器中

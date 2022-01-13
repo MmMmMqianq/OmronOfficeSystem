@@ -15,7 +15,7 @@ class AutoConnectSignalAndSlot(QWidget):
 
 	def __init__(self):
 		super(AutoConnectSignalAndSlot, self).__init__()
-		self.setWindowTitle("WorkTread and slot demo")
+		self.setWindowTitle("WorkTread and defSignal demo")
 		self.resize(500, 500)
 
 		self.button = QPushButton(self)
