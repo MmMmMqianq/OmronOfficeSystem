@@ -90,7 +90,15 @@ def backup_data(cursor: pymysql.cursors.DictCursor, conn: pymysql.connections.Co
 	conn.commit()
 
 
-def get_little_data(cursor: pymysql.cursors.DictCursor, num1=360, num2=399):
+def get_segment_data(cursor: pymysql.cursors.DictCursor, num1=360, num2=400):
+	"""
+	将表中amount列小于num1和num1和num2之间的值取出
+	:param cursor: 游标
+	:param num1:
+	:param num2:
+	:return: data1为小于num1的组成的列表，l1为该列表的长度；
+			 data2为小于num1和num2之间组成的列表，l2为该列表的长度；
+	"""
 	sql_select3 = "select * from history where amount<=%s"
 	cursor.execute(sql_select3, (num1,))
 	data1 = cursor.fetchall()
@@ -113,6 +121,6 @@ if __name__ == "__main__":
 	logging.config.fileConfig("log/logging.conf")
 	logger = logging.getLogger("applog")
 	conn, cur = connect_db()
-	print(get_little_data(cur, 360, 399))
+	print(get_segment_data(cur, 360, 399))
 
 	close(conn, cur)
