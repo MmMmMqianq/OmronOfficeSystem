@@ -1,12 +1,15 @@
 from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QErrorMessage, QWidget, QApplication, QTableWidgetItem, QTableWidget, \
-	QMessageBox, QTableWidgetSelectionRange, QMenu, QAction, QLabel, QProgressBar
+	QMessageBox, QTableWidgetSelectionRange, QMenu, QAction, QLabel, QProgressBar, QPushButton, QFileDialog, QInputDialog, \
+	QDateEdit, QComboBox
 from PyQt5.QtCore import QObject, Qt, QPoint
 import DatabaseOperation
+import ExcelWrite
 import sys
 import pymysql
 import time
+import calendar
 import TaxiUi
 import logging
 import logging.config
@@ -48,19 +51,23 @@ class TaxiWidgetUi(QWidget):
 		self.taxiUi.previousBtn.clicked.connect(self.getPageNumberAndStartWorkThread)
 		self.taxiUi.nextBtn.clicked.connect(self.getPageNumberAndStartWorkThread)
 		self.taxiUi.pageNumberEdit.returnPressed.connect(lambda: self.getPageNumberAndStartWorkThread(s1=None))
+		self.taxiUi.browseBtn.clicked.connect(self.showFileDialog)
+		self.taxiUi.exportBtn.clicked.connect(self.excel_write)
 
 		self.taxiUi.okButton.clicked.connect(self.update_db_data)
 		self.taxiUi.saveBtn.clicked.connect(self.backup_db_data)
 		self.taxiUi.addNameBtn.clicked.connect(self.insert_db_data)
 
-		self.taxiUi.okButton.clicked.connect(lambda: self.showProgressBar(True))
-		self.defSignal.update_data_done.connect(lambda: self.showProgressBar(False))
+		self.taxiUi.okButton.clicked.connect(lambda: self.showProgressBar(True, True, self.taxiUi.okButton))
+		self.defSignal.update_data_done.connect(lambda: self.showProgressBar(False, True, self.taxiUi.okButton))
+		self.taxiUi.saveBtn.clicked.connect(lambda: self.showProgressBar(True, False, self.taxiUi.saveBtn))
+		self.defSignal.backup_data_done.connect(lambda: self.showProgressBar(False, False, self.taxiUi.saveBtn))
 
 		self.defSignal.insert_data_done.connect(self.getPageNumberAndStartWorkThread)  # 表格中显示新添加的内容
 		self.defSignal.delete_data_done.connect(self.getPageNumberAndStartWorkThread)
 		self.defSignal.update_data_done.connect(self.getPageNumberAndStartWorkThread)
-		self.defSignal.backup_data_done.connect(self.showSaveSuccessMessage)
-		self.defSignal.conn_error.connect(lambda: self.showErrorMessage("数据库连接错误，请检查网络！")) # 连接数据库错误时弹出错误提示框
+		self.defSignal.backup_data_done.connect(lambda: self.taxiUi.saveBtn.setEnabled(True))
+		self.defSignal.conn_error.connect(lambda: self.showErrorMessage("数据库连接错误，请检查网络！"))  # 连接数据库错误时弹出错误提示框
 		self.defSignal.conn_error.connect(lambda: self.buttonShow(self.taxiUi, 0))
 
 	def startWorkThread(self, start_line=1, end_line=22):
@@ -113,6 +120,7 @@ class TaxiWidgetUi(QWidget):
 		for dic in self.data:
 			self.taxiUi.tableWidget.setItem(index, 0, QTableWidgetItem(self.taxiUi.tableWidget.tr(str(dic["name"]))))
 			self.taxiUi.tableWidget.setItem(index, 1, QTableWidgetItem(self.taxiUi.tableWidget.tr(str(dic["amount"]))))
+			self.taxiUi.tableWidget.setItem(index, 2, QTableWidgetItem(self.taxiUi.tableWidget.tr(str(dic["number"]))))
 			index += 1
 		if len(self.data) < 22:
 			for index2 in range(index, 23):
@@ -157,7 +165,6 @@ class TaxiWidgetUi(QWidget):
 		:param max_id:数据库总行数
 		"""
 		self.taxiUi.okButton.setEnabled(True)
-		self.taxiUi.saveBtn.setEnabled(True)
 		if taxi_ui.pageNumberEdit.text() != '':
 			taxi_ui.refreshBtn.setEnabled(True)
 			taxi_ui.pageNumberEdit.setEnabled(True)
@@ -203,8 +210,11 @@ class TaxiWidgetUi(QWidget):
 					# self.logger.debug(f"总耗时{self.total_time}ms")
 					self.logger.debug("数据库数据插入完成！")
 
-		self.t5 = threading.Thread(target=workThread1)
-		self.t5.start()
+		if self.taxiUi.nameLineEdit.text() == "":
+			self.showErrorMessage("添加的姓名不能为空！")
+		else:
+			self.t5 = threading.Thread(target=workThread1)
+			self.t5.start()
 
 	def delete_db_data(self, table: QTableWidget):
 		"""
@@ -346,7 +356,7 @@ class TaxiWidgetUi(QWidget):
 			noRepetitionItemList = originalList
 			return noRepetitionItemList
 
-	def randomNumber(self, l, lower_limit=350, upper_limit=400):
+	def random_number(self, l, lower_limit=350, upper_limit=400):
 		"""
 		生成和数据库总行数大小相同的随机数列表
 		:param l: 生成随机数的总个数
@@ -380,9 +390,9 @@ class TaxiWidgetUi(QWidget):
 				try:
 					t_stamp4 = time.time()
 					id_list1, id_list2, l1, l2 = DatabaseOperation.get_segment_data(cursor, 360, 400)
-					num_List1 = self.randomNumber(l1, 361, int(self.taxiUi.maxValueSpinBox.text()))
-					num_List2 = self.randomNumber(l2, int(self.taxiUi.minValueSpinBox.text()),
-					                              int(self.taxiUi.maxValueSpinBox.text()))
+					num_List1 = self.random_number(l1, 361, int(self.taxiUi.maxValueSpinBox.text()))
+					num_List2 = self.random_number(l2, int(self.taxiUi.minValueSpinBox.text()),
+					                               int(self.taxiUi.maxValueSpinBox.text()))
 					id_amount1 = list()
 					for i, ii in zip(num_List1, id_list1):
 						id_amount1.append((i, ii["id"]))
@@ -437,11 +447,111 @@ class TaxiWidgetUi(QWidget):
 					# self.logger.debug(f"总耗时{self.total_time}ms")
 					self.logger.debug("数据库数据备份完成！")
 
-		self.ret3 = self.showMessageBox("数据保存到数据库", "确定要保存吗？")
+		self.ret3 = self.showMessageBox("数据保存到数据库，原有数据将会被覆盖！", "确定要保存吗？")
 		if self.ret3 == 16384:
 			self.taxiUi.saveBtn.setEnabled(False)
 			self.t6 = threading.Thread(target=workThread1)
 			self.t6.start()
+
+	def excel_write(self):
+		# dataDialog = QDialog()
+		# dataDialog.resize(200, 80)
+		# dataDialog.setWindowTitle("请选择月份")
+		# dataDialog.setModal(True)
+		#
+		# dataInput = QComboBox(dataDialog)
+		# dataInput.move(35, 10)
+		# dataInput.addItems(["--请选择月份--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"])
+		# acceptBtn = QPushButton(dataDialog)
+		# acceptBtn.setText("确定")
+		# acceptBtn.move(110, 40)
+		#
+		# cancelBtn = QPushButton(dataDialog)
+		# cancelBtn.setText("取消")
+		# cancelBtn.move(20, 40)
+		dataDialog = QInputDialog()
+		dataDialog.setInputMode(QInputDialog.IntInput)
+		dataDialog.setWindowTitle("输入月份")
+		dataDialog.setCancelButtonText("取消")
+		dataDialog.setOkButtonText("确定")
+		dataDialog.setLabelText("请输入月份：")
+
+		dataDialog.setIntRange(1, 12)
+		dataDialog.setIntStep(1)
+		dataDialog.setIntValue(1)
+		if dataDialog.exec_():
+			month = dataDialog.intValue()
+			year = int(time.strftime("%Y"))
+			# print(dataDialog.intValue())
+			# print(time.strftime("%Y"))
+
+			ca = calendar.Calendar()
+			d_l = list()
+			if month != 1:
+				d_iter1 = ca.itermonthdays2(year, month - 1)
+				d_iter2 = ca.itermonthdays2(year, month)
+				print(d_iter1)
+				for d in d_iter1:
+					self.logger.debug(list(d).append(year))  # 返回None
+					if d[0] > 20:
+						print(d)
+					d_l.append(list(d).append(year))
+				print(d_l)
+			else:
+				d_iter3 = ca.itermonthdays2(year - 1, 12)
+				for aa in d_iter3:
+					print(aa)
+				pass
+			return
+			try:
+				t_stamp1 = time.time()
+				conn, cursor = DatabaseOperation.connect_db()
+				self.conn_time = (time.time() - t_stamp1) * 1000
+			# self.logger.debug(f"登录服务器耗时{self.conn_time}ms")
+			except pymysql.err.OperationalError as e:
+				self.defSignal.conn_error.emit("conn_error")
+				self.logger.exception(e)
+			except Exception as e:
+				self.logger.exception(e)
+			else:
+				try:
+					self.max_id = DatabaseOperation.get_max_id(cursor)
+					t_stamp2 = time.time()
+					self.allData = DatabaseOperation.get_contents_of_table(cursor, 0, self.max_id)
+					self.get_data_time = (time.time() - t_stamp2) * 1000
+				# self.logger.debug(f"从数据库获取一页数据耗时{self.get_data_time}ms")
+				except Exception as e:
+					self.logger.exception(e)
+				else:
+					self.defSignal.get_all_date_done.emit("get_all_date_done")
+				finally:
+					DatabaseOperation.close(conn, cursor)
+					self.get_total_time = (time.time() - t_stamp1) * 1000
+					self.logger.debug(f"总耗时{self.get_total_time}ms")
+					self.logger.debug("数据库获取数据完成！")
+			# self.logger.debug(self.allData)
+			# 获取时间数据写到Excel里
+			datetime.datetime
+
+			name_l = list()
+			for dic in self.allData:
+				n_l, total, minimum = ExcelWrite.random_number(dic["number"], dic["amount"], 100)
+				self.logger.debug(n_l)
+				if dic["name"] not in name_l:
+					ExcelWrite.excel_write(dic["number"], n_l, dic["name"])
+					name_l.append(dic["name"])
+				else:
+					# 重名时生成的文件名处理
+					i = 1
+					while 1:
+						if dic["name"] + str(i) in name_l:
+							i += 1
+						else:
+							ExcelWrite.excel_write(dic["number"], n_l, dic["name"] + str(i))
+							name_l.append(dic["name"] + str(i))
+							break
+
+			print(123)
 
 	def showSaveSuccessMessage(self):
 		"""
@@ -483,19 +593,37 @@ class TaxiWidgetUi(QWidget):
 		result = messageDialog.exec_()
 		return result
 
-	def showProgressBar(self, b: bool):
-		if b:
+	def showProgressBar(self, b1: bool, b2: bool, btn: QPushButton):
+		"""
+		显示进度条
+		:param b1: True表示显示进度条，False表示关闭进度条
+		:param b2: True表示在元件的上方显示进度条，False表示在元件的下方显示进度条
+		:param btn: 进度条依附的按钮
+		"""
+		if b1:
 			self.progressBar = QProgressBar(self)
-			self.progressBar.setRange(0, 0)
-			position = self.taxiUi.okButton.geometry()
-			# self.logger.debug(position)
-			self.progressBar.move(position.x() + 8, position.y() - 20)
+			self.progressBar.setRange(0, 0), self.taxiUi.okButton
+			position = btn.geometry()
+			# self.logger.debug(position)\
+			if b2:
+				self.progressBar.move(position.x() + 8, position.y() - 20)
+			else:
+				self.progressBar.move(position.x() + 8, position.y() + 20)
 			self.progressBar.show()
 		else:
 			self.progressBar.close()
 			del self.progressBar
 
+	def showFileDialog(self):
+		fileDialog = QFileDialog(None, "选择文件保存的位置",
+		                         "/Users/qianshaoqing/Documents/Python/PythonProjects/OmronOfficeSystem/taxi_file")
 
+		fileDialog.setAcceptMode(QFileDialog.AcceptOpen)
+		fileDialog.setOption(True, QFileDialog.ShowDirsOnly)
+
+		if fileDialog.exec_():
+			self.savePath = fileDialog.directory().path()
+			self.logger.debug(self.savePath)
 
 
 class Signals(QObject):
@@ -505,12 +633,14 @@ class Signals(QObject):
 	delete_data_done: pyqtBoundSignal
 	update_data_done: pyqtBoundSignal
 	backup_data_done: pyqtBoundSignal
+	get_all_date_done: pyqtBoundSignal
 	get_data_done = pyqtSignal(str)
 	conn_error = pyqtSignal(str)
 	insert_data_done = pyqtSignal(str)
 	delete_data_done = pyqtSignal(str)
 	update_data_done = pyqtSignal(str)
 	backup_data_done = pyqtSignal(str)
+	get_all_date_done = pyqtSignal(str)
 
 
 if __name__ == "__main__":

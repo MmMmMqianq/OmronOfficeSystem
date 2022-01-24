@@ -1,9 +1,34 @@
-2021/12/24 10:59:10|DEBUG   |6-4.py|14|MainThread|This is debug log
-2021/12/24 11:09:11|DEBUG   |6-4.py|14|MainThread|This is debug log
-2021/12/24 11:34:29|DEBUG   |6-4.py|14|MainThread|This is debug log,applog
-2021/12/24 11:41:08|DEBUG   |6-4.py|14|MainThread|This is debug log,applog
-2021/12/24 11:41:08|ERROR   |6-4.py|20|MainThread|invalid literal for int() with base 10: 'abc'
-2021/12/24 11:41:08|ERROR   |6-4.py|21|MainThread|invalid literal for int() with base 10: 'abc'
+2022/01/19 09:47:35|DEBUG   |6-4.py|14|MainThread|This is debug log,applog
+2022/01/19 09:47:35|ERROR   |6-4.py|20|MainThread|invalid literal for int() with base 10: 'abc'
+2022/01/19 09:47:35|ERROR   |6-4.py|21|MainThread|invalid literal for int() with base 10: 'abc'
+Traceback (most recent call last):
+  File "/Users/qianshaoqing/Documents/Python/00_library/stdlib06 logging/6-4.py", line 18, in <module>
+    int(a)
+ValueError: invalid literal for int() with base 10: 'abc'
+2022/01/19 09:47:54|DEBUG   |6-4.py|14|MainThread|This is debug log,applog
+2022/01/19 09:47:54|ERROR   |6-4.py|20|MainThread|invalid literal for int() with base 10: 'abc'
+2022/01/19 09:47:54|ERROR   |6-4.py|21|MainThread|invalid literal for int() with base 10: 'abc'
+Traceback (most recent call last):
+  File "/Users/qianshaoqing/Documents/Python/00_library/stdlib06 logging/6-4.py", line 18, in <module>
+    int(a)
+ValueError: invalid literal for int() with base 10: 'abc'
+2022/01/19 10:29:13|DEBUG   |6-4.py|14|MainThread|This is debug log,applog
+2022/01/19 10:29:13|ERROR   |6-4.py|20|MainThread|invalid literal for int() with base 10: 'abc'
+2022/01/19 10:29:13|ERROR   |6-4.py|21|MainThread|invalid literal for int() with base 10: 'abc'
+Traceback (most recent call last):
+  File "/Users/qianshaoqing/Documents/Python/00_library/stdlib06 logging/6-4.py", line 18, in <module>
+    int(a)
+ValueError: invalid literal for int() with base 10: 'abc'
+2022/01/19 10:30:12|DEBUG   |6-4.py|14|MainThread|This is debug log,applog
+2022/01/19 10:30:12|ERROR   |6-4.py|20|MainThread|invalid literal for int() with base 10: 'abc'
+2022/01/19 10:30:12|ERROR   |6-4.py|21|MainThread|invalid literal for int() with base 10: 'abc'
+Traceback (most recent call last):
+  File "/Users/qianshaoqing/Documents/Python/00_library/stdlib06 logging/6-4.py", line 18, in <module>
+    int(a)
+ValueError: invalid literal for int() with base 10: 'abc'
+applog|2022/01/19 10:39:56|DEBUG   |6-4.py|14|MainThread|This is debug log,applog
+applog|2022/01/19 10:39:56|ERROR   |6-4.py|20|MainThread|invalid literal for int() with base 10: 'abc'
+applog|2022/01/19 10:39:56|ERROR   |6-4.py|21|MainThread|invalid literal for int() with base 10: 'abc'
 Traceback (most recent call last):
   File "/Users/qianshaoqing/Documents/Python/00_library/stdlib06 logging/6-4.py", line 18, in <module>
     int(a)
