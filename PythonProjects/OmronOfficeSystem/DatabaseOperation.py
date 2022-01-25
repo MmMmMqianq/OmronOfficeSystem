@@ -1,7 +1,6 @@
+import logging.config
+
 import pymysql
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
-import logging
-import  logging.config
 
 
 def connect_db(h="qianshaoqing.mysql.rds.aliyuncs.com", u="omron", pwd="omron@2021", db="officesystem"):
@@ -50,9 +49,9 @@ def get_contents_of_table(cursor: pymysql.cursors.DictCursor, starting_line=1, e
 	return data
 
 
-def insert_data(cursor: pymysql.cursors.DictCursor, conn: pymysql.connections.Connection, name, amount):
-	sql_insert = "insert into random_amount(name, amount) values(%s, %s)"
-	cursor.execute(sql_insert, (name, amount))
+def insert_data(cursor: pymysql.cursors.DictCursor, conn: pymysql.connections.Connection, name, amount, number):
+	sql_insert = "insert into random_amount(name, amount, number) values(%s, %s, %s)"
+	cursor.execute(sql_insert, (name, amount, number))
 	conn.commit()
 
 
@@ -118,7 +117,7 @@ def close(conn: pymysql.connections.Connection, cursor: pymysql.cursors.DictCurs
 
 
 if __name__ == "__main__":
-	logging.config.fileConfig("log/logging.conf")
+	logging.config.fileConfig("taxi/log/logging.conf")
 	logger = logging.getLogger("applog")
 	conn, cur = connect_db()
 	print(get_segment_data(cur, 360, 399))

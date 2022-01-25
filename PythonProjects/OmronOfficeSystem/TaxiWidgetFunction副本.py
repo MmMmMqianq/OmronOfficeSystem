@@ -1,15 +1,14 @@
-from PyQt5.QtCore import QThread, pyqtSignal, pyqtBoundSignal
-from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import QErrorMessage, QWidget, QApplication, QTableWidgetItem,QHBoxLayout
-from PyQt5.QtCore import QObject
-import DatabaseOperation
-import sys
-import pymysql
-import time
-import TaxiUi
 import logging
 import logging.config
-import threading
+import sys
+import time
+
+import pymysql
+from PyQt5.QtCore import QThread, pyqtSignal, pyqtBoundSignal
+from PyQt5.QtGui import QIntValidator
+from PyQt5.QtWidgets import QErrorMessage, QWidget, QApplication, QTableWidgetItem
+
+from PythonProjects.OmronOfficeSystem import DatabaseOperation, TaxiUi
 
 
 class WorkTread(QThread):
@@ -30,7 +29,7 @@ class WorkTread(QThread):
 			t_stamp1 = time.time()
 			conn, cursor = DatabaseOperation.connect_db()
 			self.conn_time = (time.time() - t_stamp1) * 1000
-			# self.logger.debug(f"登录服务器耗时{self.conn_time}ms")
+		# self.logger.debug(f"登录服务器耗时{self.conn_time}ms")
 		except pymysql.err.OperationalError as e:
 			self.conn_error.emit()
 			self.logger.exception(e)
@@ -41,8 +40,8 @@ class WorkTread(QThread):
 				self.max_id = DatabaseOperation.get_max_id(cursor)
 				t_stamp2 = time.time()
 				self.data = DatabaseOperation.get_contents_of_table(cursor, self.start_line, self.end_line)
-				self.get_data_time = (time.time()-t_stamp2)*1000
-				# self.logger.debug(f"从数据库获取一页数据耗时{self.get_data_time}ms")
+				self.get_data_time = (time.time() - t_stamp2) * 1000
+			# self.logger.debug(f"从数据库获取一页数据耗时{self.get_data_time}ms")
 			except Exception as e:
 				self.logger.exception(e)
 			else:
@@ -133,15 +132,15 @@ class TaxiWidgetUi(QWidget):
 		else:
 			s = self.sender().objectName()
 			if s == self.taxiUi.previousBtn.objectName():
-				self.startWorkThread((pageNumber-2)*22+1, (pageNumber-1)*22)
-				self.taxiUi.pageNumberEdit.setText(str(pageNumber-1))
+				self.startWorkThread((pageNumber - 2) * 22 + 1, (pageNumber - 1) * 22)
+				self.taxiUi.pageNumberEdit.setText(str(pageNumber - 1))
 			elif s == self.taxiUi.nextBtn.objectName():
-				self.startWorkThread(pageNumber*22+1, (pageNumber+1)*22)
-				self.taxiUi.pageNumberEdit.setText(str(pageNumber+1))
+				self.startWorkThread(pageNumber * 22 + 1, (pageNumber + 1) * 22)
+				self.taxiUi.pageNumberEdit.setText(str(pageNumber + 1))
 			elif s == self.taxiUi.refreshBtn.objectName():
-				self.startWorkThread((pageNumber-1)*22+1, pageNumber*22)
+				self.startWorkThread((pageNumber - 1) * 22 + 1, pageNumber * 22)
 			elif s == self.taxiUi.pageNumberEdit.objectName():
-				self.startWorkThread((pageNumber-1)*22+1, pageNumber*22)
+				self.startWorkThread((pageNumber - 1) * 22 + 1, pageNumber * 22)
 
 	def previousAndNextButtonShow(self, taxi_ui, max_id):
 		"""
@@ -158,11 +157,11 @@ class TaxiWidgetUi(QWidget):
 				taxi_ui.previousBtn.setEnabled(False)
 			else:
 				taxi_ui.previousBtn.setEnabled(True)
-			if int(taxi_ui.pageNumberEdit.text()) == max_id//22 + 1:
+			if int(taxi_ui.pageNumberEdit.text()) == max_id // 22 + 1:
 				taxi_ui.nextBtn.setEnabled(False)
 			else:
 				taxi_ui.nextBtn.setEnabled(True)
-			if int(taxi_ui.pageNumberEdit.text()) > max_id//22+1:
+			if int(taxi_ui.pageNumberEdit.text()) > max_id // 22 + 1:
 				taxi_ui.pageNumberEdit.setText(str(max_id // 22 + 1))
 
 	def showErrorMessage(self, message: str):
@@ -179,12 +178,7 @@ class TaxiWidgetUi(QWidget):
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
-	logging.config.fileConfig("log/logging.conf")
+	logging.config.fileConfig("taxi/log/logging.conf")
 	win = TaxiWidgetUi()
 	win.show()
 	sys.exit(app.exec_())
-
-
-
-
-

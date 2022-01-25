@@ -1,9 +1,9 @@
 import logging.config
-import logging
 import random
-from xlutils.copy import copy
-from xlrd import open_workbook
+
 import xlwt
+from xlrd import open_workbook
+from xlutils.copy import copy
 
 
 def random_number(a, b, maximum):
@@ -24,7 +24,7 @@ def random_number(a, b, maximum):
 	:return: 返回随机数列表n2_l，s2为随机数的总和，minimum为范围最小值
 	"""
 	average = b // a
-	minimum = 2*average-maximum
+	minimum = 2 * average - maximum
 	n_l = list()  # 用于存储未经处理随机数
 	# n_l = [36, 39, 22, 43, 24, 97]
 	for _ in range(0, a):
@@ -38,32 +38,32 @@ def random_number(a, b, maximum):
 	if b - s > 0:
 		n_l.sort(reverse=True)
 		# print(int((b-s)/a))
-		aa = int((b-s)/a)
+		aa = int((b - s) / a)
 		for i2 in n_l:
-			if i2+int((b-s)/a) <= maximum:
-				n2_l.append(i2+int((b-s)/a))
+			if i2 + int((b - s) / a) <= maximum:
+				n2_l.append(i2 + int((b - s) / a))
 			else:
 				n2_l.append(maximum)
-				n_l[-1] = n_l[-1]+int((b-s)/a)-(maximum-i2)
+				n_l[-1] = n_l[-1] + int((b - s) / a) - (maximum - i2)
 				n_l.sort(reverse=True)
 		n_l.sort()
-		if (b-s) % a != 0:
-			for i4 in range(0, (b-s) % a):
+		if (b - s) % a != 0:
+			for i4 in range(0, (b - s) % a):
 				if n2_l[i4] == maximum:
 					n_l.sort()
 					n2_l[-1] = n2_l[-1] + 1
 				else:
-					n2_l[i4] = n2_l[i4]+1
+					n2_l[i4] = n2_l[i4] + 1
 	else:
 		n_l.sort()
 		aa = int((s - b) / a)
 		# print(int((s - b) / a))
 		for i3 in n_l:
-			if i3-int((s-b)/a) >= minimum:
-				n2_l.append(i3-int((s-b)/a))
+			if i3 - int((s - b) / a) >= minimum:
+				n2_l.append(i3 - int((s - b) / a))
 			else:
 				n2_l.append(minimum)
-				n_l[-1] = n_l[-1] - (int((s-b)/a) - (i3-minimum))
+				n_l[-1] = n_l[-1] - (int((s - b) / a) - (i3 - minimum))
 				n_l.sort(reverse=False)
 		bb = (s - b) % a
 		if (s - b) % a != 0:
@@ -83,7 +83,7 @@ def random_number(a, b, maximum):
 
 
 def excel_write(n, data, t, amount, name):
-	rb = open_workbook(filename="./taxi_file/template.xls", formatting_info=True)
+	rb = open_workbook(filename="taxi_file/template.xls", formatting_info=True)
 
 	wb: xlwt.Workbook
 	ws0: xlwt.Worksheet
@@ -95,34 +95,34 @@ def excel_write(n, data, t, amount, name):
 		ws0.write(i + 2, 3, amount[i])
 		ws0.write(i + 2, 4, "上海")
 
-	wb.save("./taxi_file/file/%s.xls" % name)
+	wb.save("./taxi_file/file/%s %d张.xls" % (name, n))
 
 
 if __name__ == "__main__":
-	logging.config.fileConfig("log/logging.conf")
+	logging.config.fileConfig("taxi/log/logging.conf")
 	applogger = logging.getLogger("applog")
-	# ii = 0
-	# c = list()
-	# d = list()
-	# f = list()
-	# num1 = 4
-	# num2 = 377
-	# maximum1 = 100
-	# while ii < 10000:
-	# 	n = random_number(num1, num2, maximum1)
-	# 	applogger.debug(n)
-	# 	ii += 1
-	# 	c.append(n[1])
-	# 	d.append(n[0][-1])
-	# 	f.append(n[0][0])
-	# a1 = 0
-	# a2 = 0
-	# a3 = 0
-	# for iii, iiii, iiiii in zip(c, d, f):
-	# 	if iii != num2:
-	# 		a1 += 1  # 判断随机数的总和有没有不等于给定的总和的
-	# 	if iiii < n[2]:  # 判断随机数中是否有小于最小值的
-	# 		a2 += 1
-	# 	if iiiii > maximum1:  # 判断随机数中是否有大于最大值的
-	# 		a3 += 1
-	# print(a1, a2, a3)
+# ii = 0
+# c = list()
+# d = list()
+# f = list()
+# num1 = 4
+# num2 = 377
+# maximum1 = 100
+# while ii < 10000:
+# 	n = random_number(num1, num2, maximum1)
+# 	applogger.debug(n)
+# 	ii += 1
+# 	c.append(n[1])
+# 	d.append(n[0][-1])
+# 	f.append(n[0][0])
+# a1 = 0
+# a2 = 0
+# a3 = 0
+# for iii, iiii, iiiii in zip(c, d, f):
+# 	if iii != num2:
+# 		a1 += 1  # 判断随机数的总和有没有不等于给定的总和的
+# 	if iiii < n[2]:  # 判断随机数中是否有小于最小值的
+# 		a2 += 1
+# 	if iiiii > maximum1:  # 判断随机数中是否有大于最大值的
+# 		a3 += 1
+# print(a1, a2, a3)

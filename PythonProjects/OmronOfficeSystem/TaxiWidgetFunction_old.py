@@ -1,10 +1,11 @@
+import logging
+import time
+
+import pymysql
 from PyQt5.QtCore import QThread, pyqtSignal, pyqtBoundSignal
 from PyQt5.QtWidgets import QErrorMessage
-import DatabaseOperation
-import pymysql
-import time
-import TaxiUi
-import logging
+
+from PythonProjects.OmronOfficeSystem import DatabaseOperation, TaxiUi
 
 
 class WorkTread(QThread):
@@ -25,7 +26,7 @@ class WorkTread(QThread):
 			t_stamp1 = time.time()
 			conn, cursor = DatabaseOperation.connect_db()
 			self.conn_time = (time.time() - t_stamp1) * 1000
-			# self.logger.debug(f"登录服务器耗时{self.conn_time}ms")
+		# self.logger.debug(f"登录服务器耗时{self.conn_time}ms")
 		except pymysql.err.OperationalError as e:
 			self.conn_error.emit()
 			self.logger.exception(e)
@@ -36,8 +37,8 @@ class WorkTread(QThread):
 				self.max_id = DatabaseOperation.get_max_id(cursor)
 				t_stamp2 = time.time()
 				self.data = DatabaseOperation.get_contents_of_table(cursor, self.start_line, self.end_line)
-				self.get_data_time = (time.time()-t_stamp2)*1000
-				# self.logger.debug(f"从数据库获取一页数据耗时{self.get_data_time}ms")
+				self.get_data_time = (time.time() - t_stamp2) * 1000
+			# self.logger.debug(f"从数据库获取一页数据耗时{self.get_data_time}ms")
 			except Exception as e:
 				self.logger.exception(e)
 			else:
@@ -45,8 +46,9 @@ class WorkTread(QThread):
 				self.get_data_done.emit()
 			finally:
 				DatabaseOperation.close(conn, cursor)
-				# self.logger.debug(f"总耗时{self.total_time}ms")
-				# self.logger.debug("数据库获取数据完成！")
+	# self.logger.debug(f"总耗时{self.total_time}ms")
+	# self.logger.debug("数据库获取数据完成！")
+
 
 def previousAndNextButtonShow(taxi_ui: TaxiUi.Ui_Taxi, max_id):
 	"""
@@ -63,20 +65,16 @@ def previousAndNextButtonShow(taxi_ui: TaxiUi.Ui_Taxi, max_id):
 			taxi_ui.previousBtn.setEnabled(False)
 		else:
 			taxi_ui.previousBtn.setEnabled(True)
-		if int(taxi_ui.pageNumberEdit.text()) == max_id//22 + 1:
+		if int(taxi_ui.pageNumberEdit.text()) == max_id // 22 + 1:
 			taxi_ui.nextBtn.setEnabled(False)
 		else:
 			taxi_ui.nextBtn.setEnabled(True)
-		if int(taxi_ui.pageNumberEdit.text()) > max_id//22+1:
+		if int(taxi_ui.pageNumberEdit.text()) > max_id // 22 + 1:
 			taxi_ui.pageNumberEdit.setText(str(max_id // 22 + 1))
+
 
 def showErrorMessage(self, message: str):
 	errorMessage = QErrorMessage()
 	errorMessage.setModal(True)
 	errorMessage.showMessage(message)
 	errorMessage.exec_()
-
-
-
-
-

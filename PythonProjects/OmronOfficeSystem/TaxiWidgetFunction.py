@@ -1,23 +1,24 @@
+import calendar
+import logging
+import logging.config
+import random
+import sys
+import threading
+import time
+from os import listdir
+from os import path
+from os import remove
+from shutil import copy2
+
+import pymysql
+from PyQt5.QtCore import QObject, Qt, QPoint
 from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QErrorMessage, QWidget, QApplication, QTableWidgetItem, QTableWidget, \
-	QMessageBox, QTableWidgetSelectionRange, QMenu, QAction, QLabel, QProgressBar, QPushButton, QFileDialog, QInputDialog, \
-	QDateEdit, QComboBox
-from PyQt5.QtCore import QObject, Qt, QPoint
-import DatabaseOperation
-import ExcelWrite
-import sys
-import pymysql
-import time
-import calendar
-import TaxiUi
-import logging
-import logging.config
-import threading
-import random
-from shutil import copy2
-from os import listdir
-from os import path
+	QMessageBox, QTableWidgetSelectionRange, QMenu, QAction, QLabel, QProgressBar, QPushButton, QFileDialog, \
+	QInputDialog
+
+from PythonProjects.OmronOfficeSystem import DatabaseOperation, TaxiUi, ExcelWrite
 
 
 class TaxiWidgetUi(QWidget):
@@ -40,10 +41,15 @@ class TaxiWidgetUi(QWidget):
 		self.taxiUi.tableWidget.customContextMenuRequested.connect(self.getContextMenu)
 
 		# 给pageNumberEdit设置校验器，只能输入整数
-		self.int_validator = QIntValidator(self)
-		self.int_validator.setBottom(1)
-		self.int_validator.setTop(999999)
-		self.taxiUi.pageNumberEdit.setValidator(self.int_validator)
+		self.int_validator1 = QIntValidator(self)
+		self.int_validator1.setBottom(1)
+		self.int_validator1.setTop(999999)
+		self.taxiUi.pageNumberEdit.setValidator(self.int_validator1)
+
+		self.int_validator2 = QIntValidator(self)
+		self.int_validator2.setBottom(1)
+		self.int_validator2.setTop(10)
+		self.taxiUi.numberEdit.setValidator(self.int_validator2)
 
 		# 初始化控件的状态
 		self.taxiUi.previousBtn.setEnabled(False)
@@ -134,6 +140,7 @@ class TaxiWidgetUi(QWidget):
 			for index2 in range(index, 23):
 				self.taxiUi.tableWidget.setItem(index2, 0, QTableWidgetItem(self.taxiUi.tableWidget.tr(str(""))))
 				self.taxiUi.tableWidget.setItem(index2, 1, QTableWidgetItem(self.taxiUi.tableWidget.tr(str(""))))
+				self.taxiUi.tableWidget.setItem(index2, 2, QTableWidgetItem(self.taxiUi.tableWidget.tr(str(""))))
 		self.taxiUi.yeLabel.setText("页/共%d条" % self.max_id)
 		# 数据读完后启用翻页键和刷新键self.ui.statusbar.showMessage
 		self.buttonShow(self.taxiUi, self.max_id)
@@ -202,7 +209,8 @@ class TaxiWidgetUi(QWidget):
 			else:
 				try:
 					t_stamp4 = time.time()
-					DatabaseOperation.insert_data(cursor, conn, self.taxiUi.nameLineEdit.text(), "0")
+					DatabaseOperation.insert_data(cursor, conn, self.taxiUi.nameLineEdit.text(), "0",
+					                              self.taxiUi.numberEdit.text())
 					self.insert_data_time = (time.time() - t_stamp4) * 1000
 					self.max_id = DatabaseOperation.get_max_id(cursor)
 				# self.logger.debug(f"从数据库获取一页数据耗时{self.get_data_time}ms")
@@ -218,8 +226,8 @@ class TaxiWidgetUi(QWidget):
 					# self.logger.debug(f"总耗时{self.total_time}ms")
 					self.logger.debug("数据库数据插入完成！")
 
-		if self.taxiUi.nameLineEdit.text() == "":
-			self.showErrorMessage("添加的姓名不能为空！")
+		if self.taxiUi.nameLineEdit.text() == "" or self.taxiUi.numberEdit.text() == '':
+			self.showErrorMessage("添加的姓名或者份数不能为空！")
 		else:
 			self.t5 = threading.Thread(target=workThread1)
 			self.t5.start()
@@ -471,9 +479,16 @@ class TaxiWidgetUi(QWidget):
 
 		dataDialog.setIntRange(1, 12)
 		dataDialog.setIntStep(1)
-		dataDialog.setIntValue(1)
+		dataDialog.setIntValue(int(time.strftime("%m")))
 
 		def workThread3():
+			del_l = list()
+			del_l = listdir("taxi_file/file")
+			# self.logger.debug(del_l)
+			if del_l:
+				for del_l_1 in del_l:
+					remove("./taxi_file/file/%s" % del_l_1)
+
 			month = dataDialog.intValue()
 			year = int(time.strftime("%Y"))
 
@@ -486,18 +501,18 @@ class TaxiWidgetUi(QWidget):
 					if d_dic1[0] > 20 and d_dic1[1] != 0 and d_dic1[1] != 6:
 						d_l_1 = list(d_dic1)
 						d_l_1.append(year)
-						d_l_1.append(month-1)
+						d_l_1.append(month - 1)
 						d_l.append(d_l_1)
-				# self.logger.debug(d_l)
+			# self.logger.debug(d_l)
 			else:
 				d_iter3 = ca.itermonthdays2(year - 1, 12)
 				for d_dic3 in d_iter3:
 					if d_dic3[0] > 20 and d_dic3[1] != 0 and d_dic3[1] != 6:
 						d_l_3 = list(d_dic3)
-						d_l_3.append(year-1)
+						d_l_3.append(year - 1)
 						d_l_3.append(12)
 						d_l.append(d_l_3)
-				# self.logger.debug(d_l)
+			# self.logger.debug(d_l)
 
 			for d_dic2 in d_iter2:
 				if 0 < d_dic2[0] < 20 and d_dic2[1] != 0 and d_dic2[1] != 6:
@@ -505,7 +520,7 @@ class TaxiWidgetUi(QWidget):
 					d_l_2.append(year)
 					d_l_2.append(month)
 					d_l.append(d_l_2)
-			self.logger.debug(d_l)
+			# self.logger.debug(d_l)
 
 			try:
 				t_stamp1 = time.time()
@@ -533,25 +548,27 @@ class TaxiWidgetUi(QWidget):
 					self.get_total_time = (time.time() - t_stamp1) * 1000
 					self.logger.debug(f"总耗时{self.get_total_time}ms")
 					self.logger.debug("数据库获取数据完成！")
+
 			# self.logger.debug(self.allData)
 
 			def int_to_str(b):
 				if 0 <= b <= 9:
-					return "0"+str(b)
+					return "0" + str(b)
 				else:
 					return str(b)
 
 			name_l = list()
+			total_sheets = 0  # 总张数
 			for dic in self.allData:
 				# 随机日期
 				random.shuffle(d_l)
 				# self.logger.debug(d_l)
 				data_l_temp = d_l[0:dic["number"]:1]
-				self.logger.debug(data_l_temp)
+				# self.logger.debug(data_l_temp)
 				data_l = list()  # 随机日期列表
 				for data_temp in data_l_temp:
 					data_l.append(str(data_temp[2]) + "-" + int_to_str(data_temp[3]) + "-" + int_to_str(data_temp[0]))
-				self.logger.debug(data_l)
+				# self.logger.debug(data_l)
 
 				# 随机时间
 				t_l = list()
@@ -562,14 +579,14 @@ class TaxiWidgetUi(QWidget):
 				for _ in range(0, dic["number"]):
 					random.shuffle(h)
 					random.shuffle(m)
-					t_l.append(str(h[0])+":"+int_to_str(m[0]))
-				print(t_l)
+					t_l.append(str(h[0]) + ":" + int_to_str(m[0]))
 
 				n_l, total, minimum = ExcelWrite.random_number(dic["number"], dic["amount"], 100)
-				self.logger.debug(n_l)
+				# self.logger.debug(n_l)
 				if dic["name"] not in name_l:
-					ExcelWrite.excel_write(n=dic["number"], data=data_l, t=t_l, amount=n_l, name=dic["name"])
+					ExcelWrite.excel_write(n=dic["number"], data=data_l, t=t_l, amount=n_l, name=dic["name"][0:1:1])
 					name_l.append(dic["name"])
+					total_sheets = total_sheets + dic["number"]
 				else:
 					# 重名时生成的文件名处理
 					i = 1
@@ -577,9 +594,12 @@ class TaxiWidgetUi(QWidget):
 						if dic["name"] + str(i) in name_l:
 							i += 1
 						else:
-							ExcelWrite.excel_write(n=dic["number"], data=data_l, t=t_l, amount=n_l, name=dic["name"] + str(i))
+							ExcelWrite.excel_write(n=dic["number"], data=data_l, t=t_l, amount=n_l,
+							                       name=dic["name"][0:1:1] + str(i))
+							total_sheets = total_sheets + dic["number"]
 							name_l.append(dic["name"] + str(i))
 							break
+			self.logger.debug(total_sheets)
 			self.defSignal.excel_write_done.emit("excel_write_done")
 			self.taxiUi.exportBtn.setEnabled(True)
 
@@ -589,8 +609,8 @@ class TaxiWidgetUi(QWidget):
 			self.t8.start()
 
 	def export_excel(self):
-		file_name_l = listdir("./taxi_file/file")
-		self.logger.debug(file_name_l)
+		file_name_l = listdir("taxi_file/file")
+		# self.logger.debug(file_name_l)
 		try:
 			for file_name in file_name_l:
 				copy2("./taxi_file/file/%s" % file_name, self.taxiUi.pathEdit.text())
@@ -599,6 +619,30 @@ class TaxiWidgetUi(QWidget):
 			self.logger.exception(e)
 		except Exception as e:
 			self.logger.exception(e)
+
+	def path_exists(self):
+		"""
+		判断路径是否存在
+		"""
+		if path.exists(self.taxiUi.pathEdit.text()):
+			self.taxiUi.exportBtn.setEnabled(True)
+			try:
+				self.messageLabel.close()
+			except AttributeError as e:
+				pass
+			self.condition = True
+		elif self.taxiUi.pathEdit.text() == "":
+			self.taxiUi.exportBtn.setEnabled(False)
+			try:
+				self.messageLabel.close()
+			except AttributeError as e:
+				pass
+			self.condition = True
+		else:
+			self.taxiUi.exportBtn.setEnabled(False)
+			if self.condition:
+				self.showLabelMessage(a=self.taxiUi.pathEdit, message="路径不存在")
+				self.condition = False
 
 	def showLabelMessage(self, a: QWidget, message):
 		"""
@@ -614,10 +658,8 @@ class TaxiWidgetUi(QWidget):
 		""")
 		position = a.geometry()
 		# self.logger.debug(position)
-		self.messageLabel.move(position.x(), position.y() + position.height()-5)
+		self.messageLabel.move(position.x(), position.y() + position.height() - 5)
 		self.messageLabel.show()
-		# self.t7 = threading.Timer(2, self.messageLabel.close)
-		# self.t7.start()
 
 	def showErrorMessage(self, message: str):
 		errorMessage = QErrorMessage()
@@ -651,7 +693,7 @@ class TaxiWidgetUi(QWidget):
 			self.progressBar = QProgressBar(self)
 			self.progressBar.setRange(0, 0), self.taxiUi.okButton
 			position = btn.geometry()
-			# self.logger.debug(position)\
+			# self.logger.debug(position)
 			if b2:
 				self.progressBar.move(position.x() + 8, position.y() - 20)
 			else:
@@ -663,40 +705,16 @@ class TaxiWidgetUi(QWidget):
 
 	def showFileDialog(self):
 		fileDialog = QFileDialog(None, "选择文件保存的位置",
-		                         "/Users/qianshaoqing/Documents/Python/PythonProjects/OmronOfficeSystem/taxi_file")
+		                         "/Users/qianshaoqing/Desktop")
 
 		fileDialog.setAcceptMode(QFileDialog.AcceptOpen)
 		fileDialog.setOption(True, QFileDialog.ShowDirsOnly)
 
 		if fileDialog.exec_():
 			self.savePath = fileDialog.directory().path()
-			self.logger.debug(self.savePath)
+			# self.logger.debug(self.savePath)
 			self.taxiUi.pathEdit.setText(self.savePath)
 			self.taxiUi.exportBtn.setEnabled(True)
-
-	def path_exists(self):
-		"""
-		判断路径是否存在
-		"""
-		if path.exists(self.taxiUi.pathEdit.text()):
-			self.taxiUi.exportBtn.setEnabled(True)
-			try:
-				self.messageLabel.close()
-			except AttributeError as e:
-				pass
-			self.condition = True
-		elif self.taxiUi.pathEdit.text() == "":
-			self.taxiUi.exportBtn.setEnabled(False)
-			try:
-				self.messageLabel.close()
-			except AttributeError as e:
-				pass
-			self.condition = True
-		else:
-			self.taxiUi.exportBtn.setEnabled(False)
-			if self.condition:
-				self.showLabelMessage(a=self.taxiUi.pathEdit, message="路径不存在")
-				self.condition = False
 
 
 class Signals(QObject):
@@ -720,7 +738,7 @@ class Signals(QObject):
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
-	logging.config.fileConfig("log/logging.conf")
+	logging.config.fileConfig("./log/logging.conf")
 	win = TaxiWidgetUi()
 	win.show()
 	sys.exit(app.exec_())

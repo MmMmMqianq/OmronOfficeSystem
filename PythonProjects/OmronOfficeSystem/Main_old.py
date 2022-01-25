@@ -2,17 +2,15 @@
 数据库账号：omron
 密码：omron@2021
 """
-import sys
 import logging
 import logging.config
-import time
-import threading
+import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QTableWidgetItem, QErrorMessage
 from PyQt5.QtGui import QIntValidator
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QTableWidgetItem, QErrorMessage
+
 import Ui
-import TaxiUi
-import TaxiWidgetFunction
+from PythonProjects.OmronOfficeSystem import TaxiUi, TaxiWidgetFunction
 
 
 class MainWin(QMainWindow):
@@ -84,15 +82,15 @@ class MainWin(QMainWindow):
 		else:
 			s = self.ui.stackedWidget.sender().objectName()
 			if s == self.taxiUi.previousBtn.objectName():
-				self.startWorkThread((pageNumber-2)*22+1, (pageNumber-1)*22)
-				self.taxiUi.pageNumberEdit.setText(str(pageNumber-1))
+				self.startWorkThread((pageNumber - 2) * 22 + 1, (pageNumber - 1) * 22)
+				self.taxiUi.pageNumberEdit.setText(str(pageNumber - 1))
 			elif s == self.taxiUi.nextBtn.objectName():
-				self.startWorkThread(pageNumber*22+1, (pageNumber+1)*22)
-				self.taxiUi.pageNumberEdit.setText(str(pageNumber+1))
+				self.startWorkThread(pageNumber * 22 + 1, (pageNumber + 1) * 22)
+				self.taxiUi.pageNumberEdit.setText(str(pageNumber + 1))
 			elif s == self.taxiUi.refreshBtn.objectName():
-				self.startWorkThread((pageNumber-1)*22+1, pageNumber*22)
+				self.startWorkThread((pageNumber - 1) * 22 + 1, pageNumber * 22)
 			elif s == self.taxiUi.pageNumberEdit.objectName():
-				self.startWorkThread((pageNumber-1)*22+1, pageNumber*22)
+				self.startWorkThread((pageNumber - 1) * 22 + 1, pageNumber * 22)
 
 	def setTableWidgetItem(self):
 		# 在状态显示读取数据所消耗时间，只显示3秒
@@ -121,7 +119,7 @@ class MainWin(QMainWindow):
 
 
 app = QApplication(sys.argv)
-logging.config.fileConfig("log/logging.conf")
+logging.config.fileConfig("taxi/log/logging.conf")
 win = MainWin()
 win.show()
 sys.exit(app.exec_())

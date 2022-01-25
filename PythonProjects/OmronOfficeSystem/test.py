@@ -1,4 +1,3 @@
-import shutil
-import os
-
-shutil.copy2("./taxi_file/file/%s" % "user1.xls", "/Users/qianshaoqing/Desktop/t")
+a = "阿斯达撒点大发大师大"
+b = a[0:1:1]
+print(a[0:1:1])

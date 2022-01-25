@@ -2,17 +2,14 @@
 数据库账号：omron
 密码：omron@2021
 """
-import sys
 import logging
 import logging.config
-import time
-import threading
+import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QTableWidgetItem, QErrorMessage
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
 import Ui
-import TaxiUi
-import TaxiWidgetFunction
+from PythonProjects.OmronOfficeSystem import TaxiWidgetFunction
 
 
 class MainWin(QMainWindow):
@@ -29,8 +26,9 @@ class MainWin(QMainWindow):
 
 	def setupUi(self):
 		self.ui.taxiButton.clicked.connect(lambda: self.taxiUi.startWorkThread(1, 22))
-		# self.taxiUi.defSignal.get_data_done.connect(lambda: self.ui.statusbar.showMessage("获取数据耗时："+str(self.taxiUi.get_total_time)))
-		# self.taxiUi.defSignal.insert_data_done.connect(lambda: self.ui.statusbar.showMessage("插入数据耗时："+str(self.taxiUi.insert_total_time)))
+
+	# self.taxiUi.defSignal.get_data_done.connect(lambda: self.ui.statusbar.showMessage("获取数据耗时："+str(self.taxiUi.get_total_time)))
+	# self.taxiUi.defSignal.insert_data_done.connect(lambda: self.ui.statusbar.showMessage("插入数据耗时："+str(self.taxiUi.insert_total_time)))
 
 	def importWidget(self):
 		# 将taxi功能页面添加到主界面的栈容器中
@@ -40,7 +38,7 @@ class MainWin(QMainWindow):
 
 
 app = QApplication(sys.argv)
-logging.config.fileConfig("log/logging.conf")
+logging.config.fileConfig("./log/logging.conf")
 win = MainWin()
 win.show()
 sys.exit(app.exec_())
