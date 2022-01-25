@@ -82,15 +82,18 @@ def random_number(a, b, maximum):
 	return n2_l, s2, minimum
 
 
-def excel_write(n, content, name):
-	rb = open_workbook("./taxi_file/template.xls")
+def excel_write(n, data, t, amount, name):
+	rb = open_workbook(filename="./taxi_file/template.xls", formatting_info=True)
 
 	wb: xlwt.Workbook
 	ws0: xlwt.Worksheet
 	wb = copy(rb)
 	ws0 = wb.get_sheet(0)
 	for i in range(n):
-		ws0.write(i+1, 3, content[i])
+		ws0.write(i + 2, 0, data[i])
+		ws0.write(i + 2, 1, t[i])
+		ws0.write(i + 2, 3, amount[i])
+		ws0.write(i + 2, 4, "上海")
 
 	wb.save("./taxi_file/file/%s.xls" % name)
 
@@ -123,5 +126,3 @@ if __name__ == "__main__":
 	# 	if iiiii > maximum1:  # 判断随机数中是否有大于最大值的
 	# 		a3 += 1
 	# print(a1, a2, a3)
-
-	excel_write(2, 1, "qwe", "小王")

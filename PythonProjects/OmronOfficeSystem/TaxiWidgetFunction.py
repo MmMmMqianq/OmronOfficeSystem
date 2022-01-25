@@ -15,10 +15,14 @@ import logging
 import logging.config
 import threading
 import random
+from shutil import copy2
+from os import listdir
+from os import path
 
 
 class TaxiWidgetUi(QWidget):
 	total_time = 0
+	condition = True
 
 	def __init__(self):
 		super(TaxiWidgetUi, self).__init__()
@@ -45,6 +49,7 @@ class TaxiWidgetUi(QWidget):
 		self.taxiUi.previousBtn.setEnabled(False)
 		self.taxiUi.pageNumberEdit.setEnabled(False)
 		self.taxiUi.nextBtn.setEnabled(False)
+		self.taxiUi.exportBtn.setEnabled(False)
 
 		# 信号和槽的绑定
 		self.taxiUi.refreshBtn.clicked.connect(self.getPageNumberAndStartWorkThread)
@@ -53,6 +58,8 @@ class TaxiWidgetUi(QWidget):
 		self.taxiUi.pageNumberEdit.returnPressed.connect(lambda: self.getPageNumberAndStartWorkThread(s1=None))
 		self.taxiUi.browseBtn.clicked.connect(self.showFileDialog)
 		self.taxiUi.exportBtn.clicked.connect(self.excel_write)
+		self.taxiUi.pathEdit.textEdited.connect(self.path_exists)
+		self.taxiUi.pathEdit.textChanged.connect(self.path_exists)
 
 		self.taxiUi.okButton.clicked.connect(self.update_db_data)
 		self.taxiUi.saveBtn.clicked.connect(self.backup_db_data)
@@ -69,6 +76,7 @@ class TaxiWidgetUi(QWidget):
 		self.defSignal.backup_data_done.connect(lambda: self.taxiUi.saveBtn.setEnabled(True))
 		self.defSignal.conn_error.connect(lambda: self.showErrorMessage("数据库连接错误，请检查网络！"))  # 连接数据库错误时弹出错误提示框
 		self.defSignal.conn_error.connect(lambda: self.buttonShow(self.taxiUi, 0))
+		self.defSignal.excel_write_done.connect(self.export_excel)
 
 	def startWorkThread(self, start_line=1, end_line=22):
 		# 在读取数据前禁用翻页键和刷新键
@@ -454,21 +462,6 @@ class TaxiWidgetUi(QWidget):
 			self.t6.start()
 
 	def excel_write(self):
-		# dataDialog = QDialog()
-		# dataDialog.resize(200, 80)
-		# dataDialog.setWindowTitle("请选择月份")
-		# dataDialog.setModal(True)
-		#
-		# dataInput = QComboBox(dataDialog)
-		# dataInput.move(35, 10)
-		# dataInput.addItems(["--请选择月份--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"])
-		# acceptBtn = QPushButton(dataDialog)
-		# acceptBtn.setText("确定")
-		# acceptBtn.move(110, 40)
-		#
-		# cancelBtn = QPushButton(dataDialog)
-		# cancelBtn.setText("取消")
-		# cancelBtn.move(20, 40)
 		dataDialog = QInputDialog()
 		dataDialog.setInputMode(QInputDialog.IntInput)
 		dataDialog.setWindowTitle("输入月份")
@@ -479,30 +472,41 @@ class TaxiWidgetUi(QWidget):
 		dataDialog.setIntRange(1, 12)
 		dataDialog.setIntStep(1)
 		dataDialog.setIntValue(1)
-		if dataDialog.exec_():
+
+		def workThread3():
 			month = dataDialog.intValue()
 			year = int(time.strftime("%Y"))
-			# print(dataDialog.intValue())
-			# print(time.strftime("%Y"))
 
 			ca = calendar.Calendar()
+			d_iter2 = ca.itermonthdays2(year, month)
 			d_l = list()
 			if month != 1:
 				d_iter1 = ca.itermonthdays2(year, month - 1)
-				d_iter2 = ca.itermonthdays2(year, month)
-				print(d_iter1)
-				for d in d_iter1:
-					self.logger.debug(list(d).append(year))  # 返回None
-					if d[0] > 20:
-						print(d)
-					d_l.append(list(d).append(year))
-				print(d_l)
+				for d_dic1 in d_iter1:
+					if d_dic1[0] > 20 and d_dic1[1] != 0 and d_dic1[1] != 6:
+						d_l_1 = list(d_dic1)
+						d_l_1.append(year)
+						d_l_1.append(month-1)
+						d_l.append(d_l_1)
+				# self.logger.debug(d_l)
 			else:
 				d_iter3 = ca.itermonthdays2(year - 1, 12)
-				for aa in d_iter3:
-					print(aa)
-				pass
-			return
+				for d_dic3 in d_iter3:
+					if d_dic3[0] > 20 and d_dic3[1] != 0 and d_dic3[1] != 6:
+						d_l_3 = list(d_dic3)
+						d_l_3.append(year-1)
+						d_l_3.append(12)
+						d_l.append(d_l_3)
+				# self.logger.debug(d_l)
+
+			for d_dic2 in d_iter2:
+				if 0 < d_dic2[0] < 20 and d_dic2[1] != 0 and d_dic2[1] != 6:
+					d_l_2 = list(d_dic2)
+					d_l_2.append(year)
+					d_l_2.append(month)
+					d_l.append(d_l_2)
+			self.logger.debug(d_l)
+
 			try:
 				t_stamp1 = time.time()
 				conn, cursor = DatabaseOperation.connect_db()
@@ -530,15 +534,41 @@ class TaxiWidgetUi(QWidget):
 					self.logger.debug(f"总耗时{self.get_total_time}ms")
 					self.logger.debug("数据库获取数据完成！")
 			# self.logger.debug(self.allData)
-			# 获取时间数据写到Excel里
-			datetime.datetime
+
+			def int_to_str(b):
+				if 0 <= b <= 9:
+					return "0"+str(b)
+				else:
+					return str(b)
 
 			name_l = list()
 			for dic in self.allData:
+				# 随机日期
+				random.shuffle(d_l)
+				# self.logger.debug(d_l)
+				data_l_temp = d_l[0:dic["number"]:1]
+				self.logger.debug(data_l_temp)
+				data_l = list()  # 随机日期列表
+				for data_temp in data_l_temp:
+					data_l.append(str(data_temp[2]) + "-" + int_to_str(data_temp[3]) + "-" + int_to_str(data_temp[0]))
+				self.logger.debug(data_l)
+
+				# 随机时间
+				t_l = list()
+				h = [19, 20]
+				m = list()
+				for m1 in range(0, 60):
+					m.append(m1)
+				for _ in range(0, dic["number"]):
+					random.shuffle(h)
+					random.shuffle(m)
+					t_l.append(str(h[0])+":"+int_to_str(m[0]))
+				print(t_l)
+
 				n_l, total, minimum = ExcelWrite.random_number(dic["number"], dic["amount"], 100)
 				self.logger.debug(n_l)
 				if dic["name"] not in name_l:
-					ExcelWrite.excel_write(dic["number"], n_l, dic["name"])
+					ExcelWrite.excel_write(n=dic["number"], data=data_l, t=t_l, amount=n_l, name=dic["name"])
 					name_l.append(dic["name"])
 				else:
 					# 重名时生成的文件名处理
@@ -547,30 +577,47 @@ class TaxiWidgetUi(QWidget):
 						if dic["name"] + str(i) in name_l:
 							i += 1
 						else:
-							ExcelWrite.excel_write(dic["number"], n_l, dic["name"] + str(i))
+							ExcelWrite.excel_write(n=dic["number"], data=data_l, t=t_l, amount=n_l, name=dic["name"] + str(i))
 							name_l.append(dic["name"] + str(i))
 							break
+			self.defSignal.excel_write_done.emit("excel_write_done")
+			self.taxiUi.exportBtn.setEnabled(True)
 
-			print(123)
+		self.t8 = threading.Thread(target=workThread3)
+		if dataDialog.exec_():
+			self.taxiUi.exportBtn.setEnabled(False)
+			self.t8.start()
 
-	def showSaveSuccessMessage(self):
+	def export_excel(self):
+		file_name_l = listdir("./taxi_file/file")
+		self.logger.debug(file_name_l)
+		try:
+			for file_name in file_name_l:
+				copy2("./taxi_file/file/%s" % file_name, self.taxiUi.pathEdit.text())
+		except FileNotFoundError as e:
+			self.showErrorMessage("选择的路径不存在，请重新选择！")
+			self.logger.exception(e)
+		except Exception as e:
+			self.logger.exception(e)
+
+	def showLabelMessage(self, a: QWidget, message):
 		"""
 		按下保存按钮后，数据保存成功显示提示信息
 		:return:
 		"""
-		self.successLabel = QLabel("数据保存成功!", self)
-		self.successLabel.setProperty("name", "successLabel")
+		self.messageLabel = QLabel(message, self)
+		self.messageLabel.setProperty("name", "messageLabel")
 		self.setStyleSheet("""
-		QLabel[name="successLabel"]{
+		QLabel[name="messageLabel"]{
 		color: red;
 		}
 		""")
-		position = self.taxiUi.saveBtn.geometry()
+		position = a.geometry()
 		# self.logger.debug(position)
-		self.successLabel.move(position.x() + 22, position.y() + position.height() - 10)
-		self.successLabel.show()
-		self.t7 = threading.Timer(2, self.successLabel.close)
-		self.t7.start()
+		self.messageLabel.move(position.x(), position.y() + position.height()-5)
+		self.messageLabel.show()
+		# self.t7 = threading.Timer(2, self.messageLabel.close)
+		# self.t7.start()
 
 	def showErrorMessage(self, message: str):
 		errorMessage = QErrorMessage()
@@ -624,6 +671,32 @@ class TaxiWidgetUi(QWidget):
 		if fileDialog.exec_():
 			self.savePath = fileDialog.directory().path()
 			self.logger.debug(self.savePath)
+			self.taxiUi.pathEdit.setText(self.savePath)
+			self.taxiUi.exportBtn.setEnabled(True)
+
+	def path_exists(self):
+		"""
+		判断路径是否存在
+		"""
+		if path.exists(self.taxiUi.pathEdit.text()):
+			self.taxiUi.exportBtn.setEnabled(True)
+			try:
+				self.messageLabel.close()
+			except AttributeError as e:
+				pass
+			self.condition = True
+		elif self.taxiUi.pathEdit.text() == "":
+			self.taxiUi.exportBtn.setEnabled(False)
+			try:
+				self.messageLabel.close()
+			except AttributeError as e:
+				pass
+			self.condition = True
+		else:
+			self.taxiUi.exportBtn.setEnabled(False)
+			if self.condition:
+				self.showLabelMessage(a=self.taxiUi.pathEdit, message="路径不存在")
+				self.condition = False
 
 
 class Signals(QObject):
@@ -634,6 +707,7 @@ class Signals(QObject):
 	update_data_done: pyqtBoundSignal
 	backup_data_done: pyqtBoundSignal
 	get_all_date_done: pyqtBoundSignal
+	excel_write_done: pyqtBoundSignal
 	get_data_done = pyqtSignal(str)
 	conn_error = pyqtSignal(str)
 	insert_data_done = pyqtSignal(str)
@@ -641,6 +715,7 @@ class Signals(QObject):
 	update_data_done = pyqtSignal(str)
 	backup_data_done = pyqtSignal(str)
 	get_all_date_done = pyqtSignal(str)
+	excel_write_done = pyqtSignal(str)
 
 
 if __name__ == "__main__":

@@ -1,11 +1,4 @@
-import calendar
-from selenium import webdriver
+import shutil
+import os
 
-ca = calendar.Calendar()
-print(ca.itermonthdays(2022, 2))
-l = list()
-for i in ca.itermonthdays2(2022, 1):
-	if i[0]>20:
-		print(i)
-		l.append(i[0])
-print(l)
+shutil.copy2("./taxi_file/file/%s" % "user1.xls", "/Users/qianshaoqing/Desktop/t")

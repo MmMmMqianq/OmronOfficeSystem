@@ -9,7 +9,7 @@ xlrd的使用：读取Excel的数据
 import xlrd
 
 # 1. xlrd常用函数
-workbook = xlrd.open_workbook("demo.xls")  # 返回工作簿对象
+workbook = xlrd.open_workbook(filename="demo.xls", formatting_info=True)  # 返回工作簿对象。formatting_info=True时带格式打开
 # workbook.sheet_loaded(0)  # 判断是否加载了工作表，可以指定工作表索引或者工作表名字
 # workbook.unload_sheet(1)  # 卸载工作表，可以指定工作表索引或者工作表名字
 

@@ -468,9 +468,15 @@
           <number>10</number>
          </property>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="pathEdit">
+           <property name="text">
+            <string/>
+           </property>
            <property name="alignment">
-            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="placeholderText">
+            <string>请选择保存路径</string>
            </property>
           </widget>
          </item>
