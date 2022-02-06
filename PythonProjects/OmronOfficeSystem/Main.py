@@ -2,20 +2,26 @@
 数据库账号：omron
 密码：omron@2021
 """
-import logging
-import logging.config
-import sys
+from sys import argv
+from sys import exit
+from sys import path
+from os import getcwd
+
+ph = getcwd()
+path.append(ph + "/communication")
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
-
+import logging
+import logging.config
 import Ui
-from PythonProjects.OmronOfficeSystem import TaxiWidgetFunction
+import TaxiWidgetFunction
+import communication.CommWidgetFunction
 
 
 class MainWin(QMainWindow):
 	def __init__(self):
 		super(MainWin, self).__init__()
-		self.logger = logging.getLogger("applogger")
+		self.logger = logging.getLogger("applog")
 		# 加载主界面
 		self.ui = Ui.Ui_MainWindow()
 		self.ui.setupUi(self)
@@ -25,7 +31,10 @@ class MainWin(QMainWindow):
 		self.setupUi()
 
 	def setupUi(self):
+		self.ui.taxiButton.clicked.connect(self.selectWidget)
 		self.ui.taxiButton.clicked.connect(lambda: self.taxiUi.startWorkThread(1, 22))
+
+		self.ui.commBtn.clicked.connect(self.selectWidget)
 
 	# self.taxiUi.defSignal.get_data_done.connect(lambda: self.ui.statusbar.showMessage("获取数据耗时："+str(self.taxiUi.get_total_time)))
 	# self.taxiUi.defSignal.insert_data_done.connect(lambda: self.ui.statusbar.showMessage("插入数据耗时："+str(self.taxiUi.insert_total_time)))
@@ -34,11 +43,23 @@ class MainWin(QMainWindow):
 		# 将taxi功能页面添加到主界面的栈容器中
 		self.taxiUi = TaxiWidgetFunction.TaxiWidgetUi()
 		self.ui.stackedWidget.addWidget(self.taxiUi)
-		self.ui.stackedWidget.setCurrentWidget(self.taxiUi)
+		# 将communication功能页面添加到主界面的栈容器中
+		self.commUi = communication.CommWidgetFunction.CommWidgetUi()
+		self.ui.stackedWidget.addWidget(self.commUi)
+
+		self.ui.stackedWidget.setCurrentWidget(self.commUi)
+
+	def selectWidget(self):
+		self.s = self.sender()
+		self.logger.debug(self.s)
+		if self.s.objectName() == self.ui.taxiButton.objectName():
+			self.ui.stackedWidget.setCurrentWidget(self.taxiUi)
+		if self.s.objectName() == self.ui.commBtn.objectName():
+			self.ui.stackedWidget.setCurrentWidget(self.commUi)
 
 
-app = QApplication(sys.argv)
-logging.config.fileConfig("./log/logging.conf")
+logging.config.fileConfig(ph+"/log/logging.conf")
+app = QApplication(argv)
 win = MainWin()
 win.show()
-sys.exit(app.exec_())
+exit(app.exec_())

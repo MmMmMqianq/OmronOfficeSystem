@@ -117,7 +117,7 @@ def close(conn: pymysql.connections.Connection, cursor: pymysql.cursors.DictCurs
 
 
 if __name__ == "__main__":
-	logging.config.fileConfig("taxi/log/logging.conf")
+	logging.config.fileConfig("./log/logging.conf")
 	logger = logging.getLogger("applog")
 	conn, cur = connect_db()
 	print(get_segment_data(cur, 360, 399))

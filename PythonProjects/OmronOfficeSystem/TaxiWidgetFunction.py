@@ -2,15 +2,18 @@ import calendar
 import logging
 import logging.config
 import random
-import sys
+from sys import argv
+from sys import exit
+from sys import path
+from os import getcwd
 import threading
 import time
 from os import listdir
 from os import path
 from os import remove
 from shutil import copy2
-
 import pymysql
+
 from PyQt5.QtCore import QObject, Qt, QPoint
 from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal
 from PyQt5.QtGui import QIntValidator
@@ -18,7 +21,9 @@ from PyQt5.QtWidgets import QErrorMessage, QWidget, QApplication, QTableWidgetIt
 	QMessageBox, QTableWidgetSelectionRange, QMenu, QAction, QLabel, QProgressBar, QPushButton, QFileDialog, \
 	QInputDialog
 
-from PythonProjects.OmronOfficeSystem import DatabaseOperation, TaxiUi, ExcelWrite
+import DatabaseOperation
+import ExcelWrite
+import TaxiUi
 
 
 class TaxiWidgetUi(QWidget):
@@ -121,8 +126,8 @@ class TaxiWidgetUi(QWidget):
 			finally:
 				DatabaseOperation.close(conn, cursor)
 				self.get_total_time = (time.time() - t_stamp1) * 1000
-				self.logger.debug(f"总耗时{self.get_total_time}ms")
-				self.logger.debug("数据库获取数据完成！")
+				# self.logger.debug(f"总耗时{self.get_total_time}ms")
+				# self.logger.debug("数据库获取数据完成！")
 
 	def setTableWidgetItem(self):
 		# 在状态显示读取数据所消耗时间，只显示3秒
@@ -428,8 +433,8 @@ class TaxiWidgetUi(QWidget):
 				finally:
 					DatabaseOperation.close(conn, cursor)
 					self.update_total_time = (time.time() - t_stamp3) * 1000
-					self.logger.debug(f"更新数据总耗时{self.update_total_time}ms")
-					self.logger.debug("数据库数据更新完成！")
+					# self.logger.debug(f"更新数据总耗时{self.update_total_time}ms")
+					# self.logger.debug("数据库数据更新完成！")
 
 		self.t4 = threading.Thread(target=workThread)
 		self.t4.start()
@@ -483,7 +488,7 @@ class TaxiWidgetUi(QWidget):
 
 		def workThread3():
 			del_l = list()
-			del_l = listdir("taxi_file/file")
+			del_l = listdir("./taxi_file/file")
 			# self.logger.debug(del_l)
 			if del_l:
 				for del_l_1 in del_l:
@@ -737,8 +742,9 @@ class Signals(QObject):
 
 
 if __name__ == "__main__":
-	app = QApplication(sys.argv)
-	logging.config.fileConfig("./log/logging.conf")
+	app = QApplication(argv)
+	ph = getcwd()
+	logging.config.fileConfig(ph+"/log/logging.conf")
 	win = TaxiWidgetUi()
 	win.show()
-	sys.exit(app.exec_())
+	exit(app.exec_())
