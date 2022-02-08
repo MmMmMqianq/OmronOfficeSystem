@@ -38,7 +38,7 @@ def deal(link, client):
     link.close()  # 关闭连接；
 
 
-hostaddress = ('192.168.10.103', 8889)
+hostaddress = ('', 8889)
 
 # 默认使用ipv4,创建TCP。socket.AF_INET表示ipv4，socket.SOCK_STREAM表示TCP
 sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 创建socket TCP对象

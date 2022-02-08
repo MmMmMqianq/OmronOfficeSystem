@@ -83,7 +83,7 @@ def random_number(a, b, maximum):
 
 
 def excel_write(n, data, t, amount, name):
-	rb = open_workbook(filename="taxi_file/template.xls", formatting_info=True)
+	rb = open_workbook(filename="./taxi/taxi_file/template.xls", formatting_info=True)
 
 	wb: xlwt.Workbook
 	ws0: xlwt.Worksheet
@@ -95,7 +95,7 @@ def excel_write(n, data, t, amount, name):
 		ws0.write(i + 2, 3, amount[i])
 		ws0.write(i + 2, 4, "上海")
 
-	wb.save("./taxi_file/file/%s %d张.xls" % (name, n))
+	wb.save("./taxi/taxi_file/file/%s %d张.xls" % (name, n))
 
 
 if __name__ == "__main__":

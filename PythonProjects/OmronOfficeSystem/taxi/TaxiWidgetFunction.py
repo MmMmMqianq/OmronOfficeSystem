@@ -4,7 +4,7 @@ import logging.config
 import random
 from sys import argv
 from sys import exit
-from sys import path
+from sys import path as syspath
 from os import getcwd
 import threading
 import time
@@ -16,14 +16,12 @@ import pymysql
 
 from PyQt5.QtCore import QObject, Qt, QPoint
 from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal
-from PyQt5.QtGui import QIntValidator
+from PyQt5.QtGui import QIntValidator, QIcon, QPixmap
 from PyQt5.QtWidgets import QErrorMessage, QWidget, QApplication, QTableWidgetItem, QTableWidget, \
 	QMessageBox, QTableWidgetSelectionRange, QMenu, QAction, QLabel, QProgressBar, QPushButton, QFileDialog, \
 	QInputDialog
 
-import DatabaseOperation
-import ExcelWrite
-import TaxiUi
+from PythonProjects.OmronOfficeSystem.taxi import DatabaseOperation, ExcelWrite, TaxiUi
 
 
 class TaxiWidgetUi(QWidget):
@@ -33,13 +31,26 @@ class TaxiWidgetUi(QWidget):
 	def __init__(self):
 		super(TaxiWidgetUi, self).__init__()
 		self.logger = logging.getLogger("applog")
+		self.logger.debug(syspath)
 
 		self.taxiUi = TaxiUi.Ui_Taxi()
 		self.taxiUi.setupUi(self)
+
 		self.setupUi()
 
 	def setupUi(self):
 		self.defSignal = Signals()
+
+		# 设置图标路径，由于工作路径的问题所以要重写图标路径
+		icon = QIcon()
+		icon.addPixmap(QPixmap("./taxi/images/arrows/previous2.png"), QIcon.Normal, QIcon.Off)
+		self.taxiUi.previousBtn.setIcon(icon)
+		icon2 = QIcon()
+		icon2.addPixmap(QPixmap("./taxi/images/arrows/next2.png"), QIcon.Normal, QIcon.Off)
+		self.taxiUi.nextBtn.setIcon(icon2)
+		icon3 = QIcon()
+		icon3.addPixmap(QPixmap("./taxi/images/arrows/loop2.png"), QIcon.Normal, QIcon.Off)
+		self.taxiUi.refreshBtn.setIcon(icon3)
 
 		# 设置上下文菜单
 		self.taxiUi.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -488,11 +499,11 @@ class TaxiWidgetUi(QWidget):
 
 		def workThread3():
 			del_l = list()
-			del_l = listdir("./taxi_file/file")
+			del_l = listdir("./taxi/taxi_file/file")
 			# self.logger.debug(del_l)
 			if del_l:
 				for del_l_1 in del_l:
-					remove("./taxi_file/file/%s" % del_l_1)
+					remove("./taxi/taxi_file/file/%s" % del_l_1)
 
 			month = dataDialog.intValue()
 			year = int(time.strftime("%Y"))
@@ -614,11 +625,11 @@ class TaxiWidgetUi(QWidget):
 			self.t8.start()
 
 	def export_excel(self):
-		file_name_l = listdir("taxi_file/file")
+		file_name_l = listdir("./taxi/taxi_file/file")
 		# self.logger.debug(file_name_l)
 		try:
 			for file_name in file_name_l:
-				copy2("./taxi_file/file/%s" % file_name, self.taxiUi.pathEdit.text())
+				copy2("./taxi/taxi_file/file/%s" % file_name, self.taxiUi.pathEdit.text())
 		except FileNotFoundError as e:
 			self.showErrorMessage("选择的路径不存在，请重新选择！")
 			self.logger.exception(e)

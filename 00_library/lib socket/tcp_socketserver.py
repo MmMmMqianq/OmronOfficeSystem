@@ -34,7 +34,7 @@ class MyTcpHandler(socketserver.BaseRequestHandler):
 
 
 if __name__ == '__main__':
-    hostaddress = ('192.168.10.107', 8888)
+    hostaddress = ('192.168.0.118', 8888)
     tcp_server = socketserver.ThreadingTCPServer(hostaddress, MyTcpHandler)  # ThreadingTCPServer()是异步多线程的框架模型
     tcp_server.daemon_threads = True  # 表示如果服务器停止，所有线程会被强行中断；
     print('启动socket服务，等待客户端连接...')
