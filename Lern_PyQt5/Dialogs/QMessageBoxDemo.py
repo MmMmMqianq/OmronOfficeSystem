@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMessageBox, QPushButton, QMainWindow, QApplication, QCheckBox
+from PyQt5.QtWidgets import QMessageBox, QPushButton, QMainWindow, QApplication, QCheckBox, QHBoxLayout
 from PyQt5.QtGui import QPixmap
 import sys
 
@@ -19,7 +19,7 @@ class QMessageBoxDemo(QMainWindow):
 	def showQMessageBox(self):
 		messageBox = QMessageBox()
 		messageBox.setText("The document has been modified.")
-		print("5. messageBox的提示信息内容为：",messageBox.text())
+		print("5. messageBox的提示信息内容为：", messageBox.text())
 		messageBox.setInformativeText("Do you want to save your changes?")
 		messageBox.setStandardButtons(QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
 		messageBox.setDetailedText("1.\n2.\n3.")

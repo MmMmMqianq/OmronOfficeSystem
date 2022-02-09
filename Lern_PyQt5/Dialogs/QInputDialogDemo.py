@@ -34,7 +34,6 @@ class QInputDialogDemo(QMainWindow):
 
 	def showIntInputDialog(self):
 		intInputDialog = QInputDialog()
-
 		intInputDialog.setInputMode(QInputDialog.IntInput)
 		intInputDialog.setWindowTitle("int型数据输入对话框")
 		intInputDialog.setCancelButtonText("返回")

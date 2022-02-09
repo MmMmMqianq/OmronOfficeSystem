@@ -34,7 +34,7 @@ def deal(link, client):
             break
 
         res = data.upper()
-        conn.sendall(res.encode())  # 发送时要将字符串用encode()方法发送
+        # conn.sendall(res.encode())  # 发送时要将字符串用encode()方法发送
     link.close()  # 关闭连接；
 
 
@@ -46,6 +46,7 @@ sk.bind(hostaddress)  # 绑定IP地址
 sk.listen(5)  # 监听端口，5表示可监听的进程数
 print('启动socket服务，等待客户端连接...')
 
+i = 0
 while True:
     conn, clientaddress = sk.accept()  # accept()阻塞等待客户端的链接；
                                         # 当有客户端链接时阻塞被打断，连上之后可以拿到客户端的连接对象和客户端的IP、端口号
