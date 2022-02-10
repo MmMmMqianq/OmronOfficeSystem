@@ -3,7 +3,9 @@ from sys import argv
 from sys import exit
 from sys import path
 from os import getcwd
-from PyQt5.QtWidgets import QWidget, QApplication, QDialog, QMessageBox, QSpinBox, QPushButton, QGridLayout, QLabel, QLineEdit
+from PyQt5.QtWidgets import QWidget, QApplication, QDialog, QMessageBox, QSpinBox, QPushButton, QGridLayout, QLabel, QLineEdit, \
+	QTreeWidgetItem
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QPixmap
 import CommunicationUi
 import SocketTcp
@@ -13,6 +15,7 @@ import logging
 
 class CommWidgetUi(QWidget):
 	server_l = list()  # 用于保存创建的服务器，元素为元祖(服务器对象, 本机IP, 监听端口)
+	treeItem_l = list()  # 用于保存树控件的item
 
 	def __init__(self):
 		super(CommWidgetUi, self).__init__()
@@ -38,6 +41,7 @@ class CommWidgetUi(QWidget):
 	def initDialog(self):
 		# 添加服务器参数对话框
 		self.dialog1 = QDialog()
+		self.dialog1.setWindowModality(Qt.ApplicationModal)
 		self.dialog1.setWindowTitle("设置服务器监听端口")
 		self.portSB = QSpinBox()
 		self.portSB.setRange(1, 65535)
@@ -71,6 +75,13 @@ class CommWidgetUi(QWidget):
 		gLayout.addWidget(self.clientCancelBtn, 2, 0, 1, 1)
 		gLayout.addWidget(self.clientOkBtn, 2, 1, 1, 1)
 
+		# 端口号重复报错对话框
+		self.messageBox1 = QMessageBox()
+		self.messageBox1.setText("监听端口已被使用")
+		self.messageBox1.setInformativeText("想要重新输入监听端口吗?")
+		self.messageBox1.setStandardButtons(QMessageBox.Cancel | QMessageBox.Yes)
+		self.messageBox1.setIcon(QMessageBox.Critical)
+
 	def setupUi(self):
 		# 信号和槽的绑定
 		self.commUi.plusBtn.clicked.connect(self.show_server_or_client_dialog)
@@ -91,10 +102,22 @@ class CommWidgetUi(QWidget):
 
 	def add_server_accepted(self):
 		# 添加服务器，在list中显示
-		self.server_l.append((SocketTcp.MyServer(host="", port=self.portSB.value()), socket.gethostbyname(socket.gethostname()),
-		                      self.portSB.value()))
-		self.logger.debug(self.server_l)
-		self.logger.debug("add server ok")
+		try:
+			self.server_l.append((SocketTcp.MyServer(host="", port=self.portSB.value()), socket.gethostbyname(socket.gethostname()),
+			                      self.portSB.value()))
+			self.logger.debug(self.server_l)
+		except OSError as e:
+			self.dialog1.close()
+			self.ret = self.messageBox1.exec_()  # yes = 16384  cancel = 4194304
+			print(1231231, self.ret)
+			self.logger.exception(e)
+		else:
+			self.treeItem_l.append(QTreeWidgetItem())
+			self.treeItem_l[-1].setText(0, self.server_l[-1][1])
+			self.treeItem_l[-1].setText(1, str(self.server_l[-1][2]))
+			self.commUi.CSTree.addTopLevelItem(self.treeItem_l[-1])
+			self.logger.debug(self.treeItem_l)
+			self.logger.debug("add server ok")
 
 	def add_client_accepted(self):
 		# 添加客户端，在list中显示
