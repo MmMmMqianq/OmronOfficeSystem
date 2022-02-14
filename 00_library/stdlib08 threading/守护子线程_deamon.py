@@ -2,7 +2,8 @@
 daemon=True时，主线程不守护子线程，主线程结束子线程自动结束；
 daemon=False时，主线程守护子线程，主线程等待子线程执行完成；
 
-如果有两个子线程，分别设置了True和False，那么主线程守护设置为False的子线程。
+1. 如果有两个子线程，分别设置了True和False，那么主线程守护设置为False的子线程。
+2. 假设子线程1里还有子线程2，是否守护线程以子线程1为准
 """
 import threading
 import time

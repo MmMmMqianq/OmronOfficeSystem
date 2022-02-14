@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QHBoxLayout, QApplication, QMainWindow, QPushButton, QWidget
+from PyQt5.QtGui import QCloseEvent
 
 
 class QuitApplication(QMainWindow):
@@ -28,6 +29,11 @@ class QuitApplication(QMainWindow):
 		app = QApplication.instance()
 		# 退出应用程序
 		app.quit()
+
+	def closeEvent(self, a0: QCloseEvent):
+		# 应用程序关闭时触发的事件，点击叉号关闭窗口
+		# close()也可以触发
+		print(123)
 
 
 if __name__ == "__main__":

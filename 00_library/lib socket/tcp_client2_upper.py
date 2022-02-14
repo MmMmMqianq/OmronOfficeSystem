@@ -16,12 +16,14 @@ client_uppers升级内容：
 import socket
 import struct
 
+
 serveraddress = ('192.168.10.105', 8889)  # 服务器的端口号和IP地址
 
 # 默认使用ipv4,创建TCP。socket.AF_INET表示ipv4，socket.SOCK_STREAM表示TCP
 sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 建立socket对象
-a = struct.pack("ii", 1, 0)
-sk.setsockopt(socket.SOL_SOCKET,socket.SO_LINGER, a)  # 关闭TIME_WAIT
+print(sk.getsockname())
+optVal = struct.pack("ii", 1, 0)
+sk.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER, optVal)  # 关闭TIME_WAIT
 sk.connect(serveraddress)  # 连接服务器
 
 

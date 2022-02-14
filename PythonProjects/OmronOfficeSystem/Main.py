@@ -12,11 +12,11 @@ syspath.append(ph + "/communication")
 syspath.append(ph+"/taxi")
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QIcon, QPixmap, QCloseEvent
 import logging
 import logging.config
 import Ui
 from taxi import TaxiWidgetFunction
-from PyQt5.QtGui import QIcon, QPixmap
 import communication.CommWidgetFunction
 
 
@@ -58,6 +58,9 @@ class MainWin(QMainWindow):
 			self.ui.stackedWidget.setCurrentWidget(self.taxiUi)
 		if self.s.objectName() == self.ui.commBtn.objectName():
 			self.ui.stackedWidget.setCurrentWidget(self.commUi)
+
+	def closeEvent(self, a0: QCloseEvent):
+		print("应用程序已经被关闭")
 
 
 # 主程序
