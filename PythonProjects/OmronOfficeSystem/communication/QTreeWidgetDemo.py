@@ -1,4 +1,6 @@
 import sys
+import time
+
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTreeWidget, QTreeWidgetItem, QPushButton
 from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QBrush
@@ -30,6 +32,7 @@ class QTreeWidgetDemo(QMainWindow):
 		self.child2 = QTreeWidgetItem()
 		self.child2.setText(0, self.tree.tr("子节点2"))
 		self.child2.setText(1, self.tree.tr("详细信息2"))
+
 		self.child3 = QTreeWidgetItem()
 		self.child3.setText(0, self.tree.tr("子节点3"))
 		self.child3.setText(1, self.tree.tr("详细信息3"))
@@ -50,10 +53,10 @@ class QTreeWidgetDemo(QMainWindow):
 		# print(self.root1.indexOfChild(self.child2))
 
 		# 查找项目并将背景色改为cyan
-		foundItems = self.tree.findItems("根目", Qt.MatchContains)  # 只能搜索TopItem，不能搜索sub item;中文要用tr()方法，否则搜索不到
-		print("查找到匹配的项目列表为：", foundItems)
-		for item in foundItems:
-			item.setBackground(0, QBrush(Qt.cyan))
+		# foundItems = self.tree.findItems("根目", Qt.MatchContains)  # 只能搜索TopItem，不能搜索sub item;中文要用tr()方法，否则搜索不到
+		# print("查找到匹配的项目列表为：", foundItems)
+		# for item in foundItems:
+		# 	item.setBackground(0, QBrush(Qt.cyan))
 
 		self.centralwidget = QWidget()
 		self.vLayout = QVBoxLayout(self.centralwidget)
@@ -62,31 +65,37 @@ class QTreeWidgetDemo(QMainWindow):
 		self.vLayout.addWidget(self.p1)
 		self.setCentralWidget(self.centralwidget)
 
-		# self.tree.itemPressed.connect(self.pressItem)  # 返回被点击的QTreeWidgetItem和列号
-		self.tree.clicked.connect(self.c)
+		self.tree.itemPressed.connect(self.pressItem)  # 返回被点击的QTreeWidgetItem和列号
+		# self.tree.clicked.connect(self.c)
 		self.p.clicked.connect(self.a)
 		self.p1.clicked.connect(self.b)
 
 		self.tree.clearSelection()
 		self.root1.setSelected(True)
-		print(self.root2.isSelected())
+		# self.child2.setSelected(True)
+		# print(self.tree.selectedItems())
+		print(1, self.tree.currentItem())
+		# print(self.tree.currentIndex().row())
 
 	def pressItem(self, item: QTreeWidgetItem, column):
 		print("1. 被点击的QTreeWidgetItem = ", item)
-		print("2. 被点击的QTreeWidgetItem列号 = ", column)
-		print("3. %s 被点击了" % item.text(column))
-		print("4. currentColumn() = %d" % self.tree.currentColumn())
-		print("5. currentItem() = ", self.tree.currentItem())
+		# print("2. 被点击的QTreeWidgetItem列号 = ", column)
+		# print("3. %s 被点击了" % item.text(column))
+		# print("4. currentColumn() = %d" % self.tree.currentColumn())
+		# print("5. currentItem() = ", self.tree.currentItem())
+		print(item.parent())
 
 	def a(self):
 		# self.tree.takeTopLevelItem(0)
-		print(self.tree.currentIndex().row())
-		print(self.tree.currentIndex().column())
+		ite = self.tree.currentItem()
+		root = self.tree.invisibleRootItem()
+		i = self.tree.currentIndex().row()
+		# for item in self.tree.selectedItems():
+		# 	(item.parent() or root).removeChild(item)
+		print(root.removeChild())
 
 	def b(self):
-		self.tree.clearSelection()
-		self.root2.setSelected(True)
-		print(self.root2.isSelected())
+		self.tree.addTopLevelItem(self.root1)
 
 	def c(self, aa):
 		print(aa)

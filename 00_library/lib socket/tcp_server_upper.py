@@ -43,10 +43,10 @@ hostaddress = ('', 8889)
 # 默认使用ipv4,创建TCP。socket.AF_INET表示ipv4，socket.SOCK_STREAM表示TCP
 sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 创建socket TCP对象
 sk.bind(hostaddress)  # 绑定IP地址
-sk.listen(5)  # 监听端口，5表示可监听的进程数
+sk.listen(5)  # 最大等待数，排队的个数
+sk.listen()
 print('启动socket服务，等待客户端连接...')
 
-i = 0
 while True:
     conn, clientaddress = sk.accept()  # accept()阻塞等待客户端的链接；
                                         # 当有客户端链接时阻塞被打断，连上之后可以拿到客户端的连接对象和客户端的IP、端口号

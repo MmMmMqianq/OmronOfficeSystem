@@ -30,15 +30,17 @@ class QPushButtonDemo(QWidget):
 		print("4.", self.push_button.shortcut().toString())  # QKeySequence.toString()将快捷键转换为字符串
 
 		self.push_button.clicked.connect(self.clicked_button)  # 按下去松开为clicked
-		# self.push_button.pressed.connect(self.pressed_button)  # 按下去为pressed
-		# self.push_button.released.connect(self.released_button)  # 松开按钮为released
-		# self.push_button.toggled.connect(self.toggled_button)
+		self.push_button.pressed.connect(self.pressed_button)  # 按下去为pressed
+		self.push_button.released.connect(self.released_button)  # 松开按钮为released
+		self.push_button.toggled.connect(self.toggled_button)
 
 	def clicked_button(self):
+		print("1", self.push_button.isChecked())
 		if self.push_button.isChecked():
 			print("按钮clicked")
 
 	def pressed_button(self):
+		print(self.push_button.isChecked())
 		print("按钮pressed")
 
 	def released_button(self):

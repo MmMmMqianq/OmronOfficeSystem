@@ -24,8 +24,6 @@ if __name__ == "__main__":
 		t1.start()
 	time.sleep(3)
 	t2 = threading.Thread(target=fun2, args=(3, 4,))
-	t2.start()
-
 	logger.debug(threading.active_count())  # 返回总的线程数
 	logger.debug(threading.enumerate())  # 返回当前正在执行的所有线程组成的列表
 	logger.debug(threading.current_thread())  # 返回当前正在执行的线程

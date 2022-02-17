@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTreeWidget, QTreeWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTreeWidget, QTreeWidgetItem, QPushButton
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush
 
@@ -10,6 +10,8 @@ class QTreeWidgetDemo(QMainWindow):
 
 		self.setWindowTitle("这是一个QTreeWidget实例")
 		self.resize(300, 500)
+
+		self.p = QPushButton("删除第一个top节点")
 
 		# 创建树
 		self.tree = QTreeWidget()
@@ -56,9 +58,11 @@ class QTreeWidgetDemo(QMainWindow):
 		self.centralwidget = QWidget()
 		self.vLayout = QVBoxLayout(self.centralwidget)
 		self.vLayout.addWidget(self.tree)
+		self.vLayout.addWidget(self.p)
 		self.setCentralWidget(self.centralwidget)
 
 		self.tree.itemPressed.connect(self.pressItem)  # 返回被点击的QTreeWidgetItem和列号
+		self.p.clicked.connect(self.delete_item)
 
 	def pressItem(self, item: QTreeWidgetItem, column):
 		print("1. 被点击的QTreeWidgetItem = ", item)
@@ -66,6 +70,12 @@ class QTreeWidgetDemo(QMainWindow):
 		print("3. %s 被点击了" % item.text(column))
 		print("4. currentColumn() = %d" % self.tree.currentColumn())
 		print("5. currentItem() = ", self.tree.currentItem())
+
+	def delete_item(self):
+		# 也可以用self.tree.takeTopLevelItem(0)直接删除，删除top节点的子节点方法同下
+		root = self.tree.invisibleRootItem()  # root为所有top节点的父节点
+		sub0 = root.child(0)  # 获取第一个top节点对象
+		root.removeChild(sub0)  # 移除第一个top节点
 
 
 if __name__ == "__main__":
