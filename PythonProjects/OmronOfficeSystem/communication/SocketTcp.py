@@ -15,7 +15,7 @@ class MyServer:
 
 		self.conn_pool = list()  # 保存服务器已接受的客户端信息
 		self.server_No = int()  # 用于判断客户端时连接到哪个服务器的，从而更新tree显示
-		self.listening = bool()  # 服务器是否处于监听中
+		self.listening = False  # 服务器是否处于监听中
 		self.client_num = 0
 		self.conn = socket.socket()
 		self.addr = tuple()
@@ -27,24 +27,23 @@ class MyServer:
 		# self.s.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER, optVal)
 		self.s.bind((self.HOST, self.PORT))
 
-	# self.s.listen()
-
 	def my_accept(self):
 		def accept1():
 			while True:
 				print("等待客户端连接...")
-				self.conn, self.addr = self.s.accept()
-				# for i in [self.server_No, self.conn.getsockname()[0], self.conn.getsockname()[1], self.addr[0],
-				#           self.addr[1], self.conn, self.client_num, True]:
-				# 	self.conn_pool[-1].append(i)
-				self.conn_pool.append([self.listening, self.server_No, self.conn.getsockname()[0],
-				                       self.conn.getsockname()[1], self.addr[0], self.addr[1], self.conn, self.client_num, True])
-				self.t2 = threading.Thread(target=self.handle, args=(self.conn, self.addr))
-				self.t2.start()
-				self.conn_pool[-1].insert(2, self.t2.getName())
-				self.server_signal.accepted_done.emit(self.conn_pool)
-				print(self.conn_pool)
-				self.client_num += 1
+				try:
+					self.conn, self.addr = self.s.accept()
+				except ConnectionAbortedError as e:
+					if e.errno == 53:
+						break
+				else:
+					self.conn_pool.append([self.listening, self.server_No, self.conn.getsockname()[0],
+					                       self.conn.getsockname()[1], self.addr[0], self.addr[1], self.conn, self.client_num, True])
+					self.t2 = threading.Thread(target=self.handle, args=(self.conn, self.addr))
+					self.t2.start()
+					self.conn_pool[-1].insert(2, self.t2.getName())
+					self.server_signal.accepted_done.emit(self.conn_pool)
+					self.client_num += 1
 
 		self.s.listen()
 		self.listening = True
@@ -52,15 +51,13 @@ class MyServer:
 		self.t.start()
 
 	def stop_listen(self):
-		test.stop_thread(self.t)
-		print(threading.enumerate())
 		self.listening = False
 		for i in self.conn_pool:
 			i[7].shutdown(socket.SHUT_RDWR)
 			i[7].close()
 			i[-1] = False
 		self.conn_pool.clear()
-		self.s.listen(0)
+		self.s.close()
 		print(self.conn_pool)
 		print("停止监听。。。")
 
@@ -78,6 +75,7 @@ class MyServer:
 				if e.errno == 9:
 					print("连接已被关闭。。。")
 					break
+
 
 class MyClient:
 	def __init__(self, host, port):

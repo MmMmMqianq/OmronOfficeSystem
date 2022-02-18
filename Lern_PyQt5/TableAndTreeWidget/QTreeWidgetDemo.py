@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTreeWidget, QTreeWidgetItem, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTreeWidget, QTreeWidgetItem, QPushButton, QHeaderView
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QBrush
 
@@ -47,6 +47,7 @@ class QTreeWidgetDemo(QMainWindow):
 
 		self.tree.setColumnCount(3)
 		self.tree.setHeaderLabels(["节点名", "详细信息", "创建时间"])
+		self.tree.header().setSectionResizeMode(QHeaderView.ResizeToContents)
 		# print(self.root1.indexOfChild(self.child2))
 
 		# 查找项目并将背景色改为cyan

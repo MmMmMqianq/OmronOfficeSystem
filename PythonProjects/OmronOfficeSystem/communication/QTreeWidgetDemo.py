@@ -1,9 +1,9 @@
 import sys
 import time
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTreeWidget, QTreeWidgetItem, QPushButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QTreeWidget, QTreeWidgetItem, QPushButton, QHeaderView
 from PyQt5.QtCore import Qt, QModelIndex
-from PyQt5.QtGui import QBrush
+from PyQt5.QtGui import QBrush, QIcon
 
 
 class QTreeWidgetDemo(QMainWindow):
@@ -25,6 +25,7 @@ class QTreeWidgetDemo(QMainWindow):
 		self.root2 = QTreeWidgetItem()
 		self.root2.setText(0, self.tree.tr("根目录2"))
 		self.root2.setText(1, self.tree.tr("根目录2详细信息"))
+
 
 		self.child1 = QTreeWidgetItem()
 		self.child1.setText(0, self.tree.tr("子节点1"))
@@ -72,10 +73,9 @@ class QTreeWidgetDemo(QMainWindow):
 
 		self.tree.clearSelection()
 		self.root1.setSelected(True)
-		# self.child2.setSelected(True)
-		# print(self.tree.selectedItems())
-		print(1, self.tree.currentItem())
-		# print(self.tree.currentIndex().row())
+
+		self.tree.header().setSectionResizeMode(QHeaderView.ResizeToContents)
+		self.root1.setIcon(2, QIcon("./communication/images/happy2.png"))
 
 	def pressItem(self, item: QTreeWidgetItem, column):
 		print("1. 被点击的QTreeWidgetItem = ", item)

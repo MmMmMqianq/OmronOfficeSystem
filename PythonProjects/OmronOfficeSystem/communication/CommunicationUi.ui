@@ -28,25 +28,26 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QGridLayout" name="gridLayout" columnstretch="2,2,1,1,1">
+        <layout class="QGridLayout" name="gridLayout" columnstretch="2,2,3,3,3">
          <property name="horizontalSpacing">
           <number>-1</number>
          </property>
-         <item row="4" column="0">
-          <spacer name="horizontalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+         <item row="3" column="2" colspan="3">
+          <widget class="QTextEdit" name="sendTextEdit">
+           <property name="readOnly">
+            <bool>false</bool>
            </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
+           <property name="placeholderText">
+            <string>请输入发送数据：</string>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>103</width>
-             <height>20</height>
-            </size>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>通信次数：0              </string>
            </property>
-          </spacer>
+          </widget>
          </item>
          <item row="4" column="4">
           <widget class="QPushButton" name="settingBtn">
@@ -170,26 +171,6 @@
            </item>
           </layout>
          </item>
-         <item row="1" column="2" colspan="3">
-          <widget class="QTextEdit" name="recvTextEdit">
-           <property name="placeholderText">
-            <string>响应数据：</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>168</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
          <item row="0" column="0" colspan="2">
           <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0">
            <property name="spacing">
@@ -302,6 +283,46 @@
             </widget>
            </item>
           </layout>
+         </item>
+         <item row="1" column="0" rowspan="3" colspan="2">
+          <widget class="QTreeWidget" name="CSTree">
+           <property name="selectionMode">
+            <enum>QAbstractItemView::SingleSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <property name="columnCount">
+            <number>3</number>
+           </property>
+           <attribute name="headerCascadingSectionResizes">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="headerDefaultSectionSize">
+            <number>90</number>
+           </attribute>
+           <attribute name="headerHighlightSections">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="headerStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>服务器IP</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>监听端口</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>监听中</string>
+            </property>
+           </column>
+          </widget>
          </item>
          <item row="0" column="2" colspan="3">
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -419,57 +440,39 @@
            </item>
           </layout>
          </item>
-         <item row="3" column="2" colspan="3">
-          <widget class="QTextEdit" name="sendTextEdit">
-           <property name="readOnly">
-            <bool>false</bool>
+         <item row="4" column="2">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>168</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="4" column="0">
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>103</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="2" colspan="3">
+          <widget class="QTextEdit" name="recvTextEdit">
            <property name="placeholderText">
-            <string>请输入发送数据：</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0" rowspan="3" colspan="2">
-          <widget class="QTreeWidget" name="CSTree">
-           <property name="selectionMode">
-            <enum>QAbstractItemView::SingleSelection</enum>
-           </property>
-           <property name="selectionBehavior">
-            <enum>QAbstractItemView::SelectRows</enum>
-           </property>
-           <property name="columnCount">
-            <number>3</number>
-           </property>
-           <attribute name="headerCascadingSectionResizes">
-            <bool>false</bool>
-           </attribute>
-           <attribute name="headerDefaultSectionSize">
-            <number>90</number>
-           </attribute>
-           <attribute name="headerHighlightSections">
-            <bool>false</bool>
-           </attribute>
-           <column>
-            <property name="text">
-             <string>服务器IP</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>监听端口</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>监听中</string>
-            </property>
-           </column>
-          </widget>
-         </item>
-         <item row="4" column="3">
-          <widget class="QLabel" name="label_9">
-           <property name="text">
-            <string>通信次数：0              </string>
+            <string>响应数据：</string>
            </property>
           </widget>
          </item>
@@ -499,11 +502,11 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="CSGroup"/>
   <buttongroup name="DataTypeGroup">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="CSGroup"/>
  </buttongroups>
 </ui>
