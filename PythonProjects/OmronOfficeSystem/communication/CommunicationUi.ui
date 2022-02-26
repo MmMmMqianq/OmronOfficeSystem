@@ -44,6 +44,12 @@
          </item>
          <item row="4" column="3">
           <widget class="QLabel" name="label_9">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>通信次数：0              </string>
            </property>
@@ -51,6 +57,12 @@
          </item>
          <item row="4" column="4">
           <widget class="QPushButton" name="settingBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -327,7 +339,7 @@
          <item row="0" column="2" colspan="3">
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
-            <widget class="QLabel" name="targetIPLab">
+            <widget class="QLabel" name="serverIPLab">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -335,19 +347,19 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>对方IP:</string>
+              <string>服务器IP:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="serverIPlLab2">
              <property name="text">
               <string>255.255.255.255</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="targetPortLab">
+            <widget class="QLabel" name="serverPortLab">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -355,12 +367,12 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>对方端口:</string>
+              <string>监听端口:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_2">
+            <widget class="QLabel" name="serverPortLab2">
              <property name="text">
               <string>65535</string>
              </property>
@@ -383,7 +395,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QLabel" name="localIPLab">
+            <widget class="QLabel" name="clientIPLab">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -391,19 +403,19 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>本地IP:</string>
+              <string>客户端IP:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_3">
+            <widget class="QLabel" name="clientIPLab2">
              <property name="text">
               <string>255.255.255.255</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="localPortLab">
+            <widget class="QLabel" name="clientPortLab">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -411,12 +423,12 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>本地端口:</string>
+              <string>客户端端口:</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_4">
+            <widget class="QLabel" name="clientPortLab2">
              <property name="text">
               <string>65535</string>
              </property>
