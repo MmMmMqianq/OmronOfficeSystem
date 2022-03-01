@@ -14,7 +14,7 @@ class MyServer:
 																		# 5客户端IP, 6客户端端口号, 7客户端连接, 8客户端编号, 9客户端连接状态], [], []...]
 		self.server_No = int()  # 用于判断客户端时连接到哪个服务器的，从而更新tree显示
 		self.listening = False  # 服务器是否处于监听中
-		self.client_num = 0
+		self.client_count = 0
 		self.conn = socket.socket()
 		self.addr = tuple()
 
@@ -38,13 +38,14 @@ class MyServer:
 				else:
 					self.conn_pool.append([self.listening, self.server_No, self.conn.getsockname()[0],
 					                       self.conn.getsockname()[1], self.addr[0], self.addr[1], self.conn,
-					                       self.client_num, True])
-					self.t2 = threading.Thread(target=self.handle, args=(self.conn, self.addr, self.conn_pool[-1][1],
-					                                                     self.conn_pool[-1][7]))
+					                       self.client_count, True])
+					self.t2 = threading.Thread(target=self.handle, args=(self.conn, self.conn_pool[-1][1],
+					                                                     self.conn_pool[-1][7], self.conn_pool[-1][3],
+					                                                     self.conn_pool[-1][4], self.addr[0], self.addr[1]))
 					self.t2.start()
 					self.conn_pool[-1].insert(2, self.t2.getName())
 					self.server_signal.accepted_done.emit(self.conn_pool)
-					self.client_num += 1
+					self.client_count += 1
 
 		self.s.listen()
 		self.listening = True
@@ -64,7 +65,7 @@ class MyServer:
 		print(self.conn_pool)
 		print("停止监听。。。")
 
-	def handle(self, conn: socket.socket, addr, server_num, client_num):
+	def handle(self, conn: socket.socket, server_num, client_num, server_ip, server_port, client_ip, client_port):
 		while True:
 			try:
 				recv_data = conn.recv(1024)
@@ -72,21 +73,26 @@ class MyServer:
 				if e.errno == 54:
 					print("客户端主动断开连接。。。")
 					conn.close()
-					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening])
+					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening, server_num])
 					break
 			except OSError as e:  # 由于关闭服务器时先会把所有接受的连接都关掉，所以会报错
 				if e.errno == 9:
 					print("连接已被关闭。。。")
-					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening])
+					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening, server_num])
 					break
 			else:
-				if recv_data != '':
+				if recv_data != b'':
 					print(recv_data)
-					self.server_signal.receive_data_done.emit([])
+					for i in range(len(self.conn_pool)):
+						if self.conn_pool[i][8] == client_num:
+							item_index = i
+							break
+					info = [server_ip, server_port, client_ip, client_port, item_index, recv_data, server_num]
+					self.server_signal.receive_data_done.emit(info)
 				else:
 					conn.close()
 					print("服务器主动关闭客户端连接。。。")
-					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening])
+					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening, server_num])
 					break
 
 
