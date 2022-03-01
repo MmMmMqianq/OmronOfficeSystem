@@ -1,10 +1,7 @@
-import time
-
 from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal, QObject
 import socket
 import struct
 import threading
-import test
 
 
 class MyServer:
@@ -36,6 +33,7 @@ class MyServer:
 					self.conn, self.addr = self.s.accept()
 				except ConnectionAbortedError as e:
 					if e.errno == 53:
+						print("e.errno == 53")
 						break
 				else:
 					self.conn_pool.append([self.listening, self.server_No, self.conn.getsockname()[0],
@@ -58,7 +56,7 @@ class MyServer:
 	def stop_listen(self):
 		self.listening = False
 		for i in self.conn_pool:
-			i[7].shutdown(socket.SHUT_RDWR)
+			# i[7].shutdown(socket.SHUT_RDWR)
 			i[7].close()
 			i[-1] = False
 		self.conn_pool.clear()
@@ -67,27 +65,28 @@ class MyServer:
 		print("停止监听。。。")
 
 	def handle(self, conn: socket.socket, addr, server_num, client_num):
-		print(client_num)
 		while True:
 			try:
 				recv_data = conn.recv(1024)
 			except ConnectionResetError as e:
 				if e.errno == 54:
-					print("客户端已经断开。。。")
+					print("客户端主动断开连接。。。")
 					conn.close()
-					self.server_signal.conn_closed_done[str, int].emit("conn_closed_done", client_num)
+					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening])
 					break
 			except OSError as e:  # 由于关闭服务器时先会把所有接受的连接都关掉，所以会报错
 				if e.errno == 9:
 					print("连接已被关闭。。。")
+					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening])
 					break
 			else:
-				if recv_data == '':
+				if recv_data != '':
 					print(recv_data)
+					self.server_signal.receive_data_done.emit([])
 				else:
 					conn.close()
-					print("客户端已主动关闭连接。。。")
-					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num])
+					print("服务器主动关闭客户端连接。。。")
+					self.server_signal.conn_closed_done.emit(["conn_closed_done", server_num, client_num, self.listening])
 					break
 
 
@@ -111,9 +110,12 @@ class TcpSignals(QObject):
 	accepted_done: pyqtBoundSignal
 	listened_done: pyqtBoundSignal
 	conn_closed_done: pyqtBoundSignal
+	receive_data_done: pyqtBoundSignal
+
 	accepted_done = pyqtSignal(list)
 	listened_done = pyqtSignal(str)
 	conn_closed_done = pyqtSignal(list)
+	receive_data_done = pyqtSignal(list)
 
 
 def get_local_ip():

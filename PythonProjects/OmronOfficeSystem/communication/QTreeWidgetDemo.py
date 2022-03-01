@@ -38,12 +38,15 @@ class QTreeWidgetDemo(QMainWindow):
 		self.child3.setText(0, self.tree.tr("子节点3"))
 		self.child3.setText(1, self.tree.tr("详细信息3"))
 
-		self.child4 = self.child3.clone()  # 克隆一个QTreeWidget
+		self.child4 = QTreeWidgetItem()
+		self.child4.setText(0, self.tree.tr("子节点4"))
+		self.child4.setText(1, self.tree.tr("详细信息4"))
+
 
 		# 添加子项
 		# self.root1.addChild(self.child1)  # 添加单个子项目
 		self.root1.addChildren([self.child1, self.child2])  # 添加多个子项目
-		self.root1.insertChildren(1, [self.child3, self.child4])  # 在子项列表中的索引处插入多个子项。
+		self.root1.insertChildren(1, [self.child3])  # 在子项列表中的索引处插入多个子项。
 
 		# 将QTreeWidgetItem添加到QTreeWidget
 		# self.tree.insertTopLevelItem(0, self.root1)  # 添加单个顶层item
@@ -66,16 +69,19 @@ class QTreeWidgetDemo(QMainWindow):
 		self.vLayout.addWidget(self.p1)
 		self.setCentralWidget(self.centralwidget)
 
-		self.tree.itemPressed.connect(self.pressItem)  # 返回被点击的QTreeWidgetItem和列号
+		# self.tree.itemPressed.connect(self.pressItem)  # 返回被点击的QTreeWidgetItem和列号
 		# self.tree.clicked.connect(self.c)
 		self.p.clicked.connect(self.a)
 		self.p1.clicked.connect(self.b)
+		self.tree.currentItemChanged.connect(self.c)
 
 		self.tree.clearSelection()
 		self.root1.setSelected(True)
 
 		self.tree.header().setSectionResizeMode(QHeaderView.ResizeToContents)
 		self.root1.setIcon(2, QIcon("./communication/images/happy2.png"))
+
+		self.p1.setCheckable(True)
 
 	def pressItem(self, item: QTreeWidgetItem, column):
 		print("1. 被点击的QTreeWidgetItem = ", item)
@@ -86,21 +92,21 @@ class QTreeWidgetDemo(QMainWindow):
 		print(item.parent())
 
 	def a(self):
-		# self.tree.takeTopLevelItem(0)
-		ite = self.tree.currentItem()
-		root = self.tree.invisibleRootItem()
-		i = self.tree.currentIndex().row()
-		# for item in self.tree.selectedItems():
-		# 	(item.parent() or root).removeChild(item)
-		print(root.removeChild())
+		print("aaaaaaa")
+		child_row = self.tree.indexFromItem(self.tree.currentItem()).row()
+		self.tree.currentItem().parent().takeChild(child_row)
 
 	def b(self):
-		self.tree.addTopLevelItem(self.root1)
+		self.root1.addChildren([self.child4])
+		print(self.tree.indexFromItem(self.child4))
 
-	def c(self, aa):
-		print(aa)
-		print(aa.row())
-
+	def c(self, i: QTreeWidgetItem, c):
+		print("cccccccccc")
+		# print(self.tree.indexFromItem(i.parent()).row())
+		# print(self.tree.indexFromItem(i).row())
+		print(self.p1.isChecked())
+		self.p1.setChecked(True)
+		print(self.p1.isChecked())
 
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
