@@ -217,8 +217,8 @@ class CommWidgetUi(QWidget):
 					self.server_pool[self.current_index][0].stop_listen()
 					self.server_pool.pop(self.current_index)
 					self.commUi.CSTree.takeTopLevelItem(self.current_index)
-				# self.logger.debug(self.server_pool)
-				# self.logger.debug(self.server_top_pool)
+					self.logger.debug(self.server_pool)
+					self.logger.debug(self.server_top_pool)
 				else:
 					self.server_top_pool.pop()
 					self.server_pool[-1][0].s.close()
@@ -229,10 +229,9 @@ class CommWidgetUi(QWidget):
 				if self.top_count != 0:
 					self.commUi.CSTree.clearSelection()
 					self.server_top_pool[self.top_count - 1].setSelected(True)
-
 					self.commUi.connectBtn.setChecked(self.server_pool[self.top_count-1][0].listening)
 					if self.server_pool[self.top_count - 1][0].listening:
-						self.commUi.connectBtn.setText("断开")
+						self.commUi.connectBtn.setText("停止监听")
 					else:
 						self.commUi.connectBtn.setText("开始监听")
 					self.commUi.serverIPLab2.setText(self.server_pool[self.top_count-1][1])
@@ -279,7 +278,7 @@ class CommWidgetUi(QWidget):
 
 	def add_client_to_server(self, l):
 		# l为二维列表:[[服务器监听状态, 服务器编号, 线程名, 服务器IP, 服务器端口号, 客户端IP, 客户端端口号, 客户端连接, 客户端编号, 客户端连接状态], [], []...]
-		# self.logger.debug(l)
+		self.logger.debug(l)
 		print("accept已完成。。。")
 		child_item = QTreeWidgetItem()
 		child_item.setTextAlignment(0, 1)
@@ -288,7 +287,6 @@ class CommWidgetUi(QWidget):
 			if self.server_pool[i][-1] == l[-1][1]:
 				self.server_top_pool[i].addChild(child_item)
 				break
-		# self.server_top_pool[l[-1][1]].addChild(child_item)
 
 	def startListen(self):
 		if self.commUi.connectBtn.isChecked():
@@ -299,7 +297,7 @@ class CommWidgetUi(QWidget):
 					self.current_index = self.commUi.CSTree.currentIndex().row()
 					# self.logger.debug(self.current_index)
 					# self.server_pool[self.current_index][0].server_signal.accepted_done.connect(self.add_client_to_server)
-					self.server_pool[self.current_index][0].server_No = self.current_index
+					# self.server_pool[self.current_index][0].server_No = self.current_index
 					self.server_pool[self.current_index][0].my_accept()
 					self.server_top_pool[self.current_index].setIcon(2, QIcon("./communication/images/happy.png"))
 				else:
@@ -326,9 +324,13 @@ class CommWidgetUi(QWidget):
 					self.server_pool[self.current_index][0].stop_listen()
 					self.server_top_pool[self.current_index].setIcon(2, QIcon("./communication/images/neutral.png"))
 					del self.server_pool[self.current_index][0]
+					self.logger.debug(self.server_pool)
 					self.server_pool[self.current_index].insert(0, SocketTcp.MyServer(host="",
 					                                                                  port=self.server_pool[
 						                                                                  self.current_index][1]))
+					self.server_pool[self.current_index][0].server_No = self.server_pool[self.current_index][-1]
+					self.logger.debug(self.server_pool)
+					self.logger.debug(self.server_pool[self.current_index][0].server_No)
 					# 服务器相关信号绑定
 					self.server_pool[self.current_index][0].server_signal.conn_closed_done.connect(
 						self.disconnect_client_by_defSignal)
@@ -357,6 +359,7 @@ class CommWidgetUi(QWidget):
 
 				self.server_pool[self.top_count - 1].insert(0, SocketTcp.MyServer(host="",
 				                                                                  port=self.server_pool[-1][1]))
+				self.server_pool[-1][0].server_No = self.server_pool[-1][-1]
 				# 服务器相关信号绑定
 				self.server_pool[self.top_count - 1][0].server_signal.conn_closed_done.connect(
 					self.disconnect_client_by_defSignal)
@@ -366,11 +369,12 @@ class CommWidgetUi(QWidget):
 			# self.logger.debug(self.server_pool[self.top_count - 1][0])
 
 	def disconnect_client_by_defSignal(self, l):
-		# self.logger.debug(l)
-		# self.logger.debug(self.server_pool[l[1]][0].conn_pool)
+		self.logger.debug(l)
 		for ii in range(len(self.server_pool)):
 			if self.server_pool[ii][-1] == l[-1]:
 				server_index = ii
+		self.logger.debug(self.server_pool)
+		self.logger.debug(self.server_pool[server_index][0].conn_pool)
 		if l[3]:  # listening
 			if len(self.server_pool[server_index][0].conn_pool):
 				for i in range(len(self.server_pool[server_index][0].conn_pool)):
@@ -468,6 +472,9 @@ class CommWidgetUi(QWidget):
 		self.commUi.clientIPLab2.setHidden(True)
 		self.commUi.clientPortLab.setHidden(True)
 		self.commUi.clientPortLab2.setHidden(True)
+
+	def bind_signals(self):
+		pass
 
 # def closeEvent(self, a0: QCloseEvent):
 
