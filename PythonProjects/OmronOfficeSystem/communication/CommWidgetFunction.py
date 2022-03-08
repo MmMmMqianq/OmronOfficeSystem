@@ -601,6 +601,7 @@ class CommWidgetUi(QWidget):
 			self.commUi.sendDataAscEdit.setHidden(True)
 
 	def send_data(self):
+		self.commUi.sendBtn.setDisabled(True)
 		if not len(self.commUi.sendDataHexEdit.toPlainText()) % 2:
 			# data = self.commUi.sendDataHexEdit.toPlainText().encode("utf-8")
 			data = bytes.fromhex(self.commUi.sendDataHexEdit.toPlainText())
@@ -614,24 +615,32 @@ class CommWidgetUi(QWidget):
 						self.server_pool[top_row][0].conn_pool[child_row][7].sendall(data)
 						# info = [0info_No, 1ts, 2server_ip, 3server_port, 4server_index, 5client_ip, 6client_port,
 						#                                               7client_index, 8len(recv_data), 9recv_data]
-						for i in range(len(self.server_pool)):
-							if self.server_pool[top_row][0].conn_pool[child_row][1] == self.server_pool[top_row][-1]:
-								sever_index = i
-								break
-						info = [time.time(), self.server_pool[top_row][0].conn_pool[child_row][3],
-						        self.server_pool[top_row][0].conn_pool[child_row][4], sever_index,
-						        self.server_pool[top_row][0].conn_pool[child_row][5],
-						        self.server_pool[top_row][0].conn_pool[child_row][6],
-						        self.server_pool[top_row][0].conn_pool[child_row][8], len(data), data]
-						self.logger.debug(info)
-						self.server_pool[top_row][0].server_signal.send_data_done.emit(info, "send_data_done")
+						send_count = 0
+						while send_count < self.commUi.frequenceSB.value():
+							for i in range(len(self.server_pool)):
+								if self.server_pool[top_row][0].conn_pool[child_row][1] == self.server_pool[top_row][-1]:
+									sever_index = i
+									break
+							info = [time.time(), self.server_pool[top_row][0].conn_pool[child_row][3],
+							        self.server_pool[top_row][0].conn_pool[child_row][4], sever_index,
+							        self.server_pool[top_row][0].conn_pool[child_row][5],
+							        self.server_pool[top_row][0].conn_pool[child_row][6],
+							        self.server_pool[top_row][0].conn_pool[child_row][8], len(data), data]
+							self.logger.debug(info)
+							self.server_pool[top_row][0].server_signal.send_data_done.emit(info, "send_data_done")
+							send_count += 1
+						self.commUi.sendBtn.setDisabled(False)
 					else:
+						self.commUi.sendBtn.setDisabled(False)
 						self.messageBox4.show()
 				else:
+					self.commUi.sendBtn.setDisabled(False)
 					self.messageBox4.show()
 			else:
+				self.commUi.sendBtn.setDisabled(False)
 				self.messageBox4.show()
 		else:
+			self.commUi.sendBtn.setDisabled(False)
 			self.messageBox8.setText("请输入正确的字节数据！当前字符数%d个！" % len(self.commUi.sendDataHexEdit.toPlainText()))
 			self.messageBox8.exec_()
 

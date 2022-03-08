@@ -210,6 +210,7 @@ class Ui_communication(object):
         self.frequenceSB.setObjectName("frequenceSB")
         self.horizontalLayout_3.addWidget(self.frequenceSB)
         self.sendBtn = QtWidgets.QPushButton(self.tab)
+        self.sendBtn.setCheckable(False)
         self.sendBtn.setObjectName("sendBtn")
         self.horizontalLayout_3.addWidget(self.sendBtn)
         self.gridLayout_2.addLayout(self.horizontalLayout_3, 3, 2, 1, 2)

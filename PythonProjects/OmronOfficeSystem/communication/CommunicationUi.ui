@@ -457,6 +457,9 @@
              <property name="text">
               <string>发送</string>
              </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
             </widget>
            </item>
           </layout>
@@ -666,11 +669,11 @@
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="CSGroup"/>
   <buttongroup name="DataTypeGroup">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="CSGroup"/>
  </buttongroups>
 </ui>
