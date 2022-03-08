@@ -1,13 +1,14 @@
 import socket
+import string
 import time
 from sys import argv
 from sys import exit
 from sys import path
 from os import getcwd
 from PyQt5.QtWidgets import QWidget, QApplication, QDialog, QMessageBox, QSpinBox, QPushButton, QGridLayout, QLabel, \
-	QLineEdit, QTreeWidgetItem, QHeaderView
-from PyQt5.QtCore import Qt, pyqtSignal, pyqtBoundSignal, QObject, QItemSelectionModel
-from PyQt5.QtGui import QIcon, QPixmap, QCloseEvent
+	QLineEdit, QTreeWidgetItem, QHeaderView, QTextEdit
+from PyQt5.QtCore import Qt, pyqtSignal, pyqtBoundSignal, QObject, QEvent
+from PyQt5.QtGui import QIcon, QPixmap
 import CommunicationUi
 import SocketTcp
 import logging.config
@@ -37,6 +38,8 @@ class CommWidgetUi(QWidget):
 		self.top_count = int()  # top item的数量
 		self.current_index = int()
 		self.isClientDisconnected = False
+		self.info_pool = list()  # 用于保存所有的消息列表
+		self.info_No = 1
 
 	def initWidget(self):
 		# 设置图标路径，由于工作路径的问题所以要重写图标路径
@@ -52,6 +55,7 @@ class CommWidgetUi(QWidget):
 
 		# 将Tree的列宽改为自适应文本
 		self.commUi.CSTree.header().setSectionResizeMode(QHeaderView.ResizeToContents)
+		self.commUi.overViewTree.header().setSectionResizeMode(QHeaderView.ResizeToContents)
 
 		# 启动时IP标签设置为不显示
 		self.commUi.serverIPLab.setHidden(True)
@@ -62,6 +66,14 @@ class CommWidgetUi(QWidget):
 		self.commUi.clientIPLab2.setHidden(True)
 		self.commUi.clientPortLab.setHidden(True)
 		self.commUi.clientPortLab2.setHidden(True)
+
+		# 默认隐藏ASC显示窗口
+		self.commUi.receiveDataAscEdit.setHidden(True)
+		self.commUi.sendDataAscEdit.setHidden(True)
+
+		# 设置QTextEdit过滤器
+		keyPressEster = KeyPressEster(self)
+		self.commUi.sendDataHexEdit.installEventFilter(keyPressEster)
 
 	def initDialog(self):
 		# 添加服务器参数对话框
@@ -123,10 +135,45 @@ class CommWidgetUi(QWidget):
 		self.messageBox3.setStandardButtons(QMessageBox.Close)
 		self.messageBox3.setIcon(QMessageBox.Warning)
 
+		# 未选择被监听的客户端时点击发送按钮
+		self.messageBox4 = QMessageBox()
+		self.messageBox4.setModal(True)
+		self.messageBox4.setText("请选择数据发送至哪一个客户端！")
+		self.messageBox4.setStandardButtons(QMessageBox.Close)
+		self.messageBox4.setIcon(QMessageBox.Warning)
+
+		# 网络异常报错
+		self.messageBox5 = QMessageBox()
+		self.messageBox5.setModal(True)
+		self.messageBox5.setText("请检查网络连接！")
+		self.messageBox5.setStandardButtons(QMessageBox.Close)
+		self.messageBox5.setIcon(QMessageBox.Warning)
+
+		# 删除服务器时选中的是所连接的客户端，应当选中服务器
+		self.messageBox6 = QMessageBox()
+		self.messageBox6.setModal(True)
+		self.messageBox6.setText("请选择要删除的服务器！\n如果想删除所监听的客户端，\n请点击\"断开\"按钮！")
+		self.messageBox6.setStandardButtons(QMessageBox.Close)
+		self.messageBox6.setIcon(QMessageBox.Warning)
+
+		# 清楚收发数据框
+		self.messageBox7 = QMessageBox()
+		self.messageBox7.setModal(True)
+		self.messageBox7.setText("确定要清除%d条通信数据吗？" % len(self.info_pool))
+		self.messageBox7.setStandardButtons(QMessageBox.Close | QMessageBox.Yes)
+		self.messageBox7.setIcon(QMessageBox.Warning)
+
+		# sendDataHexEdit字符为奇数个，不满足字节要求
+		self.messageBox8 = QMessageBox()
+		self.messageBox8.setModal(True)
+		self.messageBox8.setText("请输入正确的字节数据！当前字符数%d个！" % len(self.commUi.sendDataHexEdit.toPlainText()))
+		self.messageBox8.setStandardButtons(QMessageBox.Close)
+		self.messageBox8.setIcon(QMessageBox.Warning)
+
 	def setupUi(self):
 		self.defSignal = Signals()
 		self.root = self.commUi.CSTree.invisibleRootItem()
-		self.local_ip = SocketTcp.get_local_ip()
+		self.local_ip = SocketTcp.get_local_ip(self.messageBox5)
 		# 信号和槽的绑定
 		self.commUi.plusBtn.clicked.connect(self.show_server_or_client_dialog)
 		self.commUi.minusBtn.clicked.connect(self.delete_server_or_client)
@@ -135,7 +182,13 @@ class CommWidgetUi(QWidget):
 		self.commUi.connectBtn.clicked.connect(self.startListen)
 		self.commUi.connectBtn.clicked.connect(self.stop_listen_or_disconnect_client_by_button)
 		self.commUi.CSTree.itemClicked.connect(self.refresh_connect_button_and_address_label)
-		# self.commUi.CSTree.currentItemChanged.connect(self.refresh_connect_button_and_address_label)
+		self.commUi.overViewTree.itemClicked.connect(self.showMessage)
+		self.commUi.hexBtn.clicked.connect(self.show_hex_and_asc_edit)
+		self.commUi.ascBtn.clicked.connect(self.show_hex_and_asc_edit)
+		self.commUi.sendBtn.clicked.connect(self.send_data)
+		self.commUi.sendDataHexEdit.textChanged.connect(self.input_data)
+		self.commUi.sendDataAscEdit.textChanged.connect(self.input_data)
+		self.commUi.clearBtn.clicked.connect(self.clear_data)
 
 		self.serverCancelBtn.clicked.connect(self.dialog1.reject)
 		self.serverOkBtn.clicked.connect(self.dialog1.accept)
@@ -168,15 +221,12 @@ class CommWidgetUi(QWidget):
 				self.logger.exception(e)
 		else:
 			# 服务器相关信号绑定
-			self.server_pool[-1][0].server_signal.conn_closed_done.connect(self.disconnect_client_by_defSignal)
-			self.server_pool[-1][0].server_signal.listened_done.connect(self.auto_set_connect_button_and_address_label)
-			self.server_pool[-1][0].server_signal.accepted_done.connect(self.add_client_to_server)
+			self.bind_signals(self.server_pool[-1][0])
 
 			self.server_top_pool.append(QTreeWidgetItem())
 			self.server_top_pool[-1].setText(0, self.server_pool[-1][1])
 			self.server_top_pool[-1].setText(1, str(self.server_pool[-1][2]))
 			self.commUi.CSTree.addTopLevelItem(self.server_top_pool[-1])
-			# self.server_top_pool[-1].setText(2, str(self.server_pool[-1][0].listening))
 			self.server_top_pool[-1].setExpanded(True)
 			self.commUi.CSTree.clearSelection()
 			self.server_top_pool[-1].setSelected(True)
@@ -186,8 +236,6 @@ class CommWidgetUi(QWidget):
 			self.server_pool[-1][0].server_No = self.server_count
 			self.server_pool[-1].append(self.server_count)
 			self.server_count += 1
-			# self.server_pool[-1][0].server_signal.listened_done.connect(self.auto_set_connect_button_and_address_label)
-			# self.server_pool[-1][0].server_signal.accepted_done.connect(self.add_client_to_server)
 			self.server_pool[-1][0].my_accept()
 			self.server_top_pool[-1].setIcon(2, QIcon("./communication/images/happy.png"))
 
@@ -206,51 +254,57 @@ class CommWidgetUi(QWidget):
 		self.client_item_pool[-1].setSelected(True)
 
 	def delete_server_or_client(self):
+		isDeleted = False
 		self.top_count = self.root.childCount()
 		if self.commUi.serverBtn.isChecked():  # 删除服务器
 			# if len(self.server_top_pool) != 0:
 			if self.top_count != 0:
 				if self.commUi.CSTree.currentItem() is not None:
-					# current_index = self.server_top_pool.index(self.commUi.CSTree.currentItem())
-					self.current_index = self.commUi.CSTree.currentIndex().row()
-					self.server_top_pool.pop(self.current_index)
-					self.server_pool[self.current_index][0].stop_listen()
-					self.server_pool.pop(self.current_index)
-					self.commUi.CSTree.takeTopLevelItem(self.current_index)
-					self.logger.debug(self.server_pool)
-					self.logger.debug(self.server_top_pool)
+					if self.commUi.CSTree.currentItem().parent() is None:
+						# current_index = self.server_top_pool.index(self.commUi.CSTree.currentItem())
+						self.current_index = self.commUi.CSTree.currentIndex().row()
+						self.server_top_pool.pop(self.current_index)
+						self.server_pool[self.current_index][0].stop_listen()
+						self.server_pool.pop(self.current_index)
+						self.commUi.CSTree.takeTopLevelItem(self.current_index)
+						self.logger.debug(self.server_pool)
+						self.logger.debug(self.server_top_pool)
+						isDeleted = True
+					else:
+						self.messageBox6.show()
 				else:
 					self.server_top_pool.pop()
 					self.server_pool[-1][0].s.close()
 					self.server_pool.pop()
 					self.commUi.CSTree.takeTopLevelItem(self.top_count - 1)
 
-				self.top_count = self.root.childCount()
-				if self.top_count != 0:
-					self.commUi.CSTree.clearSelection()
-					self.server_top_pool[self.top_count - 1].setSelected(True)
-					self.commUi.connectBtn.setChecked(self.server_pool[self.top_count-1][0].listening)
-					if self.server_pool[self.top_count - 1][0].listening:
-						self.commUi.connectBtn.setText("停止监听")
+				if isDeleted:
+					self.top_count = self.root.childCount()
+					if self.top_count != 0:
+						self.commUi.CSTree.clearSelection()
+						self.server_top_pool[self.top_count - 1].setSelected(True)
+						self.commUi.connectBtn.setChecked(self.server_pool[self.top_count-1][0].listening)
+						if self.server_pool[self.top_count - 1][0].listening:
+							self.commUi.connectBtn.setText("停止监听")
+						else:
+							self.commUi.connectBtn.setText("开始监听")
+						self.commUi.serverIPLab2.setText(self.server_pool[self.top_count-1][1])
+						self.commUi.serverPortLab2.setText(str(self.server_pool[self.top_count-1][2]))
+						self.commUi.clientIPLab.setHidden(True)
+						self.commUi.clientIPLab2.setHidden(True)
+						self.commUi.clientPortLab.setHidden(True)
+						self.commUi.clientPortLab2.setHidden(True)
 					else:
+						self.commUi.connectBtn.setChecked(False)
 						self.commUi.connectBtn.setText("开始监听")
-					self.commUi.serverIPLab2.setText(self.server_pool[self.top_count-1][1])
-					self.commUi.serverPortLab2.setText(str(self.server_pool[self.top_count-1][2]))
-					self.commUi.clientIPLab.setHidden(True)
-					self.commUi.clientIPLab2.setHidden(True)
-					self.commUi.clientPortLab.setHidden(True)
-					self.commUi.clientPortLab2.setHidden(True)
-				else:
-					self.commUi.connectBtn.setChecked(False)
-					self.commUi.connectBtn.setText("开始监听")
-					self.commUi.serverIPLab.setHidden(True)
-					self.commUi.serverPortLab.setHidden(True)
-					self.commUi.serverIPLab2.setHidden(True)
-					self.commUi.serverPortLab2.setHidden(True)
-					self.commUi.clientIPLab.setHidden(True)
-					self.commUi.clientIPLab2.setHidden(True)
-					self.commUi.clientPortLab.setHidden(True)
-					self.commUi.clientPortLab2.setHidden(True)
+						self.commUi.serverIPLab.setHidden(True)
+						self.commUi.serverPortLab.setHidden(True)
+						self.commUi.serverIPLab2.setHidden(True)
+						self.commUi.serverPortLab2.setHidden(True)
+						self.commUi.clientIPLab.setHidden(True)
+						self.commUi.clientIPLab2.setHidden(True)
+						self.commUi.clientPortLab.setHidden(True)
+						self.commUi.clientPortLab2.setHidden(True)
 			else:
 				self.messageBox2.show()
 		else:  # 删除客户端
@@ -332,21 +386,13 @@ class CommWidgetUi(QWidget):
 					self.logger.debug(self.server_pool)
 					self.logger.debug(self.server_pool[self.current_index][0].server_No)
 					# 服务器相关信号绑定
-					self.server_pool[self.current_index][0].server_signal.conn_closed_done.connect(
-						self.disconnect_client_by_defSignal)
-					self.server_pool[self.current_index][0].server_signal.listened_done.connect(
-						self.auto_set_connect_button_and_address_label)
-					self.server_pool[self.current_index][0].server_signal.accepted_done.connect(
-						self.add_client_to_server)
+					self.bind_signals(self.server_pool[self.current_index][0])
 				# self.logger.debug(self.server_pool[self.current_index][0])
 				else:
 					# 断开客户端
 					top_row = self.commUi.CSTree.indexFromItem(self.commUi.CSTree.currentItem().parent()).row()
 					child_row = self.commUi.CSTree.indexFromItem(self.commUi.CSTree.currentItem()).row()
 					self.server_pool[top_row][0].conn_pool[child_row][7].close()
-				# self.server_pool[top_row][0].conn_pool.pop(child_row)  # 删除conn_pool里的连接放在refresh_connect_button_and_address_label
-				# 方法中，如果在状态刷新时直接删除的话会出现child item行号和conn_pool中元素索引对不上的情况
-				# self.commUi.CSTree.currentItem().parent().takeChild(child_row)
 			else:
 				self.commUi.connectBtn.setText("开始监听")
 				children = self.server_top_pool[-1].takeChildren()
@@ -361,56 +407,54 @@ class CommWidgetUi(QWidget):
 				                                                                  port=self.server_pool[-1][1]))
 				self.server_pool[-1][0].server_No = self.server_pool[-1][-1]
 				# 服务器相关信号绑定
-				self.server_pool[self.top_count - 1][0].server_signal.conn_closed_done.connect(
-					self.disconnect_client_by_defSignal)
-				self.server_pool[self.top_count - 1][0].server_signal.listened_done.connect(
-					self.auto_set_connect_button_and_address_label)
-				self.server_pool[self.top_count - 1][0].server_signal.accepted_done.connect(self.add_client_to_server)
-			# self.logger.debug(self.server_pool[self.top_count - 1][0])
+				self.bind_signals(self.server_pool[self.top_count - 1][0])
 
 	def disconnect_client_by_defSignal(self, l):
+		server_index = -1
 		self.logger.debug(l)
+		self.top_count = self.commUi.CSTree.topLevelItemCount()
 		for ii in range(len(self.server_pool)):
 			if self.server_pool[ii][-1] == l[-1]:
 				server_index = ii
-		self.logger.debug(self.server_pool)
-		self.logger.debug(self.server_pool[server_index][0].conn_pool)
-		if l[3]:  # listening
-			if len(self.server_pool[server_index][0].conn_pool):
-				for i in range(len(self.server_pool[server_index][0].conn_pool)):
-					if self.server_pool[server_index][0].conn_pool[i][8] == l[2]:
-						self.server_top_pool[server_index].takeChild(i)
-						self.server_pool[server_index][0].conn_pool.pop(i)
-						self.isClientDisconnected = True
-						break
-			child_count = self.server_top_pool[server_index].childCount()
-			if child_count != 0:
-				self.commUi.CSTree.clearSelection()
-				self.server_top_pool[server_index].child(child_count - 1).setSelected(True)
+		if server_index != -1:  # server_index为-1时表示服务器已被删除，删除客户端的操作将不被执行
+			self.logger.debug(self.server_pool)
+			self.logger.debug(self.server_pool[server_index][0].conn_pool)
+			if l[3]:  # listening
+				if len(self.server_pool[server_index][0].conn_pool):
+					for i in range(len(self.server_pool[server_index][0].conn_pool)):
+						if self.server_pool[server_index][0].conn_pool[i][8] == l[2]:
+							self.server_top_pool[server_index].takeChild(i)
+							self.server_pool[server_index][0].conn_pool.pop(i)
+							self.isClientDisconnected = True
+							break
+				child_count = self.server_top_pool[server_index].childCount()
+				if child_count != 0:
+					self.commUi.CSTree.clearSelection()
+					self.server_top_pool[server_index].child(child_count - 1).setSelected(True)
 
-				self.commUi.connectBtn.setChecked(True)
-				self.commUi.connectBtn.setText("断开")
-				self.commUi.serverIPLab2.setText(self.server_pool[server_index][1])
-				self.commUi.serverPortLab2.setText(str(self.server_pool[server_index][2]))
-				self.commUi.clientIPLab2.setText(self.server_pool[server_index][0].conn_pool[-1][5])
-				self.commUi.clientPortLab2.setText(str(self.server_pool[server_index][0].conn_pool[-1][6]))
-				self.commUi.clientIPLab.setHidden(False)
-				self.commUi.clientIPLab2.setHidden(False)
-				self.commUi.clientPortLab.setHidden(False)
-				self.commUi.clientPortLab2.setHidden(False)
-			else:
-				self.commUi.connectBtn.setChecked(True)
-				self.commUi.connectBtn.setText("停止监听")
-				self.commUi.CSTree.clearSelection()
-				self.server_top_pool[server_index].setSelected(True)
-				self.commUi.serverIPLab2.setText(self.server_pool[server_index][1])
-				self.commUi.serverPortLab2.setText(str(self.server_pool[server_index][2]))
-				self.commUi.clientIPLab.setHidden(True)
-				self.commUi.clientIPLab2.setHidden(True)
-				self.commUi.clientPortLab.setHidden(True)
-				self.commUi.clientPortLab2.setHidden(True)
+					self.commUi.connectBtn.setChecked(True)
+					self.commUi.connectBtn.setText("断开")
+					self.commUi.serverIPLab2.setText(self.server_pool[server_index][1])
+					self.commUi.serverPortLab2.setText(str(self.server_pool[server_index][2]))
+					self.commUi.clientIPLab2.setText(self.server_pool[server_index][0].conn_pool[-1][5])
+					self.commUi.clientPortLab2.setText(str(self.server_pool[server_index][0].conn_pool[-1][6]))
+					self.commUi.clientIPLab.setHidden(False)
+					self.commUi.clientIPLab2.setHidden(False)
+					self.commUi.clientPortLab.setHidden(False)
+					self.commUi.clientPortLab2.setHidden(False)
+				else:
+					self.commUi.connectBtn.setChecked(True)
+					self.commUi.connectBtn.setText("停止监听")
+					self.commUi.CSTree.clearSelection()
+					self.server_top_pool[server_index].setSelected(True)
+					self.commUi.serverIPLab2.setText(self.server_pool[server_index][1])
+					self.commUi.serverPortLab2.setText(str(self.server_pool[server_index][2]))
+					self.commUi.clientIPLab.setHidden(True)
+					self.commUi.clientIPLab2.setHidden(True)
+					self.commUi.clientPortLab.setHidden(True)
+					self.commUi.clientPortLab2.setHidden(True)
 
-			# self.logger.debug(self.server_pool[l[1]][0].conn_pool)
+				# self.logger.debug(self.server_pool[l[1]][0].conn_pool)
 
 	def refresh_CSTree_interface(self):
 		self.sen = self.sender()
@@ -473,10 +517,185 @@ class CommWidgetUi(QWidget):
 		self.commUi.clientPortLab.setHidden(True)
 		self.commUi.clientPortLab2.setHidden(True)
 
-	def bind_signals(self):
-		pass
+	def bind_signals(self, s: SocketTcp.MyServer):
+		s.server_signal.conn_closed_done.connect(self.disconnect_client_by_defSignal)
+		s.server_signal.listened_done.connect(self.auto_set_connect_button_and_address_label)
+		s.server_signal.accepted_done.connect(self.add_client_to_server)
+		s.server_signal.receive_data_done.connect(self.send_receive_data)
+		s.server_signal.send_data_done.connect(self.send_receive_data)
+
+	def send_receive_data(self, info: list, name: str):
+		# info = [0info_No, 1ts, 2server_ip, 3server_port, 4server_index, 5client_ip, 6client_port,
+		#                                               7client_index, 8len(recv_data), 9recv_data]
+		for i in range(len(self.server_pool)):
+			if self.server_pool[i][-1] == info[2]:
+				info[2] = i  # 当前服务器在server_pool列表中的索引
+				break
+		info.insert(0, self.info_No)
+		self.logger.debug(info)
+		self.info_pool.append(info)
+		item = QTreeWidgetItem()
+		item.setText(0, str(info[0]))
+		item.setText(1, str(info[1]))
+		item.setText(4, str(info[8]))
+		if name == "receive_data_done":
+			item.setText(2, info[5])
+			item.setText(3, info[2])
+			item.setText(5, "%d to %d" % (info[6], info[3]))
+		elif name == "send_data_done":
+			item.setText(2, info[2])
+			item.setText(3, info[5])
+			item.setText(5, "%d to %d" % (info[3], info[6]))
+		self.commUi.overViewTree.addTopLevelItem(item)
+		self.commUi.overViewTree.clearSelection()
+		item.setSelected(True)
+		self.info_No += 1
+
+		data_h = self.info_pool[-1][-1].hex()
+		self.commUi.receiveDataHexEdit.clear()
+		self.commUi.receiveDataHexEdit.setText(data_h)
+		data = ""
+		for i in self.info_pool[-1][-1]:
+			try:
+				data_a = i.decode("utf-8")
+			except Exception as e:
+				data += "?"
+				# self.logger.exception(e)
+			else:
+				data += data_a
+		self.commUi.receiveDataAscEdit.clear()
+		self.commUi.receiveDataAscEdit.setText(data)
+		self.commUi.receiveDataAscEdit.setText(self.convert_hex_to_ASCII(self.info_pool[-1][-1], True))
+
+	def showMessage(self, item, c):
+		current_row = self.commUi.overViewTree.indexFromItem(item).row()
+		data_h = self.info_pool[current_row][-1].hex()
+		self.commUi.receiveDataHexEdit.clear()
+		self.commUi.receiveDataHexEdit.setText(data_h)
+		try:
+			data_a = self.info_pool[current_row][-1].decode("utf-8")
+			self.logger.debug(data_a)
+		except Exception as e:
+			self.commUi.receiveDataAscEdit.clear()
+			self.commUi.receiveDataAscEdit.setText("?")
+			self.logger.exception(e)
+		else:
+			self.commUi.receiveDataAscEdit.clear()
+			self.commUi.receiveDataAscEdit.setText(data_a)
+
+	def show_hex_and_asc_edit(self):
+		sd = self.sender()
+		if not self.commUi.hexBtn.isChecked() and not self.commUi.ascBtn.isChecked():
+			sd.setChecked(True)
+		if self.commUi.hexBtn.isChecked():
+			self.commUi.receiveDataHexEdit.setHidden(False)
+			self.commUi.sendDataHexEdit.setHidden(False)
+		else:
+			self.commUi.receiveDataHexEdit.setHidden(True)
+			self.commUi.sendDataHexEdit.setHidden(True)
+		if self.commUi.ascBtn.isChecked():
+			self.commUi.receiveDataAscEdit.setHidden(False)
+			self.commUi.sendDataAscEdit.setHidden(False)
+		else:
+			self.commUi.receiveDataAscEdit.setHidden(True)
+			self.commUi.sendDataAscEdit.setHidden(True)
+
+	def send_data(self):
+		if not len(self.commUi.sendDataHexEdit.toPlainText()) % 2:
+			# data = self.commUi.sendDataHexEdit.toPlainText().encode("utf-8")
+			data = bytes.fromhex(self.commUi.sendDataHexEdit.toPlainText())
+			self.logger.debug(data)
+			self.top_count = self.commUi.CSTree.topLevelItemCount()
+			if self.top_count != 0:
+				if self.commUi.CSTree.currentItem() is not None:
+					if self.commUi.CSTree.currentItem().parent() is not None:
+						top_row = self.commUi.CSTree.indexFromItem(self.commUi.CSTree.currentItem().parent()).row()
+						child_row = self.commUi.CSTree.indexFromItem(self.commUi.CSTree.currentItem()).row()
+						self.server_pool[top_row][0].conn_pool[child_row][7].sendall(data)
+						# info = [0info_No, 1ts, 2server_ip, 3server_port, 4server_index, 5client_ip, 6client_port,
+						#                                               7client_index, 8len(recv_data), 9recv_data]
+						for i in range(len(self.server_pool)):
+							if self.server_pool[top_row][0].conn_pool[child_row][1] == self.server_pool[top_row][-1]:
+								sever_index = i
+								break
+						info = [time.time(), self.server_pool[top_row][0].conn_pool[child_row][3],
+						        self.server_pool[top_row][0].conn_pool[child_row][4], sever_index,
+						        self.server_pool[top_row][0].conn_pool[child_row][5],
+						        self.server_pool[top_row][0].conn_pool[child_row][6],
+						        self.server_pool[top_row][0].conn_pool[child_row][8], len(data), data]
+						self.logger.debug(info)
+						self.server_pool[top_row][0].server_signal.send_data_done.emit(info, "send_data_done")
+					else:
+						self.messageBox4.show()
+				else:
+					self.messageBox4.show()
+			else:
+				self.messageBox4.show()
+		else:
+			self.messageBox8.setText("请输入正确的字节数据！当前字符数%d个！" % len(self.commUi.sendDataHexEdit.toPlainText()))
+			self.messageBox8.exec_()
+
+	def input_data(self):
+		sd: QTextEdit
+		sd = self.sender()
+		if sd.objectName() == "sendDataHexEdit" and sd == QApplication.focusWidget():
+			if len(sd.toPlainText()) % 2 == 0:
+				data = self.commUi.sendDataHexEdit.toPlainText().encode("utf-8")
+				self.commUi.sendDataAscEdit.setText(self.convert_hex_to_ASCII(data, False))
+			# else:
+
+		if sd.objectName() == "sendDataAscEdit" and sd == QApplication.focusWidget():
+			data_s = sd.toPlainText().encode("utf-8").hex()
+			self.commUi.sendDataHexEdit.setText(data_s)
+
+	def convert_hex_to_ASCII(self, b_ah: bytes, b):
+		"""
+		将bytes字节流的数据转换为ASC码，无法转换的字节显示"?"
+		比如：当b=True时，b"12\88"，转换为"12?"
+			 当b=False时，b"3131\88"，转换为"12?"
+		:param b_ah: 字节流
+		:param b: bool，True时为ASC表示的字节流，False时为16进制表示的字节流
+		:return: ASC码
+		"""
+		s_a = ""
+		if b:
+			s = b_ah.hex()
+		else:
+			s = b_ah.decode(encoding="utf-8")
+		if len(s) % 2 == 0:
+			for i in range(int(len(s) / 2)):
+				b1 = bytes.fromhex(s[i * 2:i * 2 + 2])
+				try:
+					s1 = b1.decode("utf-8")
+				except UnicodeDecodeError as e:
+					s_a = s_a + "?"
+				else:
+					s_a = s_a + s1
+		else:
+			s_a = ""
+		return s_a
+
+	def clear_data(self):
+		self.messageBox7.setText("确定要清除%d条通信数据吗？" % len(self.info_pool))
+		ret = self.messageBox7.exec_()
+		if ret == 16384:
+			self.commUi.overViewTree.clear()
+			self.info_No = 1
 
 # def closeEvent(self, a0: QCloseEvent):
+
+
+class KeyPressEster(QObject):
+	def eventFilter(self, a0: 'QObject', a1: 'QEvent') -> bool:
+		if a1.type() == QEvent.KeyPress:
+			if a1.text() in string.hexdigits:
+				# a0.setText(a1.text())
+				a0.textCursor().insertText(a1.text())
+			if a1.key() == 16777219:  # 退格键
+				a0.textCursor().deletePreviousChar()
+			return True
+		else:
+			return QObject.eventFilter(self, a0, a1)
 
 
 class Signals(QObject):

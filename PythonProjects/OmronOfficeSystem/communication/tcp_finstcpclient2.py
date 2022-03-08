@@ -7,6 +7,7 @@
 """
 import binascii
 import socket
+import time
 
 
 def process_receive_massage(message):
@@ -29,10 +30,11 @@ serveraddress = ('192.168.10.2', 9600)  # 服务器的端口号和IP地址
 # 默认使用ipv4,创建TCP。socket.AF_INET表示ipv4，socket.SOCK_STREAM表示TCP
 sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 建立socket对象
 
-sk.connect(serveraddress)  # 连接服务器
+# sk.connect(serveraddress)  # 连接服务器
 
 # 握手
 fth = 0X46494E530000000C00000000000000000000006B  # 握手命令
+print(fth, type(fth))
 fth = hex(fth)
 fth = fth[2::]
 print(fth, type(fth))
@@ -41,7 +43,12 @@ fth = binascii.a2b_hex(fth)  # 返回由十六进制字符串 hexstr 表示的�
                              # 函数hexlify和b2a_hex实际是一个函数，建议使用hexlify。作用是返回的二进制数据的十六进制表示。
                              # 每一个字节的数据转换成相应的2位十六进制表示。因此产生的字串是源数据两倍长度。
                              # a2b_hex和unhexlify则执行反向操作。
-# print('转换后的字节流为：{}'.format(fth))
+print('转换后的字节流为：{}'.format(fth))
+
+aa = b'FINS\x00\x00\x00\x0c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00k'
+print(aa)
+
+time.sleep(100000)
 sk.sendall(fth)
 
 recv_msg_hand1 = sk.recv(1024)

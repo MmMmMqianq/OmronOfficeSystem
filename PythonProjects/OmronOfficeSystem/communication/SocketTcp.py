@@ -1,3 +1,5 @@
+import time
+
 from PyQt5.QtCore import pyqtSignal, pyqtBoundSignal, QObject
 import socket
 import struct
@@ -40,8 +42,8 @@ class MyServer:
 					                       self.conn.getsockname()[1], self.addr[0], self.addr[1], self.conn,
 					                       self.client_No, True])
 					self.t2 = threading.Thread(target=self.handle, args=(self.conn, self.conn_pool[-1][1],
-					                                                     self.conn_pool[-1][7], self.conn_pool[-1][3],
-					                                                     self.conn_pool[-1][4], self.addr[0], self.addr[1]))
+					                                                     self.conn_pool[-1][7], self.conn_pool[-1][2],
+					                                                     self.conn_pool[-1][3], self.addr[0], self.addr[1]))
 					self.t2.start()
 					self.conn_pool[-1].insert(2, self.t2.getName())
 					self.server_signal.accepted_done.emit(self.conn_pool)
@@ -62,10 +64,10 @@ class MyServer:
 			i[-1] = False
 		self.conn_pool.clear()
 		self.s.close()
-		print(self.conn_pool)
 		print("停止监听。。。")
 
 	def handle(self, conn: socket.socket, server_num, client_num, server_ip, server_port, client_ip, client_port):
+		# print(conn, server_num, client_num, server_ip, server_port, client_ip, client_port)
 		while True:
 			try:
 				recv_data = conn.recv(1024)
@@ -87,8 +89,9 @@ class MyServer:
 						if self.conn_pool[i][8] == client_num:
 							client_index = i
 							break
-					info = [server_ip, server_port, server_num, client_ip, client_port, client_index, recv_data]
-					self.server_signal.receive_data_done.emit(info)
+					ts = time.time()
+					info = [ts, server_ip, server_port, server_num, client_ip, client_port, client_index, len(recv_data), recv_data]
+					self.server_signal.receive_data_done.emit(info, "receive_data_done")
 				else:
 					conn.close()
 					print("服务器主动关闭客户端连接。。。")
@@ -117,14 +120,17 @@ class TcpSignals(QObject):
 	listened_done: pyqtBoundSignal
 	conn_closed_done: pyqtBoundSignal
 	receive_data_done: pyqtBoundSignal
+	send_data_done: pyqtBoundSignal
 
 	accepted_done = pyqtSignal(list)
 	listened_done = pyqtSignal(str)
 	conn_closed_done = pyqtSignal(list)
-	receive_data_done = pyqtSignal(list)
+	receive_data_done = pyqtSignal(list, str)
+	send_data_done = pyqtSignal(list, str)
 
 
-def get_local_ip():
+def get_local_ip(messageBox):
+	ip = str()
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		optVal = struct.pack("ii", 1, 0)
@@ -134,6 +140,7 @@ def get_local_ip():
 	except OSError as e:
 		if e.errno == 51:
 			print("请检查网络！")
+			messageBox.show()
 	finally:
 		s.close()
 	return ip

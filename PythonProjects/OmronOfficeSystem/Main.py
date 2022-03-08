@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 """
 数据库账号：omron
 密码：omron@2021
