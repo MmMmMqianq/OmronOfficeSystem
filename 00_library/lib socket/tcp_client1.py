@@ -13,7 +13,7 @@ server_addr = ('192.168.10.107', 8888)  # 服务器的端口号和IP地址
 
 source_addr = ('192.168.10.107', 8882)
 
-client = socket.create_connection(address=server_addr, timeout=5.0, source_address=source_addr)  # 如果 host 是非数字主机名，它将尝试从 AF_INET 和 AF_INET6 解析它，然后依次尝试连接到所有可能的地址，直到连接成功。
+client = socket.create_connection(address=server_addr, timeout=5.0, source_address=source_addr)  # 如果 server_ip 是非数字主机名，它将尝试从 AF_INET 和 AF_INET6 解析它，然后依次尝试连接到所有可能的地址，直到连接成功。
 
 print('4. ', client.gettimeout())
 

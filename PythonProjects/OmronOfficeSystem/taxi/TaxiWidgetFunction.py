@@ -87,10 +87,10 @@ class TaxiWidgetUi(QWidget):
 		self.taxiUi.saveBtn.clicked.connect(self.backup_db_data)
 		self.taxiUi.addNameBtn.clicked.connect(self.insert_db_data)
 
-		self.taxiUi.okButton.clicked.connect(lambda: self.showProgressBar(True, True, self.taxiUi.okButton))
-		self.defSignal.update_data_done.connect(lambda: self.showProgressBar(False, True, self.taxiUi.okButton))
-		self.taxiUi.saveBtn.clicked.connect(lambda: self.showProgressBar(True, False, self.taxiUi.saveBtn))
-		self.defSignal.backup_data_done.connect(lambda: self.showProgressBar(False, False, self.taxiUi.saveBtn))
+		# self.taxiUi.okButton.clicked.connect(lambda: self.showProgressBar(True, True, self.taxiUi.okButton))
+		# self.defSignal.update_data_done.connect(lambda: self.showProgressBar(False, True, self.taxiUi.okButton))
+		# self.taxiUi.saveBtn.clicked.connect(lambda: self.showProgressBar(True, False, self.taxiUi.saveBtn))
+		# self.defSignal.backup_data_done.connect(lambda: self.showProgressBar(False, False, self.taxiUi.saveBtn))
 
 		self.defSignal.insert_data_done.connect(self.getPageNumberAndStartWorkThread)  # 表格中显示新添加的内容
 		self.defSignal.delete_data_done.connect(self.getPageNumberAndStartWorkThread)

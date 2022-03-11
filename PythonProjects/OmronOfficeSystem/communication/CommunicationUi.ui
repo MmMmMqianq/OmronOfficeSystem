@@ -614,7 +614,7 @@
           </spacer>
          </item>
          <item row="5" column="3">
-          <widget class="QLabel" name="label_9">
+          <widget class="QLabel" name="differenceLab">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -622,7 +622,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>通信次数：0              </string>
+            <string>时间差：0              </string>
            </property>
           </widget>
          </item>
@@ -669,11 +669,11 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="CSGroup"/>
   <buttongroup name="DataTypeGroup">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="CSGroup"/>
  </buttongroups>
 </ui>

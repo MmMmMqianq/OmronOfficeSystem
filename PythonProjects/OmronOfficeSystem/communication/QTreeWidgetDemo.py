@@ -22,6 +22,8 @@ class QTreeWidgetDemo(QMainWindow):
 		self.root1 = QTreeWidgetItem()
 		self.root1.setText(0, self.tree.tr("根目录1"))
 		self.root1.setText(1, self.tree.tr("根目录1详细信息"))
+		self.root1.setCheckState(0, True)
+
 		self.root2 = QTreeWidgetItem()
 		self.root2.setText(0, self.tree.tr("根目录2"))
 		self.root2.setText(1, self.tree.tr("根目录2详细信息"))
@@ -81,8 +83,6 @@ class QTreeWidgetDemo(QMainWindow):
 		self.tree.header().setSectionResizeMode(QHeaderView.ResizeToContents)
 		self.root1.setIcon(2, QIcon("./communication/images/happy2.png"))
 
-		self.p1.setCheckable(True)
-
 	def pressItem(self, item: QTreeWidgetItem, column):
 		print("1. 被点击的QTreeWidgetItem = ", item)
 		# print("2. 被点击的QTreeWidgetItem列号 = ", column)
@@ -93,8 +93,7 @@ class QTreeWidgetDemo(QMainWindow):
 
 	def a(self):
 		print("aaaaaaa")
-		child_row = self.tree.indexFromItem(self.tree.currentItem()).row()
-		self.tree.currentItem().parent().takeChild(child_row)
+
 
 	def b(self):
 		self.root1.addChildren([self.child4])

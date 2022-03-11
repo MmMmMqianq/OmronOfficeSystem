@@ -20,7 +20,7 @@ class MyServer:
 		self.conn = socket.socket()
 		self.addr = tuple()
 
-		self.server_signal = TcpSignals()
+		self.server_signal = ServerSignals()
 		self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		# optVal = struct.pack("ii", 1, 0)
@@ -51,7 +51,7 @@ class MyServer:
 
 		self.s.listen()
 		self.listening = True
-		self.server_signal.listened_done.emit("auto_listened_done")
+		self.server_signal.listened_done.emit("listened_done")
 
 		self.t = threading.Thread(target=accept1, daemon=True)
 		self.t.start()
@@ -100,22 +100,56 @@ class MyServer:
 
 
 class MyClient:
-	def __init__(self, host, port):
-		self.HOST = host
-		self.PORT = port
-		self.c = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	def __init__(self, server_ip, server_port):
+		self.server_ip = server_ip
+		self.server_port = server_port
+		self.client_No = int()  # 用于判断是哪个top item对应的客户端执行的连接操作
+		self.info = [self.client_No, "--", "--", self.server_ip, self.server_port, 0]  # 1表正常连接，-1表示连接出错，0表示客户端未进行连接操作
+
+		self.client_signal = ClientSignals()
+		self.c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.optVal = struct.pack("ii", 1, 0)
+		self.c.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER, self.optVal)
 
 	def client_connect(self):
-		self.c.connect((self.HOST, self.PORT))
-		self.t = threading.Thread(target=self.handle)
-		self.t.start()
+		try:
+			self.c.connect((self.server_ip, self.server_port))
+		except TimeoutError as e:
+			self.info = [self.client_No, "-1", -1, self.server_ip, self.server_port, -1]
+			self.client_signal.connect_error.emit(self.info, "connect_error")
+			if e.errno == 60:
+				print("通信超时，没能连上服务器。。。")
+			if e.error == 56:
+				print("[Errno 56] Socket is already connected.")
+			if e.errno == 9:
+				print("[Errno 9] Bad file descriptor")  # 服务器侧关闭连接，客户端再点连接时报错
+		else:
+			self.client_ip = self.c.getsockname()[0]
+			self.client_port = self.c.getsockname()[1]
+			self.t = threading.Thread(target=self.handle, daemon=True)
+			self.t.start()
+			self.info = [self.client_No, self.client_ip, self.client_port, self.server_ip, self.server_port, 1]
+			self.client_signal.connect_done.emit(self.info, "connect_done")
 
 	def handle(self):
-		pass
+		while True:
+			try:
+				recv_data = self.c.recv(1024)
+			except OSError as e:
+				if e.errno == 9:
+					print("[Errno 9] Bad file descriptor,"+"连接已被关闭。。。")
+					break
+			if recv_data != b"":
+				pass
+			else:
+				self.c.close()
+				self.client_signal.conn_closed_done.emit([self.client_No, "--", "--",
+				                                          self.server_ip, self.server_port, 0], "conn_closed_done")
+				print("服务器以主动关闭，客户端关闭。。。")
+				break
 
 
-class TcpSignals(QObject):
+class ServerSignals(QObject):
 	accepted_done: pyqtBoundSignal
 	listened_done: pyqtBoundSignal
 	conn_closed_done: pyqtBoundSignal
@@ -125,6 +159,20 @@ class TcpSignals(QObject):
 	accepted_done = pyqtSignal(list)
 	listened_done = pyqtSignal(str)
 	conn_closed_done = pyqtSignal(list)
+	receive_data_done = pyqtSignal(list, str)
+	send_data_done = pyqtSignal(list, str)
+
+
+class ClientSignals(QObject):
+	connect_done: pyqtBoundSignal
+	connect_error: pyqtBoundSignal
+	conn_closed_done: pyqtBoundSignal
+	receive_data_done: pyqtBoundSignal
+	send_data_done: pyqtBoundSignal
+
+	connect_done = pyqtSignal(list, str)
+	connect_error = pyqtSignal(list, str)
+	conn_closed_done = pyqtSignal(list, str)
 	receive_data_done = pyqtSignal(list, str)
 	send_data_done = pyqtSignal(list, str)
 
